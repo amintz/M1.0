@@ -103,7 +103,11 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 	
 	// -- VIDEO PLAYER
 	
-	vidPlayer.init(filesPath, filesPath + "movies/", dispID);
+	//vidPlayer.init(filesPath, filesPath + "movies/", dispID);
+	vidPlayer.setLoopState(OF_LOOP_NONE);
+	vidPlayer.setUseTexture(false);
+	vidPlayer.loadMovie(filesPath + "movies/m" + ofToString(dispID) + "g0v0.mov");
+	vidPlayer.play();
 	
 	// -- VIDEO BLENDER
 	
@@ -140,7 +144,7 @@ void margModule::update() {
 	
 	vidPlayer.update();
 	
-	setInteractMode(vidPlayer.getInteractMode());
+	//setInteractMode(vidPlayer.getInteractMode());
 	
 	if (interactMode == NORMAL_TRAIL || interactMode == NO_FADE_TRAIL) {
 		blobFind.feedPixels(originalPix);
@@ -151,7 +155,7 @@ void margModule::update() {
 		blobInterp.feedBlobs(blobs);
 		blobs = blobInterp.getInterpolatedBlobs();
 		if(mode == TRAIL_MAP || mode == FINAL_IMAGE || bExhibitionMode) trailMaker.updtMap(blobs);
-		if (vidPlayer.getIsPlaying() && (mode == FINAL_IMAGE || bExhibitionMode)) {
+		if (vidPlayer.isPlaying() && (mode == FINAL_IMAGE || bExhibitionMode)) {
 			vidBlender.blendVideo(trailMaker.getMap(), vidPlayer.getPixels());
 		}
 	}
@@ -201,7 +205,7 @@ void margModule::update() {
 				}
 				break;
 			case BYPASS_VIDEO:
-				if(vidPlayer.player.getWidth()!=0) display.feedImg(vidPlayer.getPixels(), dispWidth, dispHeight);
+				if(vidPlayer.getWidth()!=0) display.feedImg(vidPlayer.getPixels(), dispWidth, dispHeight);
 				break;
 			default:
 				//display.feedImg(vidBlender.getPixels(), dispWidth, dispHeight);
@@ -483,23 +487,25 @@ void margModule::setInteractMode(int _interactMode) {
 // -----------------------------------------------
 
 void margModule::setNextVidIndex(int idx) {
-	vidPlayer.setNextIndex(idx);
+	//vidPlayer.setNextIndex(idx);
 }
 
 // -----------------------------------------------
 
 bool margModule::getNeedToSetIndex() {
-	return vidPlayer.getNeedToSetIndex();
+	//return vidPlayer.getNeedToSetIndex();
+	return false;
 }
 
 // -----------------------------------------------
 
 bool margModule::getNeedToPlay() {
-	return vidPlayer.getNeedToPlay();
+	//return vidPlayer.getNeedToPlay();
+	return false;
 }
 
 // -----------------------------------------------
 
 bool margModule::getIsVidLoaded() {
-	return vidPlayer.getIsLoaded();
+	return vidPlayer.isLoaded();
 }

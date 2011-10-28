@@ -230,8 +230,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -268,6 +266,7 @@
 							<array>
 								<string>E4B69B4A0A3A1720003C02F2</string>
 								<string>219B9D1A1443B3750078DC3D</string>
+								<string>21F38C89144B9386002AFC64</string>
 								<string>219B9E9B1443BE490078DC3D</string>
 								<string>219B9F191443C8F00078DC3D</string>
 								<string>219B9F241443C8F10078DC3D</string>
@@ -277,6 +276,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>7</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -311,12 +312,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ofxSimpleGuiPage.h</string>
+								<string>margModule007.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -324,7 +327,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ofxSimpleGuiPage.h</string>
+										<string>margModule007.cpp</string>
+										<key>_historyCapacity</key>
+										<integer>0</integer>
+										<key>bookmark</key>
+										<string>21DE58FF145B221200702D58</string>
 										<key>history</key>
 										<array>
 											<string>219B9EC51443C1F40078DC3D</string>
@@ -372,23 +379,23 @@
 											<string>217AC4171456F66000F0879A</string>
 											<string>217AC4211456F6B400F0879A</string>
 											<string>217AC4591456F95500F0879A</string>
-											<string>217AC4661457153D00F0879A</string>
-											<string>217AC4671457153D00F0879A</string>
 											<string>210A4BCE1458628100654FB5</string>
-											<string>210A4BCF1458628100654FB5</string>
-											<string>210A4BD9145862AE00654FB5</string>
 											<string>210A52C21458759500654FB5</string>
 											<string>2155755D145AF686009125CF</string>
 											<string>21DBAB4A145AF78D00B40197</string>
 											<string>21DBAB6F145AFE5200B40197</string>
-											<string>21DBAB71145AFE5200B40197</string>
-											<string>21DBAB7A145B149600B40197</string>
-											<string>21DBAB7B145B149600B40197</string>
 											<string>21DBAB7C145B149600B40197</string>
 											<string>21DBAB7D145B149600B40197</string>
 											<string>21DBAB7E145B149600B40197</string>
 											<string>21DBAB7F145B149600B40197</string>
 											<string>21DBAB86145B14FA00B40197</string>
+											<string>21DE58F8145B221200702D58</string>
+											<string>21DE58F9145B221200702D58</string>
+											<string>21DE58FA145B221200702D58</string>
+											<string>21DE58FB145B221200702D58</string>
+											<string>21DE58FC145B221200702D58</string>
+											<string>21DE58FD145B221200702D58</string>
+											<string>21DE58FE145B221200702D58</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -586,6 +593,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>21DE5900145B221200702D58</string>
+		<string>21DE5901145B221200702D58</string>
+		<string>21DE5902145B221200702D58</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>219B9D151443B3430078DC3D</string>
 		<string>/Users/andregmintz/Dev/openFrameworks/OF_0.070_SL/apps/M1.0/m1.0_setup/m1.0_setup.xcodeproj</string>
 	</array>
@@ -606,12 +618,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>margModule007.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -789,13 +803,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>21DE58D1145B1CAC00702D58</string>
+				<string>21DE58F1145B220B00702D58</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>21DE58D2145B1CAC00702D58</string>
-				<string>21DE58D3145B1CAC00702D58</string>
-				<string>21DE58D4145B1CAC00702D58</string>
-				<string>21DE58D5145B1CAC00702D58</string>
-				<string>21DE58D6145B1CAC00702D58</string>
+				<string>21DE58F2145B220B00702D58</string>
+				<string>21DE58F3145B220B00702D58</string>
+				<string>21DE58F4145B220B00702D58</string>
+				<string>21DE58F5145B220B00702D58</string>
+				<string>21DE58F6145B220B00702D58</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -949,7 +963,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>21DE58D7145B1CAC00702D58</string>
+				<string>21DE58F7145B220B00702D58</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

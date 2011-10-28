@@ -210,30 +210,30 @@ void testApp::update(){
 		}
 	}
 	
-	if (checkEveryModNeedPlay()) {
-		curVidIdx = nextVidIdx;
-		curVidGroup = nextVidGroup;
-		nextVidGroup = nextVidGroup + 1 > 2? 0 : nextVidGroup + 1; 
-		
-		//oscSender.sendMessage(oscMessage);
-		
-		oscMessage.clear();
-		oscMessage.setAddress("/sound"+ofToString(curVidGroup));
-		oscMessage.addIntArg(curVidIdx);
-		
-		for (int i = 0; i < numMod; i++) {
-			modules[i].playVideos();
-		}
-		
-		//oscSender.sendMessage(oscMessage);
-	}
+//	if (checkEveryModNeedPlay()) {
+//		curVidIdx = nextVidIdx;
+//		curVidGroup = nextVidGroup;
+//		nextVidGroup = nextVidGroup + 1 > 2? 0 : nextVidGroup + 1; 
+//		
+//		//oscSender.sendMessage(oscMessage);
+//		
+//		oscMessage.clear();
+//		oscMessage.setAddress("/sound"+ofToString(curVidGroup));
+//		oscMessage.addIntArg(curVidIdx);
+//		
+//		for (int i = 0; i < numMod; i++) {
+//			modules[i].playVideos();
+//		}
+//		
+//		//oscSender.sendMessage(oscMessage);
+//	}
 	
-	if (checkEveryModNeedVidIndex()) {
-		nextVidIdx = ofRandom(0, 200);
-		for (int i = 0; i < numMod; i++) {
-			modules[i].setNextVidIndex(nextVidIdx);
-		}
-	}
+//	if (checkEveryModNeedVidIndex()) {
+//		nextVidIdx = ofRandom(0, 200);
+//		for (int i = 0; i < numMod; i++) {
+//			modules[i].setNextVidIndex(nextVidIdx);
+//		}
+//	}
 	
 }
 
