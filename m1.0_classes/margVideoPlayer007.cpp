@@ -28,9 +28,7 @@ void margVideoPlayer::init(string _xmlPath, string _filePath, int _modIdx) {
 	filePath			= _filePath;
 
 	
-	player.setUseTexture(false);
-	
-	bool success = player.loadMovie(filePath + "m" + ofToString(modIdx) + "g" + ofToString(curVidGroup) + "v0.mov");
+	bool success = player.loadMovie(filePath + "m" + ofToString(modIdx) + "g" + ofToString(curVidGroup) + "v0.mov", 1);
 	
 	if(success) cout << "Module " + ofToString(modIdx) + " successful" << endl;
 	
@@ -73,7 +71,7 @@ void margVideoPlayer::update() {
 	if (bNeedToLoadNext) {
 		updateVid();
 	}
-	else if(bReturnBlack && player.isPlaying() && player.isLoaded() && player.getPosition() < 0.5 && player.getPosition() > 0) {
+	else if(bReturnBlack && player.isLoaded() && player.getPosition() < 0.5 && player.getPosition() > 0) {
 		bReturnBlack = false;
 	}
 }
@@ -82,8 +80,7 @@ void margVideoPlayer::update() {
 
 void margVideoPlayer::updateVid() {
 	player.close();
-	player.setUseTexture(false);
-	bool success = player.loadMovie(filePath + "m" + ofToString(modIdx) + "g" + ofToString(nextVidGroup) + "v" + ofToString(nextVidIndex) + ".mov");
+	bool success = player.loadMovie(filePath + "m" + ofToString(modIdx) + "g" + ofToString(nextVidGroup) + "v" + ofToString(nextVidIndex) + ".mov", 1);
 	player.setLoopState(OF_LOOP_NONE);
 	if(success) {
 		bNeedToLoadNext		= false;
@@ -143,7 +140,9 @@ bool margVideoPlayer::getIsLoaded() {
 // ------------------------------------------------
 
 bool margVideoPlayer::getIsPlaying() {
-	return player.isPlaying();
+	//return player.isPlaying();
+	cout << endl << "----- margVideoPlayer::getIsPLaying() is not implemented and will be deprecated" << endl;
+	return true;
 }
 
 // ------------------------------------------------

@@ -8,7 +8,7 @@
  */
 
 
-#include "ofVideoPlayerAdapt.h"
+#include "ofxQTKitVideoPlayer.h"
 #include "ofxXmlSettings.h"	
 
 class margVideoPlayer {
@@ -30,7 +30,7 @@ public:
 	bool	getNeedToSetIndex();
 	
 	
-	ofVideoPlayerAdapt player;
+	ofxQTKitVideoPlayer player;
 	
 private:
 	

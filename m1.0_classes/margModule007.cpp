@@ -151,7 +151,7 @@ void margModule::update() {
 		blobInterp.feedBlobs(blobs);
 		blobs = blobInterp.getInterpolatedBlobs();
 		if(mode == TRAIL_MAP || mode == FINAL_IMAGE || bExhibitionMode) trailMaker.updtMap(blobs);
-		if (vidPlayer.getIsPlaying() && (mode == FINAL_IMAGE || bExhibitionMode)) {
+		if (vidPlayer.getIsLoaded() && (mode == FINAL_IMAGE || bExhibitionMode)) {
 			vidBlender.blendVideo(trailMaker.getMap(), vidPlayer.getPixels());
 		}
 	}
