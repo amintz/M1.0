@@ -103,11 +103,9 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 	
 	// -- VIDEO PLAYER
 	
-	//vidPlayer.init(filesPath, filesPath + "movies/", dispID);
-	vidPlayer.setLoopState(OF_LOOP_NONE);
 	vidPlayer.setUseTexture(false);
 	vidPlayer.loadMovie(filesPath + "movies/m" + ofToString(dispID) + "g0v0.mov");
-	vidPlayer.play();
+	vidPlayer.setLoopState(OF_LOOP_NORMAL);
 	
 	// -- VIDEO BLENDER
 	
@@ -404,6 +402,7 @@ void margModule::setTrailMaker(float _exposureConst, float _fadeConst, int _blur
 
 vector<string>& margModule::getCaptDevList() {
 	//return vidCapt.getDeviceList();
+	//OF 007 removed this function
 }
 
 // -----------------------------------------------
@@ -487,21 +486,20 @@ void margModule::setInteractMode(int _interactMode) {
 // -----------------------------------------------
 
 void margModule::setNextVidIndex(int idx) {
-	//vidPlayer.setNextIndex(idx);
+	//vidPlayer.setNextIndex(idx); SCRIPTED PLAYER FUNCTION
 }
 
 // -----------------------------------------------
 
 bool margModule::getNeedToSetIndex() {
-	//return vidPlayer.getNeedToSetIndex();
+	//return vidPlayer.getNeedToSetIndex(); SCRIPTED PLAYER FUNCTION
 	return false;
 }
 
 // -----------------------------------------------
 
 bool margModule::getNeedToPlay() {
-	//return vidPlayer.getNeedToPlay();
-	return false;
+	return !vidPlayer.isPlaying();
 }
 
 // -----------------------------------------------
