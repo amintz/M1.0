@@ -8,7 +8,7 @@ void testApp::setup(){
 	
 	// SET NUMBER OF MODULES HERE ------------------------------*
 	
-	numMod = 4; // -------------------------------------------***
+	numMod = 1; // -------------------------------------------***
 	
 	// SET OSC HERE --------------------------------------------*
 	
@@ -73,6 +73,7 @@ void testApp::setup(){
 		modules[i].init(camWidth, camHeight, dispWidth, dispHeight, i+1, i, "../../../../M1.0_data/", false);
 		modules[i].setSharedVarsAddresses(&minBlob, &maxBlob, &numBlob,
 										  &maxDist, &maxAreaDiff, &maxUnfitness,
+										  &blobDefScaleFactor,
 										  &exposureConst, &fadeConst, &blurLevel,
 										  &displayMode, &bDrawBlobs, &whichBlobs,
 										  &bAdjQuad, &whichQuad);
@@ -127,6 +128,9 @@ void testApp::setup(){
 	gui.addTitle("Blob Tracking");
 	gui.addSlider("Max Area Diff", maxAreaDiff, 0, 100);
 	gui.addSlider("Max Dist", maxDist, 0, 150);
+	
+	gui.addTitle("Blob Scaling");
+	gui.addSlider("Default Scale Factor", blobDefScaleFactor, 0.5, 4.0);
 	
 	gui.addTitle("Blob Drawing");
 	gui.addToggle("Draw Blobs", bDrawBlobs);

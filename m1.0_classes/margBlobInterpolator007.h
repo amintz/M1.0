@@ -27,6 +27,10 @@ public:
 	
 	vector<margBlob>	interpolate(margBlob& blob1, margBlob& blob2);
 	
+	margBlob			scale(margBlob& inBlob, float factor);
+	
+	vector<margBlob>	scale(vector<margBlob> inBlobs, float factor);
+	
 	
 	// Feed vector of blobs for interpolation.
 	// Will interpolate after second feed, adding to blob vector that is fed.
@@ -38,13 +42,16 @@ public:
 	
 	vector<margBlob>	getInterpolatedBlobs();
 	
-	void				setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness);
+	void				setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness, float _defScaleFactor);
 	
 	void				drawInterp (int x, int y, int w, int h);
 	
 	float				maxDist,
 						maxAreaDiff,
 						maxUnfitness;
+	
+	float				defScaleFactor,
+						cumScaleFactor;
 	
 protected:
 	
@@ -60,6 +67,12 @@ protected:
 		int normX = x-orig_x;
 		int normY = y-orig_y;
 		return ofPoint(normX, normY);
+	}
+	
+	float forceInRange (float val, float min, float max) {
+		if(val >= min && val <= max) return val;
+		else if (val < min) return min;
+		else return max;
 	}
 
 };

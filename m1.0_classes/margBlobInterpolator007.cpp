@@ -7,7 +7,7 @@
  *
  */
 
-#include "margBlobInterpolator.h"
+#include "margBlobInterpolator007.h"
 
 
 bool interpol_sort_fitness_compare(const vector<int> f, const vector<int> g) {
@@ -24,7 +24,7 @@ void margBlobInterpolator::init(int _width, int _height) {
 // ---------------------------------------------------------------
 
 void margBlobInterpolator::feedBlobs(vector<margBlob> inBlobs) {
-	makeInterpolated(inBlobs);
+	makeInterpolated(scale(inBlobs, defScaleFactor));
 }
 
 // ---------------------------------------------------------------
@@ -221,6 +221,8 @@ vector<margBlob> margBlobInterpolator::interpolate(margBlob& blob1, margBlob& bl
 		}
 	}
 	
+	// If blob1 has more vertices than blob2
+	
 	else if (blob1.nPts > blob2.nPts) {
 		
 		int diff = blob1.nPts - blob2.nPts;
@@ -278,6 +280,8 @@ vector<margBlob> margBlobInterpolator::interpolate(margBlob& blob1, margBlob& bl
 			}
 		}  
 	}
+	
+	// If blob1 has less vertices than blob2
 	
 	else if (blob1.nPts < blob2.nPts) {
 		
@@ -377,6 +381,7 @@ vector<margBlob> margBlobInterpolator::interpolate(margBlob& blob1, margBlob& bl
 		newBlob.boundingRect.y = minY;
 		newBlob.boundingRect.width = (maxX - minX);
 		newBlob.boundingRect.height = (maxY - minY);
+		newBlob.nPts = newBlob.pts.size();
 		interBlobs.push_back(newBlob);
 	}
 	
@@ -389,6 +394,43 @@ vector<margBlob> margBlobInterpolator::interpolate(margBlob& blob1, margBlob& bl
 	return interBlobs;
 
 }
+
+// -------------------------------------------------------------
+
+margBlob margBlobInterpolator::scale(margBlob& inBlob, float factor) {
+	if(inBlob.nPts < 3) return inBlob;
+	else {
+		float minX = width,
+			  maxX = 0,
+			  minY = height,
+			  maxY = 0;
+		for(int p = 0; p < inBlob.nPts; p++) {
+			inBlob.pts[p].x = forceInRange(((float)(inBlob.pts[p].x-inBlob.centroid.x) * factor) + inBlob.centroid.x, 0, width);
+			inBlob.pts[p].y = forceInRange(((float)(inBlob.pts[p].y-inBlob.centroid.y) * factor) + inBlob.centroid.y, 0, height);
+			if(inBlob.pts[p].x < minX) minX = inBlob.pts[p].x;
+			else if(inBlob.pts[p].x > maxX) maxX = inBlob.pts[p].x;
+			if(inBlob.pts[p].y < minY) minY = inBlob.pts[p].y;
+			else if(inBlob.pts[p].y > maxY) maxY = inBlob.pts[p].y;
+		}
+		inBlob.boundingRect.x = minX;
+		inBlob.boundingRect.y = minY;
+		inBlob.boundingRect.width = maxX - minX;
+		inBlob.boundingRect.height= maxY - minY;
+		return inBlob;
+	}
+}
+
+// -------------------------------------------------------------
+
+vector<margBlob> margBlobInterpolator::scale(vector<margBlob> inBlobs, float factor) {
+	int nBlobs = inBlobs.size();
+	
+	for(int i = 0; i < nBlobs; i++) {
+		scale(inBlobs[i], factor);
+	}
+	return inBlobs;
+}
+
 
 // -------------------------------------------------------------
 
@@ -411,12 +453,12 @@ void margBlobInterpolator::makeInterpolated(vector<margBlob> current, float _max
 				if (prevBlobs[pairs[i]].pts.size() > 0) {
 					vector<margBlob> interBlobs = interpolate(prevBlobs[pairs[i]], currentCopy[i]);
 					for (int j = 0; j < interBlobs.size(); j++) {
-						current.push_back(interBlobs[j]);
+						current.push_back(/*scale(*/interBlobs[j]/*, defScaleFactor)*/);
 					}
 				}
 			}
 			else {
-				current.push_back(currentCopy[i]);
+				current.push_back(/*scale(*/currentCopy[i]/*, defScaleFactor)*/);
 			}
 		}
 			
@@ -449,12 +491,12 @@ void margBlobInterpolator :: makeInterpolated(vector<margBlob> current) {
 				if (prevBlobs[pairs[i]].pts.size() > 0) {
 					vector<margBlob> interBlobs = interpolate(prevBlobs[pairs[i]], currentCopy[i]);
 					for (int j = 0; j < interBlobs.size(); j++) {
-						current.push_back(interBlobs[j]);
+						current.push_back(/*scale(*/interBlobs[j]/*, defScaleFactor)*/);
 					}
 				}
 			}
 			else {
-				current.push_back(currentCopy[i]);
+				current.push_back(/*scale(*/currentCopy[i]/*, defScaleFactor)*/);
 			}
 		}
 		
@@ -475,10 +517,11 @@ vector<margBlob> margBlobInterpolator :: getInterpolatedBlobs() {
 
 // ------------------------------------------------------
 
-void margBlobInterpolator :: setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness) {
+void margBlobInterpolator :: setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness, float _defScaleFactor) {
 	maxDist = _maxDist;
 	maxAreaDiff = _maxAreaDiff;
 	maxUnfitness = _maxUnfitness;
+	defScaleFactor = _defScaleFactor;
 }
 
 // ------------------------------------------------------
@@ -504,7 +547,7 @@ void margBlobInterpolator :: drawInterp (int x, int y, int w, int h) {
 	
 	// ---------------------------- draw the bounding rectangle
 	
-	ofSetColor(0xDD00CC);
+	ofSetHexColor(0xDD00CC);
 	glPushMatrix();
 	glTranslatef( x, y, 0.0 );
 	glScalef( scalex, scaley, 0.0 );
@@ -517,7 +560,7 @@ void margBlobInterpolator :: drawInterp (int x, int y, int w, int h) {
 	
 	// ---------------------------- draw the blobs
 	
-	ofSetColor(0x00FFFF);
+	ofSetHexColor(0x00FFFF);
 	
 	
 	for( int i=0; i<finalBlobs.size(); i++ ) {

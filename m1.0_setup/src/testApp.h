@@ -64,6 +64,8 @@ class testApp : public ofBaseApp{
 						maxDist,
 						maxUnfitness;
 	
+	float				blobDefScaleFactor;
+	
 	// TRAIL MAKING VARS -------------------------*
 	
 	float				exposureConst,

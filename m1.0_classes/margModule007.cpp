@@ -308,7 +308,7 @@ void margModule::updateSettings() {
 		setBlobFinder(*blobMinArea, *blobMaxArea, *blobNConsidered, blobFindThreshMin, blobFindThreshMax);
 		setCameraMatrix(correctFX, correctFY, correctCX, correctCY);
 		setDistCoeffs(correctRdX, correctRdY, correctTgX, correctTgY);
-		setInterpolator(*blobPairMaxDist, *blobPairMaxAreaDiff, *blobPairMaxUnfitness);
+		setInterpolator(*blobPairMaxDist, *blobPairMaxAreaDiff, *blobPairMaxUnfitness, *blobDefScaleFactor);
 		setTrailMaker(*trailExpConst, *trailFadeConst, *trailBlurLevel);
 		setMode(*modMode, *modDrawBlobs, *modDrawWhichBlobs, *modAdjQuad, *modAdjWhichQuad);
 		if (bufInteractMode != interactMode) setInteractMode(interactMode);
@@ -319,6 +319,7 @@ void margModule::updateSettings() {
 
 void margModule::setSharedVarsAddresses(int* _blobMinArea, int* _blobMaxArea, int* _blobNConsidered,							// Shared between modules
 										float* _blobPairMaxDist, float* _blobPairMaxAreaDiff, float* _blobPairMaxUnfitness,		// Shared between modules
+										float* _blobDefScaleFactor,
 										float* _trailExpConst, float* _trailFadeConst, int* _trailBlurLevel,					// Shared between modules
 										int* _modMode,																			// Shared - for now
 										bool* _modDrawBlobs, int* _modDrawWhichBlobs,											// Shared between modules
@@ -332,6 +333,8 @@ void margModule::setSharedVarsAddresses(int* _blobMinArea, int* _blobMaxArea, in
 	blobPairMaxDist = _blobPairMaxDist;
 	blobPairMaxAreaDiff = _blobPairMaxAreaDiff;
 	blobPairMaxUnfitness = _blobPairMaxUnfitness;
+	
+	blobDefScaleFactor = _blobDefScaleFactor;
 	
 	trailExpConst = _trailExpConst;
 	trailFadeConst = _trailFadeConst;
@@ -388,8 +391,8 @@ void margModule::setDistCoeffs(float rdX, float rdY, float tgX, float tgY) {
 
 // -----------------------------------------------
 
-void margModule::setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness) {
-	blobInterp.setInterpolator(_maxDist, _maxAreaDiff, _maxUnfitness);
+void margModule::setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness, float _blobDefScaleFactor) {
+	blobInterp.setInterpolator(_maxDist, _maxAreaDiff, _maxUnfitness, _blobDefScaleFactor);
 }
 
 // -----------------------------------------------
