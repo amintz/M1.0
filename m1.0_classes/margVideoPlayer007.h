@@ -23,6 +23,7 @@ public:
 	unsigned char* getPixels();
 	bool	getIsPlaying();
 	bool	getIsLoaded();
+	bool	getNeedToLoadNext();
 	bool	getNeedToPlay();
 	int		getInteractMode();
 	int		getAudioIndex();

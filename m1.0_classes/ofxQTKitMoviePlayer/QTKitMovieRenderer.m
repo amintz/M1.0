@@ -311,16 +311,27 @@ typedef struct OpenGLTextureCoordinates OpenGLTextureCoordinates;
 	//before we return it to an openFrameworks app.
 	//this is a bit tricky since CV pixel buffer's bytes per row are not always the same as movieWidth*4.  
 	//We have to use the BPR given by CV for the input buffer, and the movie size for the output buffer
-	int x,y, bpr, width, height;
+	int x,y,j, bpr, width, height;
 	bpr = CVPixelBufferGetBytesPerRow(_latestPixelFrame);
 	width = movieSize.width;
 	height = movieSize.height;
 	for(y = 0; y < movieSize.height; y++){
-		for(x = 0; x < movieSize.width*4; x+=4){
+		j=0;
+		for(x = 0; x < movieSize.width*4; x+=4, j+=3){
+			
+//			<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ORIGINAL CODE BLOCK
+//			//copy out the rgb
+//			memcpy(outbuf+(y*width*4 + x), pix + (y*bpr+x+1), 3);
+//			//swizzle in the alpha.
+//			outbuf[(y*width*4 + x)+3] = pix[y*bpr+x];
+//			<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+			
+//			<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ATTEMPT TO ELIMINATE ALPHA
 			//copy out the rgb
-			memcpy(outbuf+(y*width*4 + x), pix + (y*bpr+x+1), 3);
-			//swizzle in the alpha.
-			outbuf[(y*width*4 + x)+3] = pix[y*bpr+x];
+			memcpy(outbuf+(y*width*3 + j), pix + (y*bpr+x+1), 3);
+//			<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+			
+		
 		}
 	}
 	

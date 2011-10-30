@@ -13,7 +13,6 @@
 		21148B351452010B0091FF09 /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21148B2E1452010B0091FF09 /* ofxOscReceiver.cpp */; };
 		21148B361452010B0091FF09 /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21148B301452010B0091FF09 /* ofxOscSender.cpp */; };
 		217AC1871456DE9700F0879A /* margVideoPlayer007.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 217AC1851456DE9700F0879A /* margVideoPlayer007.cpp */; };
-		217AC44B1456F8AD00F0879A /* ofVideoPlayerAdapt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 217AC4491456F8AD00F0879A /* ofVideoPlayerAdapt.cpp */; };
 		219B9D1E1443B3950078DC3D /* margDisplay007.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 219B9D1C1443B3950078DC3D /* margDisplay007.cpp */; };
 		219B9DAD1443B3F30078DC3D /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 219B9DA61443B3F30078DC3D /* tinyxml.cpp */; };
 		219B9DAE1443B3F30078DC3D /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 219B9DA81443B3F30078DC3D /* tinyxmlerror.cpp */; };
@@ -57,6 +56,7 @@
 		21B2A8EB145C979D00867C35 /* QTKitMovieRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B2A8E9145C979D00867C35 /* QTKitMovieRenderer.m */; };
 		21B2A98C145C9CD500867C35 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B2A98B145C9CD500867C35 /* QTKit.framework */; };
 		21B2A9C4145C9D0600867C35 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B2A9C3145C9D0600867C35 /* CoreVideo.framework */; };
+		21DC845E145CD94D0022FD60 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -99,6 +99,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				21DC845E145CD94D0022FD60 /* GLUT.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +139,6 @@
 		217494C7144F63A100813BB3 /* goVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goVideoPlayer.h; sourceTree = "<group>"; };
 		217AC1851456DE9700F0879A /* margVideoPlayer007.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = margVideoPlayer007.cpp; path = ../m1.0_classes/margVideoPlayer007.cpp; sourceTree = SOURCE_ROOT; };
 		217AC1861456DE9700F0879A /* margVideoPlayer007.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = margVideoPlayer007.h; path = ../m1.0_classes/margVideoPlayer007.h; sourceTree = SOURCE_ROOT; };
-		217AC4491456F8AD00F0879A /* ofVideoPlayerAdapt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofVideoPlayerAdapt.cpp; path = ../m1.0_classes/ofVideoPlayerAdapt/ofVideoPlayerAdapt.cpp; sourceTree = SOURCE_ROOT; };
-		217AC44A1456F8AD00F0879A /* ofVideoPlayerAdapt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofVideoPlayerAdapt.h; path = ../m1.0_classes/ofVideoPlayerAdapt/ofVideoPlayerAdapt.h; sourceTree = SOURCE_ROOT; };
 		219B9D1C1443B3950078DC3D /* margDisplay007.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = margDisplay007.cpp; path = ../m1.0_classes/margDisplay007.cpp; sourceTree = SOURCE_ROOT; };
 		219B9D1D1443B3950078DC3D /* margDisplay007.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = margDisplay007.h; path = ../m1.0_classes/margDisplay007.h; sourceTree = SOURCE_ROOT; };
 		219B9D7A1443B3B30078DC3D /* ofxCvBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCvBlob.h; sourceTree = "<group>"; };
@@ -696,8 +695,6 @@
 		21F38C89144B9386002AFC64 /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				217AC4491456F8AD00F0879A /* ofVideoPlayerAdapt.cpp */,
-				217AC44A1456F8AD00F0879A /* ofVideoPlayerAdapt.h */,
 				217AC1851456DE9700F0879A /* margVideoPlayer007.cpp */,
 				217AC1861456DE9700F0879A /* margVideoPlayer007.h */,
 			);
@@ -924,7 +921,6 @@
 				21148B351452010B0091FF09 /* ofxOscReceiver.cpp in Sources */,
 				21148B361452010B0091FF09 /* ofxOscSender.cpp in Sources */,
 				217AC1871456DE9700F0879A /* margVideoPlayer007.cpp in Sources */,
-				217AC44B1456F8AD00F0879A /* ofVideoPlayerAdapt.cpp in Sources */,
 				21B2A8EA145C979D00867C35 /* ofxQTKitVideoPlayer.mm in Sources */,
 				21B2A8EB145C979D00867C35 /* QTKitMovieRenderer.m in Sources */,
 			);

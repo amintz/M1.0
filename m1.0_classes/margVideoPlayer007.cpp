@@ -28,7 +28,7 @@ void margVideoPlayer::init(string _xmlPath, string _filePath, int _modIdx) {
 	filePath			= _filePath;
 
 	
-	bool success = player.loadMovie(filePath + "m" + ofToString(modIdx) + "g" + ofToString(curVidGroup) + "v0.mov", 1);
+	bool success = player.loadMovie(filePath + "m" + ofToString(modIdx) + "g" + ofToString(curVidGroup) + "v0.mov", OFXQTVIDEOPLAYER_MODE_PIXELS_ONLY);
 	
 	if(success) cout << "Module " + ofToString(modIdx) + " successful" << endl;
 	
@@ -71,7 +71,7 @@ void margVideoPlayer::update() {
 	if (bNeedToLoadNext) {
 		updateVid();
 	}
-	else if(bReturnBlack && player.isLoaded() && player.getPosition() < 0.5 && player.getPosition() > 0) {
+	else if(bReturnBlack && !bNeedToPlay) {
 		bReturnBlack = false;
 	}
 }
@@ -80,9 +80,11 @@ void margVideoPlayer::update() {
 
 void margVideoPlayer::updateVid() {
 	player.close();
-	bool success = player.loadMovie(filePath + "m" + ofToString(modIdx) + "g" + ofToString(nextVidGroup) + "v" + ofToString(nextVidIndex) + ".mov", 1);
-	player.setLoopState(OF_LOOP_NONE);
+	bool success = player.loadMovie(filePath + "m" + ofToString(modIdx) + "g" + ofToString(nextVidGroup) + "v" + ofToString(nextVidIndex) + ".mov", OFXQTVIDEOPLAYER_MODE_PIXELS_ONLY);
+	player.play();
+	player.pause();
 	if(success) {
+		player.setLoopState(OF_LOOP_NONE);
 		bNeedToLoadNext		= false;
 		bNeedToPlay			= true;
 		bNeedToSetIndex		= true;
@@ -97,10 +99,8 @@ void margVideoPlayer::updateVid() {
 // ------------------------------------------------
 
 void margVideoPlayer::play() {
-	if(player.isLoaded()) {
 		player.play();
 		bNeedToPlay = false;
-	}
 }
 
 // ------------------------------------------------
@@ -135,6 +135,12 @@ void margVideoPlayer::setNextIndex(int _nextIndex) {
 
 bool margVideoPlayer::getIsLoaded() {
 	return player.isLoaded();
+}
+
+// ------------------------------------------------
+
+bool margVideoPlayer::getNeedToLoadNext() {
+	return bNeedToLoadNext;
 }
 
 // ------------------------------------------------

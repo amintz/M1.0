@@ -73,8 +73,8 @@ bool ofxQTKitVideoPlayer::loadMovie(string movieFilePath, int mode)
 		close();
 	}
 	
-	bool useTexture = (mode == OFXQTVIDEOPLAYER_MODE_TEXTURE_ONLY || OFXQTVIDEOPLAYER_MODE_PIXELS_AND_TEXTURE);
-	bool usePixels  = (mode == OFXQTVIDEOPLAYER_MODE_PIXELS_ONLY  || OFXQTVIDEOPLAYER_MODE_PIXELS_AND_TEXTURE);
+	bool useTexture = (mode == OFXQTVIDEOPLAYER_MODE_TEXTURE_ONLY || mode == OFXQTVIDEOPLAYER_MODE_PIXELS_AND_TEXTURE);
+	bool usePixels  = (mode == OFXQTVIDEOPLAYER_MODE_PIXELS_ONLY  || mode == OFXQTVIDEOPLAYER_MODE_PIXELS_AND_TEXTURE);
 	
 	moviePlayer = [[QTKitMovieRenderer alloc] init];
 	
@@ -217,7 +217,7 @@ unsigned char* ofxQTKitVideoPlayer::getPixels()
 	}
 		
 	if(moviePixels == NULL){
-		moviePixels = new unsigned char[int(moviePlayer.movieSize.width) * int(moviePlayer.movieSize.height) * 4];
+		moviePixels = new unsigned char[int(moviePlayer.movieSize.width) * int(moviePlayer.movieSize.height) * 3];
 	}
 		
 	//don't get the pixels every frame if it hasn't updated

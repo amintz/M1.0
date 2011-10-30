@@ -8,7 +8,7 @@ void testApp::setup(){
 	
 	// SET NUMBER OF MODULES HERE ------------------------------*
 	
-	numMod = 4; // -------------------------------------------***
+	numMod = 2; // -------------------------------------------***
 	
 	// SET OSC HERE --------------------------------------------*
 	
@@ -70,7 +70,7 @@ void testApp::setup(){
 	// MODULE INITIALIZATION -----------------------------------*
 	
 	for (int i = 0; i < numMod; i++) {
-		modules[i].init(camWidth, camHeight, dispWidth, dispHeight, i+1, i, "../../../../M1.0_data/", false);
+		modules[i].init(camWidth, camHeight, dispWidth, dispHeight, i+1, i, "/Users/andregmintz/Dev/openFrameworks/OF_0.070_SL/apps/M1.0_data/", false);
 		modules[i].setSharedVarsAddresses(&minBlob, &maxBlob, &numBlob,
 										  &maxDist, &maxAreaDiff, &maxUnfitness,
 										  &exposureConst, &fadeConst, &blurLevel,

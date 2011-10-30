@@ -137,9 +137,16 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 void margModule::update() {
 	
 	// --
-	
-	vidPlayer.update();
-	
+//	
+//	if(vidPlayer.getNeedToLoadNext()) {
+//		stopThread();
+//		vidPlayer.updateVid();
+//		if(!vidPlayer.getNeedToLoadNext())startThread(true, false);
+//	}
+//	else {
+		vidPlayer.update();
+//	}
+
 	setInteractMode(vidPlayer.getInteractMode());
 	
 	if (interactMode == NORMAL_TRAIL || interactMode == NO_FADE_TRAIL) {
@@ -201,7 +208,7 @@ void margModule::update() {
 				}
 				break;
 			case BYPASS_VIDEO:
-				if(vidPlayer.player.getWidth()!=0) display.feedImg(vidPlayer.getPixels(), dispWidth, dispHeight);
+				/*if(vidPlayer.player.getWidth()!=0)*/display.feedImg(vidPlayer.getPixels(), dispWidth, dispHeight);
 				break;
 			default:
 				//display.feedImg(vidBlender.getPixels(), dispWidth, dispHeight);
