@@ -53,6 +53,7 @@
 		219BA0621443D4CF0078DC3D /* ofxCvHaarFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 219B9D841443B3B30078DC3D /* ofxCvHaarFinder.cpp */; };
 		219BA0641443D4CF0078DC3D /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 219B9D861443B3B30078DC3D /* ofxCvImage.cpp */; };
 		219BA0671443D4CF0078DC3D /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 219B9D891443B3B30078DC3D /* ofxCvShortImage.cpp */; };
+		21A856A2145D11FC00C9F194 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -95,6 +96,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				21A856A2145D11FC00C9F194 /* GLUT.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
