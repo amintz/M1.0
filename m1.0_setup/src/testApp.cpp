@@ -8,7 +8,7 @@ void testApp::setup(){
 	
 	// SET NUMBER OF MODULES HERE ------------------------------*
 	
-	numMod = 4; // -------------------------------------------***
+	numMod = 1; // -------------------------------------------***
 	
 	// SET OSC HERE --------------------------------------------*
 	
@@ -76,7 +76,7 @@ void testApp::setup(){
 										  &blobDefScaleFactor, &blobCondScaleConst, &blobCondScaleMax,
 										  &exposureConst, &fadeConst, &blurLevel,
 										  &displayMode, &bDrawBlobs, &whichBlobs,
-										  &bAdjQuad, &whichQuad);
+										  &bAdjQuad, &whichQuad, &bDrawUndistortBounds);
 	}
 	
 	if (checkEveryModNeedPlay()) {
@@ -88,7 +88,7 @@ void testApp::setup(){
 	// INTERFACE SETUP ----------------------------------------*
 	
 	gui.addComboBox("Display Mode", displayMode, 7, modes);
-	gui.addToggle("No warp | control", bDrawUndistorted);
+	gui.addToggle("No warp disp", bDrawUndistorted);
 	gui.addToggle("Control Display", bControlDisplay);
 	gui.addToggle("External Display", bExtDisplay);
 	gui.addToggle("Run Thread", bRunThread);
@@ -108,6 +108,7 @@ void testApp::setup(){
 		gui.addToggle("Adj Quad", bAdjQuad);
 		gui.addComboBox("Which Quad to Adj", whichQuad, 2, quads);
 		gui.addToggle("Clear Quad", clearQuad);
+		gui.addToggle("Draw Undist Bounds", bDrawUndistortBounds);
 		gui.addSlider("Threshold Min", modules[i].blobFindThreshMin, 0, 255);
 		gui.addSlider("Threshold Max", modules[i].blobFindThreshMax, 0, 255);
 		gui.addTitle("Lens Correction");

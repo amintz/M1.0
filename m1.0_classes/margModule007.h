@@ -82,7 +82,7 @@ public:
 								   float* _trailExpConst, float* _trailFadeConst, int* _trailBlurLevel,					// Shared between modules
 								   int* _modMode,																		// Shared - for now
 								   bool* _modDrawBlobs, int* _modDrawWhichBlobs,										// Shared between modules
-								   bool* _modAdjQuad, int* _modAdjWhichQuad);
+								   bool* _modAdjQuad, int* _modAdjWhichQuad, bool* _modDrawUndistortBounds);
 	
 	void	changeCaptDev(int _captID);  // Updates capture device settings
 	void	changeDispID(int _dispID);   // Updates display ID settings
@@ -96,6 +96,7 @@ public:
 	// Modes
 	
 	void	setMode(int _drawMode, bool _bDrawBlobs, int _drawWhichBlobs, bool _bAdjQuad, int _adjWhichQuad); // Sets drawing modes
+	void	setMode(int _drawMode, bool _bDrawBlobs, bool _bDrawUndistortBounds, int _drawWhichBlobs, bool _bAdjQuad, int _adjWhichQuad);
 	void	setInteractMode(int _interactMode);
 	
 	// VidPlayer
@@ -210,6 +211,8 @@ private:
 	bool					bDrawBlobs;
 	int						drawWhichBlobs;
 	
+	bool					bDrawUndistortBounds;
+	
 	bool					bAdjQuad;
 	int						adjWhichQuad;
 	
@@ -237,6 +240,7 @@ private:
 	
 	bool* modDrawBlobs;
 	int* modDrawWhichBlobs;
+	bool* modDrawUndistortBounds;
 	
 	bool* modAdjQuad;
 	int* modAdjWhichQuad;

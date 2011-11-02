@@ -102,6 +102,7 @@ class testApp : public ofBaseApp{
 						bAdjQuad,
 						clearQuad,
 						bDrawBlobs,
+						bDrawUndistortBounds,
 						bExtDisplay,
 						bControlDisplay,
 						bUpdateSettings;
