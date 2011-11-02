@@ -65,7 +65,7 @@ void testApp::setup(){
 	blobsToDraw[0] = "ORIGINAL_BLOBS";
 	blobsToDraw[1] = "CORRECTED_BLOBS";
 	blobsToDraw[2] = "INTERPOLATED_BLOBS";
-	
+
 	
 	// MODULE INITIALIZATION -----------------------------------*
 	
@@ -73,6 +73,7 @@ void testApp::setup(){
 		modules[i].init(camWidth, camHeight, dispWidth, dispHeight, i+1, i, "../../../../M1.0_data/", false);
 		modules[i].setSharedVarsAddresses(&minBlob, &maxBlob, &numBlob,
 										  &maxDist, &maxAreaDiff, &maxUnfitness,
+										  &blobDefScaleFactor, &blobCondScaleConst, &blobCondScaleMax,
 										  &exposureConst, &fadeConst, &blurLevel,
 										  &displayMode, &bDrawBlobs, &whichBlobs,
 										  &bAdjQuad, &whichQuad);
@@ -127,6 +128,11 @@ void testApp::setup(){
 	gui.addTitle("Blob Tracking");
 	gui.addSlider("Max Area Diff", maxAreaDiff, 0, 100);
 	gui.addSlider("Max Dist", maxDist, 0, 150);
+	
+	gui.addTitle("Blob Scaling");
+	gui.addSlider("Default Scale Factor", blobDefScaleFactor, 0.5, 4.0);
+	gui.addSlider("Cond. Scale Const.", blobCondScaleConst, 0.0, 3.0);
+	gui.addSlider("Cond. Scale Max.", blobCondScaleMax, 1.0, 6.0);
 	
 	gui.addTitle("Blob Drawing");
 	gui.addToggle("Draw Blobs", bDrawBlobs);
@@ -211,9 +217,9 @@ void testApp::update(){
 	}
 	
 	if (checkEveryModNeedPlay()) {
-		curVidIdx = nextVidIdx;
-		curVidGroup = nextVidGroup;
-		nextVidGroup = nextVidGroup + 1 > 2? 0 : nextVidGroup + 1; 
+		//curVidIdx = nextVidIdx;
+		//curVidGroup = nextVidGroup;
+		//nextVidGroup = nextVidGroup + 1 > 2? 0 : nextVidGroup + 1; 
 		
 		//oscSender.sendMessage(oscMessage);
 		
@@ -228,12 +234,12 @@ void testApp::update(){
 		//oscSender.sendMessage(oscMessage);
 	}
 	
-	if (checkEveryModNeedVidIndex()) {
-		nextVidIdx = ofRandom(0, 200);
-		for (int i = 0; i < numMod; i++) {
-			modules[i].setNextVidIndex(nextVidIdx);
-		}
-	}
+//	if (checkEveryModNeedVidIndex()) {
+//		nextVidIdx = ofRandom(0, 200);
+//		for (int i = 0; i < numMod; i++) {
+//			modules[i].setNextVidIndex(nextVidIdx);
+//		}
+//	}
 	
 }
 

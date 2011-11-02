@@ -103,7 +103,9 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 	
 	// -- VIDEO PLAYER
 	
-	vidPlayer.init(filesPath, filesPath + "movies/", dispID);
+	vidPlayer.setUseTexture(false);
+	vidPlayer.loadMovie(filesPath + "movies-long/m" + ofToString(dispID) + "g0v0.mov");
+	vidPlayer.setLoopState(OF_LOOP_NORMAL);
 	
 	// -- VIDEO BLENDER
 	
@@ -140,7 +142,7 @@ void margModule::update() {
 	
 	vidPlayer.update();
 	
-	setInteractMode(vidPlayer.getInteractMode());
+	//setInteractMode(vidPlayer.getInteractMode());
 	
 	if (interactMode == NORMAL_TRAIL || interactMode == NO_FADE_TRAIL) {
 		blobFind.feedPixels(originalPix);
@@ -151,7 +153,7 @@ void margModule::update() {
 		blobInterp.feedBlobs(blobs);
 		blobs = blobInterp.getInterpolatedBlobs();
 		if(mode == TRAIL_MAP || mode == FINAL_IMAGE || bExhibitionMode) trailMaker.updtMap(blobs);
-		if (vidPlayer.getIsPlaying() && (mode == FINAL_IMAGE || bExhibitionMode)) {
+		if (vidPlayer.isPlaying() && (mode == FINAL_IMAGE || bExhibitionMode)) {
 			vidBlender.blendVideo(trailMaker.getMap(), vidPlayer.getPixels());
 		}
 	}
@@ -201,7 +203,7 @@ void margModule::update() {
 				}
 				break;
 			case BYPASS_VIDEO:
-				if(vidPlayer.player.getWidth()!=0) display.feedImg(vidPlayer.getPixels(), dispWidth, dispHeight);
+				if(vidPlayer.getWidth()!=0) display.feedImg(vidPlayer.getPixels(), dispWidth, dispHeight);
 				break;
 			default:
 				//display.feedImg(vidBlender.getPixels(), dispWidth, dispHeight);
@@ -303,12 +305,21 @@ void margModule::drawWhite(int x, int y, int w, int h) {
 
 void margModule::updateSettings() {
 	if(bAddressSet) {
-		setBlobFinder(*blobMinArea, *blobMaxArea, *blobNConsidered, blobFindThreshMin, blobFindThreshMax);
+		
+		setBlobFinder(*blobMinArea, *blobMaxArea, *blobNConsidered,
+					  blobFindThreshMin, blobFindThreshMax);
+		
 		setCameraMatrix(correctFX, correctFY, correctCX, correctCY);
+		
 		setDistCoeffs(correctRdX, correctRdY, correctTgX, correctTgY);
-		setInterpolator(*blobPairMaxDist, *blobPairMaxAreaDiff, *blobPairMaxUnfitness);
+		
+		setInterpolator(*blobPairMaxDist, *blobPairMaxAreaDiff, *blobPairMaxUnfitness,
+						*blobDefScaleFactor, *blobCondScaleConst, *blobCondScaleMax);
+		
 		setTrailMaker(*trailExpConst, *trailFadeConst, *trailBlurLevel);
+		
 		setMode(*modMode, *modDrawBlobs, *modDrawWhichBlobs, *modAdjQuad, *modAdjWhichQuad);
+		
 		if (bufInteractMode != interactMode) setInteractMode(interactMode);
 	}
 }
@@ -317,6 +328,7 @@ void margModule::updateSettings() {
 
 void margModule::setSharedVarsAddresses(int* _blobMinArea, int* _blobMaxArea, int* _blobNConsidered,							// Shared between modules
 										float* _blobPairMaxDist, float* _blobPairMaxAreaDiff, float* _blobPairMaxUnfitness,		// Shared between modules
+										float* _blobDefScaleFactor, float* _blobCondScaleConst, float* _blobCondScaleMax,
 										float* _trailExpConst, float* _trailFadeConst, int* _trailBlurLevel,					// Shared between modules
 										int* _modMode,																			// Shared - for now
 										bool* _modDrawBlobs, int* _modDrawWhichBlobs,											// Shared between modules
@@ -330,6 +342,10 @@ void margModule::setSharedVarsAddresses(int* _blobMinArea, int* _blobMaxArea, in
 	blobPairMaxDist = _blobPairMaxDist;
 	blobPairMaxAreaDiff = _blobPairMaxAreaDiff;
 	blobPairMaxUnfitness = _blobPairMaxUnfitness;
+	
+	blobDefScaleFactor = _blobDefScaleFactor;
+	blobCondScaleConst = _blobCondScaleConst;
+	blobCondScaleMax   = _blobCondScaleMax;
 	
 	trailExpConst = _trailExpConst;
 	trailFadeConst = _trailFadeConst;
@@ -386,8 +402,10 @@ void margModule::setDistCoeffs(float rdX, float rdY, float tgX, float tgY) {
 
 // -----------------------------------------------
 
-void margModule::setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness) {
-	blobInterp.setInterpolator(_maxDist, _maxAreaDiff, _maxUnfitness);
+void margModule::setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness,
+								 float _blobDefScaleFactor, float _blobCondScaleConst, float _blobCondScaleMax) {
+	blobInterp.setInterpolator(_maxDist, _maxAreaDiff, _maxUnfitness,
+							   _blobDefScaleFactor, _blobCondScaleConst, _blobCondScaleMax);
 }
 
 // -----------------------------------------------
@@ -400,6 +418,7 @@ void margModule::setTrailMaker(float _exposureConst, float _fadeConst, int _blur
 
 vector<string>& margModule::getCaptDevList() {
 	//return vidCapt.getDeviceList();
+	//OF 007 removed this function
 }
 
 // -----------------------------------------------
@@ -483,23 +502,24 @@ void margModule::setInteractMode(int _interactMode) {
 // -----------------------------------------------
 
 void margModule::setNextVidIndex(int idx) {
-	vidPlayer.setNextIndex(idx);
+	//vidPlayer.setNextIndex(idx); SCRIPTED PLAYER FUNCTION
 }
 
 // -----------------------------------------------
 
 bool margModule::getNeedToSetIndex() {
-	return vidPlayer.getNeedToSetIndex();
+	//return vidPlayer.getNeedToSetIndex(); SCRIPTED PLAYER FUNCTION
+	return false;
 }
 
 // -----------------------------------------------
 
 bool margModule::getNeedToPlay() {
-	return vidPlayer.getNeedToPlay();
+	return !vidPlayer.isPlaying();
 }
 
 // -----------------------------------------------
 
 bool margModule::getIsVidLoaded() {
-	return vidPlayer.getIsLoaded();
+	return vidPlayer.isLoaded();
 }
