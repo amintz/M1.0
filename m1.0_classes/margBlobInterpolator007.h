@@ -31,6 +31,8 @@ public:
 	
 	vector<margBlob>	scale(vector<margBlob> inBlobs, float factor);
 	
+	float				calcScaleFactor(margBlob& blob1, margBlob& blob2);
+	
 	
 	// Feed vector of blobs for interpolation.
 	// Will interpolate after second feed, adding to blob vector that is fed.
@@ -42,7 +44,8 @@ public:
 	
 	vector<margBlob>	getInterpolatedBlobs();
 	
-	void				setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness, float _defScaleFactor);
+	void				setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness,
+										float _defScaleFactor, float _condScaleConst, float _condScaleMax);
 	
 	void				drawInterp (int x, int y, int w, int h);
 	
@@ -51,7 +54,8 @@ public:
 						maxUnfitness;
 	
 	float				defScaleFactor,
-						cumScaleFactor;
+						condScaleConst,
+						condScaleMax;
 	
 protected:
 	

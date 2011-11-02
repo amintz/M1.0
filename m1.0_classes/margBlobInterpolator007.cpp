@@ -32,6 +32,8 @@ void margBlobInterpolator::feedBlobs(vector<margBlob> inBlobs) {
 int* margBlobInterpolator::findPairs(vector<margBlob> current, vector<margBlob> previous, float _maxDist,
 									float _maxAreaDiff, float _maxUnfitness) {
 	
+//  01 -- Get number of blobs (previous and current) and setup to save final matches
+	
 	int nCurrBlobs = current.size();
 	int nPrevBlobs = previous.size();
 	
@@ -43,53 +45,109 @@ int* margBlobInterpolator::findPairs(vector<margBlob> current, vector<margBlob> 
 		final_matches[i] = -1;
 	}
 	
+//	02 -- Setup to save possible matches (which will later be ranked into most likely ones
+	
 	vector< vector<int> > possible_matches;
 	
+//	03 -- Find possible matches
+	
+	// For each current blob
+	
 	for (int i = 0; i < nCurrBlobs; i++) {
+		
+		// Go through each previous blobs
+		
 		for (int j = 0; j < nPrevBlobs; j++) {
+			
+			// Check their distance
+			
 			float dist = ofDist(current[i].centroid.x, current[i].centroid.y, previous[j].centroid.x, previous[j].centroid.y);
+			
+			
+			// Check their area difference
+			
 			float areaDiff = ((float)(current[i].area - previous[j].area) / (float)current[i].area) * (float)100;
 			if (areaDiff<0) { areaDiff = areaDiff * (-1); };
+			
+			// If area difference and distance are smaller than threshold
+			
 			if ( dist < _maxDist && areaDiff < _maxAreaDiff) {
+				
+				// Calculate unfitness with bigger weight on distance than area difference
+				
 				int unfitness = round(10000 / (0.75 * dist + 0.25 *	areaDiff));
+				
+				// Setup possible match record
+				
 				vector<int> currPossib;
 				currPossib.push_back(i);
 				currPossib.push_back(j);
 				currPossib.push_back(unfitness);
+				
+				// Save possible match record
+				
 				possible_matches.push_back(currPossib);
 				nMatches++;
 				currPossib.clear();
 			}
 		}
 	}
+	
+//	04 - Sort possible matches based on unfitness factor and revert order
+	
 	sort(possible_matches.begin(), possible_matches.end(), interpol_sort_fitness_compare);
 	reverse(possible_matches.begin(), possible_matches.end());
 	
-	bool finished = false;
+	
+//	05 - Extract final matches	
+	
+	// Go through possible matches and delete records that can't be used anymore (already used or overlapping with already used)
+	// Whilhe there are still possible matches:
 	
 	while (possible_matches.size() > 0) {
+		
+		// Get the blobs involved in the most likely of the list
+		
 		int used_currblob = possible_matches[0][0];
 		int used_prevblob = possible_matches[0][1];
+		
+		// Save them to final matches record
+		
 		final_matches[used_currblob] = used_prevblob;
 		
+		// Setup list of elements to erase
+				
 		vector<int> elements_to_erase;
 		
+		// For each possible match
+				
 		for (int j = 0; j < nMatches; j++) {
+			
+			// If it uses either the current or previous blobs used
+			
 			if (possible_matches[j][0] == used_currblob ||
 				possible_matches[j][1] == used_prevblob) {
+				
+				// Add them to the list to be erased
+				
 				elements_to_erase.push_back(j);
 			}
 		}
 		
+		// Delete elements to be erased
+				
 		for (int i = 0; i < elements_to_erase.size(); i++) {
 			possible_matches.erase(possible_matches.begin() + elements_to_erase[i]);
 		}
 		
-		
+		// Set up for next run
+				
 		nMatches -= elements_to_erase.size();
 		
 		elements_to_erase.clear();
 	}
+	
+	//	06 - Return final matches and finalize
 	
 	possible_matches.clear();
 	current.clear();
@@ -102,70 +160,8 @@ int* margBlobInterpolator::findPairs(vector<margBlob> current, vector<margBlob> 
 // -------------------------------------------------------------
 
 int* margBlobInterpolator::findPairs(vector<margBlob> current) {
-	int nCurrBlobs = current.size();
-	int nPrevBlobs = prevBlobs.size();
 	
-	int nMatches = 0;
-	
-	int* final_matches = new (nothrow) int [nCurrBlobs];
-	
-	for (int i = 0; i < nCurrBlobs; i++) {
-		final_matches[i] = -1;
-	}
-	
-	vector< vector<int> > possible_matches;
-	possible_matches.reserve(3 * nCurrBlobs * nPrevBlobs * sizeof(int));
-	
-	for (int i = 0; i < nCurrBlobs; i++) {
-		for (int j = 0; j < nPrevBlobs; j++) {
-			float dist = ofDist(current[i].centroid.x, current[i].centroid.y, prevBlobs[j].centroid.x, prevBlobs[j].centroid.y);
-			float areaDiff = ((float)(current[i].area - prevBlobs[j].area) / (float)current[i].area) * (float)100;
-			if (areaDiff<0) { areaDiff = areaDiff * (-1); };
-			if ( dist < maxDist && areaDiff < maxAreaDiff) {
-				int unfitness = round(10000 / (0.75 * dist + 0.25 *	areaDiff));
-				vector<int> currPossib(3);
-				currPossib[0] = i;
-				currPossib[1] = j;
-				currPossib[2] = unfitness;
-				possible_matches.push_back(currPossib);
-				nMatches++;
-				currPossib.clear();
-			}
-		}
-	}
-	sort(possible_matches.begin(), possible_matches.end(), interpol_sort_fitness_compare);
-	reverse(possible_matches.begin(), possible_matches.end());
-	
-	bool finished = false;
-	
-	while (possible_matches.size() > 0) {
-		int used_currblob = possible_matches[0][0];
-		int used_prevblob = possible_matches[0][1];
-		final_matches[used_currblob] = used_prevblob;
-		
-		vector<int> elements_to_erase;
-		
-		for (int j = 0; j < nMatches; j++) {
-			if (possible_matches[j][0] == used_currblob ||
-				possible_matches[j][1] == used_prevblob) {
-				elements_to_erase.push_back(j);
-			}
-		}
-		
-		for (int i = 0; i < elements_to_erase.size(); i++) {
-			possible_matches.erase(possible_matches.begin() + elements_to_erase[i]);
-		}
-		
-		
-		nMatches -= elements_to_erase.size();
-		
-		elements_to_erase.clear();
-	}
-	
-	possible_matches.clear();
-	current.clear();
-	
-	return final_matches;
+	return findPairs(current, prevBlobs, maxDist, maxAreaDiff, maxUnfitness);
 }
 
 // -------------------------------------------------------------
@@ -395,23 +391,57 @@ vector<margBlob> margBlobInterpolator::interpolate(margBlob& blob1, margBlob& bl
 
 }
 
+
+// -------------------------------------------------------------
+
+float margBlobInterpolator::calcScaleFactor(margBlob& blob1, margBlob& blob2) {
+	float dist = ofDist(blob1.centroid.x, blob1.centroid.y, blob2.centroid.x, blob2.centroid.y);
+	float scaleFactor = 1.0f;
+	if (dist < maxDist) {
+		float invNormDist = 1.0f - ofMap(dist, 0.0f, maxDist, 0.0f, 1.0f);
+		scaleFactor = ofClamp(blob1.condScaleFactor + (invNormDist * condScaleConst), 1.0f, condScaleMax);
+	}
+	else {
+		scaleFactor = 1.0f;
+	}
+	blob2.condScaleFactor = scaleFactor;
+	return scaleFactor;	
+}
+
 // -------------------------------------------------------------
 
 margBlob margBlobInterpolator::scale(margBlob& inBlob, float factor) {
+	
+	// If blob is less than a triangle, dont scale it
 	if(inBlob.nPts < 3) return inBlob;
+	
+	// If it is a triangle or more
 	else {
+		
+		// Set initial bounding rectangle
 		float minX = width,
 			  maxX = 0,
 			  minY = height,
 			  maxY = 0;
+		
+		// For each of the blob's points
 		for(int p = 0; p < inBlob.nPts; p++) {
+			
+			// Normalize X and Y coordinates in relation to Centroid
+			// multiply by factor, make them back into absolute coordinates
+			// and force them into image size
 			inBlob.pts[p].x = forceInRange(((float)(inBlob.pts[p].x-inBlob.centroid.x) * factor) + inBlob.centroid.x, 0, width);
 			inBlob.pts[p].y = forceInRange(((float)(inBlob.pts[p].y-inBlob.centroid.y) * factor) + inBlob.centroid.y, 0, height);
+			
+			// Check if they are set new bounding rectangle
 			if(inBlob.pts[p].x < minX) minX = inBlob.pts[p].x;
 			else if(inBlob.pts[p].x > maxX) maxX = inBlob.pts[p].x;
 			if(inBlob.pts[p].y < minY) minY = inBlob.pts[p].y;
 			else if(inBlob.pts[p].y > maxY) maxY = inBlob.pts[p].y;
 		}
+		
+		// Assign new values into blob coordinates
+		
 		inBlob.boundingRect.x = minX;
 		inBlob.boundingRect.y = minY;
 		inBlob.boundingRect.width = maxX - minX;
@@ -438,36 +468,60 @@ void margBlobInterpolator::makeInterpolated(vector<margBlob> current, float _max
 										   float _maxUnfitness) {
 
 	if (prevBlobs.size() == 0) {
-		// If previous blobs ARE NOT saved. Save current and return them.
+		// If previous blobs ARE NOT saved. Save current as previous.
 		prevBlobs = current;
 	}
 	else {
+		// If previous blobs ARE saved, continue and check for good pairs
 		int nBlobs = current.size();
 		vector<margBlob> currentCopy = current;
 		current.clear();
-
-		// If previous blobs ARE saved, continue and check for good pairs
+		
+		// Get pair list
 		int* pairs = findPairs(currentCopy, prevBlobs, _maxDist, _maxAreaDiff, _maxUnfitness);
+		
+		// For each current blob
 		for (int i = 0; i < nBlobs; i++) {
+			
+			// If it has another blob assigned to it (a pair)
 			if (pairs[i] >= 0) {
+				
+				// and if such pair is has at least one vertex
 				if (prevBlobs[pairs[i]].pts.size() > 0) {
+					
+					// Generate interpolated blobs
 					vector<margBlob> interBlobs = interpolate(prevBlobs[pairs[i]], currentCopy[i]);
+					float scaleFactor = calcScaleFactor(prevBlobs[pairs[i]], currentCopy[i]);
+					
+					// For each interpolated blob
 					for (int j = 0; j < interBlobs.size(); j++) {
-						current.push_back(/*scale(*/interBlobs[j]/*, defScaleFactor)*/);
+						
+						// Push it into final blob array
+						current.push_back(scale(interBlobs[j], scaleFactor));
 					}
 				}
 			}
+			
+			// If it doesn't have a pair
 			else {
-				current.push_back(/*scale(*/currentCopy[i]/*, defScaleFactor)*/);
+				
+				// Push single blob into final blob array
+				current.push_back(currentCopy[i]);
 			}
 		}
-			
+		
+		// Reassign previous blobs to current found blobs
 		prevBlobs.clear();
 		prevBlobs = currentCopy;
-		finalBlobs.clear();
-		finalBlobs= current;
+		
+		// Delete generated pair list
 		if(pairs != 0) delete[] pairs;
 	}
+	
+	
+	// Assign final blobs to interpolated blobs, or to just current blobs
+	finalBlobs.clear();
+	finalBlobs= current;
 
 }
 
@@ -475,37 +529,7 @@ void margBlobInterpolator::makeInterpolated(vector<margBlob> current, float _max
 
 void margBlobInterpolator :: makeInterpolated(vector<margBlob> current) {
 	
-	if (prevBlobs.size() == 0) {
-		// If previous blobs ARE NOT saved. Save current and return them.
-		prevBlobs = current;
-	}
-	else {
-		int nBlobs = current.size();
-		vector<margBlob> currentCopy = current;
-		current.clear();
-		
-		// If previous blobs ARE saved, continue and check for good pairs
-		int* pairs = findPairs(currentCopy);
-		for (int i = 0; i < nBlobs; i++) {
-			if (pairs[i] >= 0) {
-				if (prevBlobs[pairs[i]].pts.size() > 0) {
-					vector<margBlob> interBlobs = interpolate(prevBlobs[pairs[i]], currentCopy[i]);
-					for (int j = 0; j < interBlobs.size(); j++) {
-						current.push_back(/*scale(*/interBlobs[j]/*, defScaleFactor)*/);
-					}
-				}
-			}
-			else {
-				current.push_back(/*scale(*/currentCopy[i]/*, defScaleFactor)*/);
-			}
-		}
-		
-		prevBlobs.clear();
-		prevBlobs = currentCopy;
-		finalBlobs.clear();
-		finalBlobs= current;
-		if(pairs != 0) delete[] pairs;
-	}
+	makeInterpolated(current, maxDist, maxAreaDiff, maxUnfitness);
 	
 }
 
@@ -517,11 +541,14 @@ vector<margBlob> margBlobInterpolator :: getInterpolatedBlobs() {
 
 // ------------------------------------------------------
 
-void margBlobInterpolator :: setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness, float _defScaleFactor) {
-	maxDist = _maxDist;
-	maxAreaDiff = _maxAreaDiff;
-	maxUnfitness = _maxUnfitness;
-	defScaleFactor = _defScaleFactor;
+void margBlobInterpolator :: setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness,
+											 float _defScaleFactor, float _condScaleConst, float _condScaleMax) {
+	maxDist			= _maxDist;
+	maxAreaDiff		= _maxAreaDiff;
+	maxUnfitness	= _maxUnfitness;
+	defScaleFactor	= _defScaleFactor;
+	condScaleConst	= _condScaleConst;
+	condScaleMax	= _condScaleMax;
 }
 
 // ------------------------------------------------------

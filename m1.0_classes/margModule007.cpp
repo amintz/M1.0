@@ -305,12 +305,21 @@ void margModule::drawWhite(int x, int y, int w, int h) {
 
 void margModule::updateSettings() {
 	if(bAddressSet) {
-		setBlobFinder(*blobMinArea, *blobMaxArea, *blobNConsidered, blobFindThreshMin, blobFindThreshMax);
+		
+		setBlobFinder(*blobMinArea, *blobMaxArea, *blobNConsidered,
+					  blobFindThreshMin, blobFindThreshMax);
+		
 		setCameraMatrix(correctFX, correctFY, correctCX, correctCY);
+		
 		setDistCoeffs(correctRdX, correctRdY, correctTgX, correctTgY);
-		setInterpolator(*blobPairMaxDist, *blobPairMaxAreaDiff, *blobPairMaxUnfitness, *blobDefScaleFactor);
+		
+		setInterpolator(*blobPairMaxDist, *blobPairMaxAreaDiff, *blobPairMaxUnfitness,
+						*blobDefScaleFactor, *blobCondScaleConst, *blobCondScaleMax);
+		
 		setTrailMaker(*trailExpConst, *trailFadeConst, *trailBlurLevel);
+		
 		setMode(*modMode, *modDrawBlobs, *modDrawWhichBlobs, *modAdjQuad, *modAdjWhichQuad);
+		
 		if (bufInteractMode != interactMode) setInteractMode(interactMode);
 	}
 }
@@ -319,7 +328,7 @@ void margModule::updateSettings() {
 
 void margModule::setSharedVarsAddresses(int* _blobMinArea, int* _blobMaxArea, int* _blobNConsidered,							// Shared between modules
 										float* _blobPairMaxDist, float* _blobPairMaxAreaDiff, float* _blobPairMaxUnfitness,		// Shared between modules
-										float* _blobDefScaleFactor,
+										float* _blobDefScaleFactor, float* _blobCondScaleConst, float* _blobCondScaleMax,
 										float* _trailExpConst, float* _trailFadeConst, int* _trailBlurLevel,					// Shared between modules
 										int* _modMode,																			// Shared - for now
 										bool* _modDrawBlobs, int* _modDrawWhichBlobs,											// Shared between modules
@@ -335,6 +344,8 @@ void margModule::setSharedVarsAddresses(int* _blobMinArea, int* _blobMaxArea, in
 	blobPairMaxUnfitness = _blobPairMaxUnfitness;
 	
 	blobDefScaleFactor = _blobDefScaleFactor;
+	blobCondScaleConst = _blobCondScaleConst;
+	blobCondScaleMax   = _blobCondScaleMax;
 	
 	trailExpConst = _trailExpConst;
 	trailFadeConst = _trailFadeConst;
@@ -391,8 +402,10 @@ void margModule::setDistCoeffs(float rdX, float rdY, float tgX, float tgY) {
 
 // -----------------------------------------------
 
-void margModule::setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness, float _blobDefScaleFactor) {
-	blobInterp.setInterpolator(_maxDist, _maxAreaDiff, _maxUnfitness, _blobDefScaleFactor);
+void margModule::setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness,
+								 float _blobDefScaleFactor, float _blobCondScaleConst, float _blobCondScaleMax) {
+	blobInterp.setInterpolator(_maxDist, _maxAreaDiff, _maxUnfitness,
+							   _blobDefScaleFactor, _blobCondScaleConst, _blobCondScaleMax);
 }
 
 // -----------------------------------------------

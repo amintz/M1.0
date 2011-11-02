@@ -65,7 +65,7 @@ void testApp::setup(){
 	blobsToDraw[0] = "ORIGINAL_BLOBS";
 	blobsToDraw[1] = "CORRECTED_BLOBS";
 	blobsToDraw[2] = "INTERPOLATED_BLOBS";
-	
+
 	
 	// MODULE INITIALIZATION -----------------------------------*
 	
@@ -73,7 +73,7 @@ void testApp::setup(){
 		modules[i].init(camWidth, camHeight, dispWidth, dispHeight, i+1, i, "../../../../M1.0_data/", false);
 		modules[i].setSharedVarsAddresses(&minBlob, &maxBlob, &numBlob,
 										  &maxDist, &maxAreaDiff, &maxUnfitness,
-										  &blobDefScaleFactor,
+										  &blobDefScaleFactor, &blobCondScaleConst, &blobCondScaleMax,
 										  &exposureConst, &fadeConst, &blurLevel,
 										  &displayMode, &bDrawBlobs, &whichBlobs,
 										  &bAdjQuad, &whichQuad);
@@ -131,6 +131,8 @@ void testApp::setup(){
 	
 	gui.addTitle("Blob Scaling");
 	gui.addSlider("Default Scale Factor", blobDefScaleFactor, 0.5, 4.0);
+	gui.addSlider("Cond. Scale Const.", blobCondScaleConst, 0.0, 3.0);
+	gui.addSlider("Cond. Scale Max.", blobCondScaleMax, 1.0, 6.0);
 	
 	gui.addTitle("Blob Drawing");
 	gui.addToggle("Draw Blobs", bDrawBlobs);
