@@ -230,8 +230,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -268,7 +266,10 @@
 							<array>
 								<string>E4B69B4A0A3A1720003C02F2</string>
 								<string>219B9D1A1443B3750078DC3D</string>
-								<string>219B9F781443C9A80078DC3D</string>
+								<string>219B9E9B1443BE490078DC3D</string>
+								<string>219B9E9A1443BE410078DC3D</string>
+								<string>219B9E931443BDF80078DC3D</string>
+								<string>219B9D1B1443B3800078DC3D</string>
 								<string>E4B69E1C0A3A1BDC003C02F2</string>
 								<string>BB4B014C10F69532006C3DED</string>
 								<string>1C37FBAC04509CD000000102</string>
@@ -276,14 +277,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>11</integer>
-									<integer>5</integer>
-									<integer>1</integer>
+									<integer>26</integer>
+									<integer>24</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {275, 660}}</string>
+							<string>{{0, 29}, {275, 660}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -313,12 +313,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>margBlobInterpolator007.cpp</string>
+								<string>testApp.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -326,19 +328,19 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>margBlobInterpolator007.cpp</string>
+										<string>testApp.cpp</string>
+										<key>_historyCapacity</key>
+										<integer>0</integer>
+										<key>bookmark</key>
+										<string>216529D614619870007BB464</string>
 										<key>history</key>
 										<array>
 											<string>219B9EC51443C1F40078DC3D</string>
 											<string>219B9EC61443C1F40078DC3D</string>
-											<string>219B9EC71443C1F40078DC3D</string>
-											<string>219B9EC81443C1F40078DC3D</string>
 											<string>219B9EC91443C1F40078DC3D</string>
 											<string>219B9FBC1443CD6A0078DC3D</string>
-											<string>219BA0351443D2490078DC3D</string>
 											<string>219BA0741443D5580078DC3D</string>
 											<string>219BA0791443D5580078DC3D</string>
-											<string>219BA07C1443D5580078DC3D</string>
 											<string>219BA07D1443D5580078DC3D</string>
 											<string>219BA07F1443D5580078DC3D</string>
 											<string>219BA0801443D5580078DC3D</string>
@@ -378,11 +380,19 @@
 											<string>210465C7145DF08C00BC3E48</string>
 											<string>2165293514617E1C007BB464</string>
 											<string>2165293614617E1C007BB464</string>
-											<string>2165295314618050007BB464</string>
-											<string>2165295C14618138007BB464</string>
-											<string>2165295D14618138007BB464</string>
-											<string>216529631461823B007BB464</string>
 											<string>216529641461823B007BB464</string>
+											<string>21652998146193FE007BB464</string>
+											<string>21652999146193FE007BB464</string>
+											<string>2165299A146193FE007BB464</string>
+											<string>216529B4146196CE007BB464</string>
+											<string>216529B6146196CE007BB464</string>
+											<string>216529BC146196CE007BB464</string>
+											<string>216529C11461979B007BB464</string>
+											<string>216529C31461979B007BB464</string>
+											<string>216529C41461979B007BB464</string>
+											<string>216529C51461979B007BB464</string>
+											<string>216529CA146197CF007BB464</string>
+											<string>216529CB146197CF007BB464</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -580,6 +590,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>216529A0146193FE007BB464</string>
+		<string>216529A1146193FE007BB464</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>219B9D151443B3430078DC3D</string>
 		<string>/Users/andregmintz/Dev/openFrameworks/OF_0.070_SL/apps/M1.0/m1.0_setup/m1.0_setup.xcodeproj</string>
 	</array>
@@ -783,13 +798,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>2165290C14606F5C007BB464</string>
+				<string>2165298A146193B8007BB464</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>2165290D14606F5C007BB464</string>
-				<string>2165290E14606F5C007BB464</string>
-				<string>2165290F14606F5C007BB464</string>
-				<string>2165291014606F5C007BB464</string>
-				<string>2165291114606F5C007BB464</string>
+				<string>2165298B146193B8007BB464</string>
+				<string>2165298C146193B8007BB464</string>
+				<string>2165298D146193B8007BB464</string>
+				<string>2165298E146193B8007BB464</string>
+				<string>2165298F146193B8007BB464</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -821,7 +836,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>margBlobInterpolator007.cpp</string>
+										<string>margModule007.cpp</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -879,8 +894,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>216528FE14606C70007BB464</string>
-				<string>216528FF14606C70007BB464</string>
+				<string>21652993146193B8007BB464</string>
+				<string>21652994146193B8007BB464</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
@@ -943,7 +958,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>2165291414606FD8007BB464</string>
+				<string>21652995146193B8007BB464</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

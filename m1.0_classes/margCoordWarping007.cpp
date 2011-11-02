@@ -7,7 +7,7 @@
  *
  */
 
-#include "margCoordWarping.h"
+#include "margCoordWarping007.h"
 
 
 void margCoordWarping :: init(float width, float height, bool doReverse) {
@@ -111,6 +111,11 @@ void margCoordWarping :: clearQuad() {
 	quadDst[3].set(0, h);
 	
 	quadGui.setQuadPoints(quadSrc);
+	
+	warpedPts = quadGui.getScaledQuadPoints(w, h);
+	
+	if(bReverse) calculateMatrix(quadSrc, warpedPts);
+	else calculateMatrix(warpedPts, quadSrc);
 }
 
 // -----------------------------------------------------------

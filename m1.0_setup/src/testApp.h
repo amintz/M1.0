@@ -106,7 +106,8 @@ class testApp : public ofBaseApp{
 						bControlDisplay,
 						bUpdateSettings;
 	
-	bool				bDrawWhite;
+	bool				bDrawWhite,
+						bDrawUndistorted;
 						
 	bool				bRunThread,
 						bStopThread;

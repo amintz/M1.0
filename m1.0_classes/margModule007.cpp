@@ -237,8 +237,22 @@ void margModule::playVideos() {
 // ------------------------------------------------
 
 void margModule::draw(int x, int y, int w, int h) {
+	draw(x, y, w, h, false);
+}
+
+// ------------------------------------------------
+
+void margModule::draw(int x, int y, int w, int h, bool bUndistorted) {
+	
 	ofSetColor(255, 255, 255);
-	display.draw(x, y, w, h);
+	
+	if(bUndistorted) {
+		display.drawUndistorted(x, y, w, h);
+	}
+	else {
+		display.draw(x, y, w, h);
+	}
+	
 	if (bAdjQuad) {
 		switch (adjWhichQuad) {
 			case DISP_QUAD:
@@ -267,12 +281,6 @@ void margModule::draw(int x, int y, int w, int h) {
 				break;
 		}
 	}
-}
-
-// ------------------------------------------------
-
-void margModule::drawUndistorted(int x, int y, int w, int h) {
-
 }
 
 // ------------------------------------------------
@@ -431,8 +439,18 @@ void margModule::openCaptSettings() {
 
 void margModule::clearQuad() {
 	if (bAdjQuad) {
-		if(adjWhichQuad == CAPT_QUAD) captQuad.clearQuad();
-		else dispQuad.clearQuad();
+		if(adjWhichQuad == CAPT_QUAD) {
+			captQuad.clearQuad();
+			blobCorr.setPersCorrection(captQuad.getTranslateMat());
+		}
+		else {
+			dispQuad.clearQuad();
+			display.setTranslateMat(dispQuad.getTranslateMat());
+			if(!bExhibitionMode) {
+				testDisplay.setTranslateMat(dispQuad.getTranslateMat());
+				testDisplay.feedImg(whitePix, dispWidth, dispHeight, false);
+			}
+		}
 	}
 }
 

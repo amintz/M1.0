@@ -88,6 +88,7 @@ void testApp::setup(){
 	// INTERFACE SETUP ----------------------------------------*
 	
 	gui.addComboBox("Display Mode", displayMode, 7, modes);
+	gui.addToggle("No warp | control", bDrawUndistorted);
 	gui.addToggle("Control Display", bControlDisplay);
 	gui.addToggle("External Display", bExtDisplay);
 	gui.addToggle("Run Thread", bRunThread);
@@ -106,7 +107,7 @@ void testApp::setup(){
 		gui.addComboBox("Interaction Mode", modules[i].interactMode, 3, interactModes);
 		gui.addToggle("Adj Quad", bAdjQuad);
 		gui.addComboBox("Which Quad to Adj", whichQuad, 2, quads);
-		gui.addButton("Clear Quad", clearQuad);
+		gui.addToggle("Clear Quad", clearQuad);
 		gui.addSlider("Threshold Min", modules[i].blobFindThreshMin, 0, 255);
 		gui.addSlider("Threshold Max", modules[i].blobFindThreshMax, 0, 255);
 		gui.addTitle("Lens Correction");
@@ -130,7 +131,7 @@ void testApp::setup(){
 	gui.addSlider("Max Dist", maxDist, 0, 150);
 	
 	gui.addTitle("Blob Scaling");
-	gui.addSlider("Default Scale Factor", blobDefScaleFactor, 0.5, 4.0);
+	gui.addSlider("Def. Scale Factor", blobDefScaleFactor, 0.5, 4.0);
 	gui.addSlider("Cond. Scale Const.", blobCondScaleConst, 0.0, 3.0);
 	gui.addSlider("Cond. Scale Max.", blobCondScaleMax, 1.0, 6.0);
 	
@@ -253,7 +254,10 @@ void testApp::draw(){
 	
 	ofSetColor(255, 255, 255);
 	
-	if(bControlDisplay) modules[curMod].draw(drawX, drawY, drawWidth, drawHeight);
+	if(bControlDisplay) {
+		if(bDrawUndistorted) modules[curMod].draw(drawX, drawY, drawWidth, drawHeight, true);
+		else modules[curMod].draw(drawX, drawY, drawWidth, drawHeight);
+	}
 	
 	// DRAW EXTERNAL DISPLAYS IF APPLICABLE --------------------*
 	

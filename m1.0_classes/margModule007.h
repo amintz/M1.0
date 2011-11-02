@@ -68,7 +68,7 @@ public:
 	void	playVideos();
 	
 	void	draw(int x, int y, int w, int h);
-	void	drawUndistorted(int x, int y, int w, int h);
+	void	draw(int x, int y, int w, int h, bool bUndistorted);
 	void	drawWhite(int x, int y, int w, int h);
 	
 	
