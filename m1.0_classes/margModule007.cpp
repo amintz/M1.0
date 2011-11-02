@@ -40,6 +40,8 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 	dispWidth = _dispWidth;
 	dispHeight= _dispHeight;
 	
+	numPixVals = dispWidth * dispHeight * 3;
+	
 	filesPath = settingFilesPath;
 	
 	bExhibitionMode = _bExhibitionMode;
@@ -53,7 +55,12 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 	correctedBlobs.reserve(10 * sizeof(margBlob));
 	interpolatedBlobs.reserve(10 * sizeof(margBlob));
 	trailMap	= new unsigned char[dispWidth * dispHeight];
-	finalPixels = new unsigned char[dispWidth * dispHeight * 3];
+	finalPixels = new unsigned char[numPixVals];
+	returnPixels= new unsigned char[numPixVals];
+	
+	tempSource.setUseTexture(false);
+	correctDisp.setUseTexture(false);
+
 	
 	// White Pix
 	
@@ -132,6 +139,9 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 	mode = FINAL_IMAGE;
 	bDrawBlobs = false;
 	bAddressSet = false;
+	
+	bFinalPixelsFlushed = true;
+	bFinalPixelsLocked	= false;
 }
 
 // -------------------------------------------------
@@ -201,6 +211,7 @@ void margModule::update() {
 				else if (interactMode == BYPASS_TRAIL) {
 					display.feedImg(vidPlayer.getPixels(), dispWidth, dispHeight);
 				}
+				bFinalPixelsFlushed = false;
 				break;
 			case BYPASS_VIDEO:
 				if(vidPlayer.getWidth()!=0) display.feedImg(vidPlayer.getPixels(), dispWidth, dispHeight);
@@ -210,7 +221,16 @@ void margModule::update() {
 				break;
 		}
 	}
-
+	
+	if(bFinalPixelsFlushed) {
+		if(!bFinalPixelsLocked) {
+			bFinalPixelsLocked = true;
+			finalPixels = display.getPixels();
+			bFinalPixelsFlushed = false;
+			bFinalPixelsLocked = false;
+		}
+	}
+	
 	if(!bExhibitionMode) {
 		curModuleFr++;
 		moduleFPS = curModuleFr / ofGetElapsedTimef();
@@ -302,6 +322,27 @@ void margModule::drawWhite(int x, int y, int w, int h) {
 		}
 	}
 }
+
+// ------------------------------------------------
+
+unsigned char* margModule::getFinalPixels() {
+	bool success = false;
+	while (!success) {
+		success = tryLockFinalPix();
+	}
+	memcpy(returnPixels, finalPixels, numPixVals+1);
+	bFinalPixelsFlushed = true;
+	bFinalPixelsLocked	= false;
+	return returnPixels;
+}
+
+// ------------------------------------------------
+
+unsigned char* margModule::getFinalPixels(bool bUndistorted) {
+	return display.getPixels(bUndistorted);
+}
+
+// ------------------------------------------------
 
 // ------------------------------------------------
 
@@ -540,4 +581,14 @@ bool margModule::getNeedToPlay() {
 
 bool margModule::getIsVidLoaded() {
 	return vidPlayer.isLoaded();
+}
+
+// -----------------------------------------------
+
+bool margModule::tryLockFinalPix() {
+	if (bFinalPixelsLocked) return false;
+	else {
+		bFinalPixelsLocked = true;
+		return true;
+	}
 }

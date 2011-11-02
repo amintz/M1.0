@@ -21,11 +21,13 @@ void margDisplay::init(int _width, int _height, bool bExhibitionMode) {
 	
 	translate = cvCreateMat(3,3,CV_32FC1);
 	
+	image.setUseTexture(false);
 	image.allocate(width, height);
 	
 	if(bExhibitionMode) source.setUseTexture(false);
 	gSource.setUseTexture(false);
 	
+	source.setUseTexture(false);
 	source.allocate(width, height);
 	gSource.allocate(width, height);
 }
@@ -139,3 +141,16 @@ void margDisplay::drawUndistorted(int x, int y, int w, int h) {
 }
 
 // --------------------------------------------------------------
+
+unsigned char* margDisplay::getPixels(bool bUndistorted) {
+	if(!bUndistorted) return image.getPixels();
+	else return source.getPixels(); 
+}
+
+// ------------------------------------------------
+
+unsigned char* margDisplay::getPixels() {
+	return getPixels(false);
+}
+
+// ------------------------------------------------
