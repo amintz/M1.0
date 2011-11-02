@@ -41,7 +41,6 @@ void testApp::setup(){
 	// OBJECT ARRAYS -------------------------------------------*
 	
 	modules = new margModule[numMod];
-	modTextures = new ofTexture[numMod];
 	
 	
 	// SETUP VARS ----------------------------------------------*
@@ -78,7 +77,6 @@ void testApp::setup(){
 										  &exposureConst, &fadeConst, &blurLevel,
 										  &displayMode, &bDrawBlobs, &whichBlobs,
 										  &bAdjQuad, &whichQuad);
-		modTextures[i].allocate(dispWidth, dispHeight, GL_RGB);
 	}
 	
 	if (checkEveryModNeedPlay()) {
@@ -88,8 +86,6 @@ void testApp::setup(){
 	}
 	
 	// INTERFACE SETUP ----------------------------------------*
-	
-	contrTexture.allocate(drawWidth, drawHeight, GL_RGB);
 	
 	gui.addComboBox("Display Mode", displayMode, 7, modes);
 	gui.addToggle("No warp | control", bDrawUndistorted);
@@ -219,8 +215,6 @@ void testApp::update(){
 			modules[i].update();
 			if(bUpdateSettings)modules[i].updateSettings();
 		}
-		if(!bDrawUndistorted)modTextures[i].loadData(modules[i].getFinalPixels(), dispWidth, dispHeight, GL_RGB);
-		else modTextures[i].loadData(modules[i].getFinalPixels(true), dispWidth, dispHeight, GL_RGB);
 	}
 	
 	if (checkEveryModNeedPlay()) {
@@ -261,17 +255,15 @@ void testApp::draw(){
 	ofSetColor(255, 255, 255);
 	
 	if(bControlDisplay) {
-		modTextures[curMod].draw(drawX, drawY, drawWidth, drawHeight);
-//		if(bDrawUndistorted) modules[curMod].draw(drawX, drawY, drawWidth, drawHeight, true);
-//		else modules[curMod].draw(drawX, drawY, drawWidth, drawHeight);
+		if(bDrawUndistorted) modules[curMod].draw(drawX, drawY, drawWidth, drawHeight, true);
+		else modules[curMod].draw(drawX, drawY, drawWidth, drawHeight);
 	}
 	
 	// DRAW EXTERNAL DISPLAYS IF APPLICABLE --------------------*
 	
 	if (bExtDisplay) {
 		for (int i = 0; i < numMod; i++) {
-			modTextures[i].draw(dispWidth * (i+1), 0, dispWidth, dispHeight);
-//			modules[i].draw(dispWidth * (i + 1), 0, dispWidth, dispHeight);
+			modules[i].draw(dispWidth * (i + 1), 0, dispWidth, dispHeight);
 		}
 	}
 	

@@ -44,8 +44,6 @@ class testApp : public ofBaseApp{
 	// OBJECTS -----------------------------------*
 	
 	margModule*			modules;
-	ofTexture*			modTextures;
-	ofTexture			contrTexture;
 	ofxOscSender		oscSender;
 	
 	

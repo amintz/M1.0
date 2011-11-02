@@ -71,9 +71,6 @@ public:
 	void	draw(int x, int y, int w, int h, bool bUndistorted);
 	void	drawWhite(int x, int y, int w, int h);
 	
-	unsigned char* getFinalPixels();
-	unsigned char* getFinalPixels(bool bUndistorted);
-	
 	
 	// SETUP FUNCTIONS
 	
@@ -140,7 +137,6 @@ public:
 	vector<margBlob> interpolatedBlobs;
 	unsigned char* trailMap;
 	unsigned char* finalPixels;
-	unsigned char* returnPixels;
 	
 	
 	// TRIGGERING VARS
@@ -151,9 +147,6 @@ public:
 			bNewInterpolatedBlobs,
 			bNewTrailMap,
 			bNewFinalPixels;
-	
-	bool	bFinalPixelsFlushed,
-			bFinalPixelsLocked;
 	
 	
 	// SHARED SETTING VARS - Stored and managed externally
@@ -179,8 +172,6 @@ public:
 	//	int modAdjWhichQuad;
 	
 private:
-	
-	bool	tryLockFinalPix();
 	
 	//SUBCLASSES
 
@@ -209,8 +200,6 @@ private:
 	
 	int						camWidth,  camHeight,
 							dispWidth, dispHeight;
-	
-	int						numPixVals;
 	
 	string					filesPath;
 	

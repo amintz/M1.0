@@ -28,9 +28,6 @@ public:
 	void	draw(int x, int y, int w, int h);
 	void	drawUndistorted(int x, int y, int w, int h);
 	
-	unsigned char* getPixels(bool bUndistorted);
-	unsigned char* getPixels();
-	
 	ofxCvColorImage	image;
 	ofxCvColorImage source;
 	ofxCvGrayscaleImage gSource;
