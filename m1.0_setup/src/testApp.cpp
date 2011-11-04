@@ -65,7 +65,7 @@ void testApp::setup(){
 	blobsToDraw[0] = "ORIGINAL_BLOBS";
 	blobsToDraw[1] = "CORRECTED_BLOBS";
 	blobsToDraw[2] = "INTERPOLATED_BLOBS";
-	
+
 	
 	// MODULE INITIALIZATION -----------------------------------*
 	
@@ -73,6 +73,7 @@ void testApp::setup(){
 		modules[i].init(camWidth, camHeight, dispWidth, dispHeight, i+1, i, "../../../../M1.0_data/", false);
 		modules[i].setSharedVarsAddresses(&minBlob, &maxBlob, &numBlob,
 										  &maxDist, &maxAreaDiff, &maxUnfitness,
+										  &blobDefScaleFactor, &blobCondScaleConst, &blobCondScaleMax,
 										  &exposureConst, &fadeConst, &blurLevel,
 										  &displayMode, &bDrawBlobs, &whichBlobs,
 										  &bAdjQuad, &whichQuad);
@@ -87,6 +88,7 @@ void testApp::setup(){
 	// INTERFACE SETUP ----------------------------------------*
 	
 	gui.addComboBox("Display Mode", displayMode, 7, modes);
+	gui.addToggle("No warp | control", bDrawUndistorted);
 	gui.addToggle("Control Display", bControlDisplay);
 	gui.addToggle("External Display", bExtDisplay);
 	gui.addToggle("Run Thread", bRunThread);
@@ -105,7 +107,7 @@ void testApp::setup(){
 		gui.addComboBox("Interaction Mode", modules[i].interactMode, 3, interactModes);
 		gui.addToggle("Adj Quad", bAdjQuad);
 		gui.addComboBox("Which Quad to Adj", whichQuad, 2, quads);
-		gui.addButton("Clear Quad", clearQuad);
+		gui.addToggle("Clear Quad", clearQuad);
 		gui.addSlider("Threshold Min", modules[i].blobFindThreshMin, 0, 255);
 		gui.addSlider("Threshold Max", modules[i].blobFindThreshMax, 0, 255);
 		gui.addTitle("Lens Correction");
@@ -127,6 +129,11 @@ void testApp::setup(){
 	gui.addTitle("Blob Tracking");
 	gui.addSlider("Max Area Diff", maxAreaDiff, 0, 100);
 	gui.addSlider("Max Dist", maxDist, 0, 150);
+	
+	gui.addTitle("Blob Scaling");
+	gui.addSlider("Def. Scale Factor", blobDefScaleFactor, 0.5, 4.0);
+	gui.addSlider("Cond. Scale Const.", blobCondScaleConst, 0.0, 3.0);
+	gui.addSlider("Cond. Scale Max.", blobCondScaleMax, 1.0, 6.0);
 	
 	gui.addTitle("Blob Drawing");
 	gui.addToggle("Draw Blobs", bDrawBlobs);
@@ -247,7 +254,10 @@ void testApp::draw(){
 	
 	ofSetColor(255, 255, 255);
 	
-	if(bControlDisplay) modules[curMod].draw(drawX, drawY, drawWidth, drawHeight);
+	if(bControlDisplay) {
+		if(bDrawUndistorted) modules[curMod].draw(drawX, drawY, drawWidth, drawHeight, true);
+		else modules[curMod].draw(drawX, drawY, drawWidth, drawHeight);
+	}
 	
 	// DRAW EXTERNAL DISPLAYS IF APPLICABLE --------------------*
 	

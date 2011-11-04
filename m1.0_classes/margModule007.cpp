@@ -104,7 +104,9 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 	// -- VIDEO PLAYER
 	
 	vidPlayer.setUseTexture(false);
-	vidPlayer.loadMovie(filesPath + "movies/m" + ofToString(dispID) + "g0v0.mov");
+
+	vidPlayer.loadMovie(filesPath + "movies-long/m" + ofToString(dispID) + "g0v0.mov");
+
 	vidPlayer.setLoopState(OF_LOOP_NORMAL);
 	
 	// -- VIDEO BLENDER
@@ -237,8 +239,22 @@ void margModule::playVideos() {
 // ------------------------------------------------
 
 void margModule::draw(int x, int y, int w, int h) {
+	draw(x, y, w, h, false);
+}
+
+// ------------------------------------------------
+
+void margModule::draw(int x, int y, int w, int h, bool bUndistorted) {
+	
 	ofSetColor(255, 255, 255);
-	display.draw(x, y, w, h);
+	
+	if(bUndistorted) {
+		display.drawUndistorted(x, y, w, h);
+	}
+	else {
+		display.draw(x, y, w, h);
+	}
+	
 	if (bAdjQuad) {
 		switch (adjWhichQuad) {
 			case DISP_QUAD:
@@ -271,12 +287,6 @@ void margModule::draw(int x, int y, int w, int h) {
 
 // ------------------------------------------------
 
-void margModule::drawUndistorted(int x, int y, int w, int h) {
-
-}
-
-// ------------------------------------------------
-
 void margModule::drawWhite(int x, int y, int w, int h) {
 	ofSetColor(255, 255, 255);
 	testDisplay.draw(x, y, w, h);
@@ -305,12 +315,21 @@ void margModule::drawWhite(int x, int y, int w, int h) {
 
 void margModule::updateSettings() {
 	if(bAddressSet) {
-		setBlobFinder(*blobMinArea, *blobMaxArea, *blobNConsidered, blobFindThreshMin, blobFindThreshMax);
+		
+		setBlobFinder(*blobMinArea, *blobMaxArea, *blobNConsidered,
+					  blobFindThreshMin, blobFindThreshMax);
+		
 		setCameraMatrix(correctFX, correctFY, correctCX, correctCY);
+		
 		setDistCoeffs(correctRdX, correctRdY, correctTgX, correctTgY);
-		setInterpolator(*blobPairMaxDist, *blobPairMaxAreaDiff, *blobPairMaxUnfitness);
+		
+		setInterpolator(*blobPairMaxDist, *blobPairMaxAreaDiff, *blobPairMaxUnfitness,
+						*blobDefScaleFactor, *blobCondScaleConst, *blobCondScaleMax);
+		
 		setTrailMaker(*trailExpConst, *trailFadeConst, *trailBlurLevel);
+		
 		setMode(*modMode, *modDrawBlobs, *modDrawWhichBlobs, *modAdjQuad, *modAdjWhichQuad);
+		
 		if (bufInteractMode != interactMode) setInteractMode(interactMode);
 	}
 }
@@ -319,6 +338,7 @@ void margModule::updateSettings() {
 
 void margModule::setSharedVarsAddresses(int* _blobMinArea, int* _blobMaxArea, int* _blobNConsidered,							// Shared between modules
 										float* _blobPairMaxDist, float* _blobPairMaxAreaDiff, float* _blobPairMaxUnfitness,		// Shared between modules
+										float* _blobDefScaleFactor, float* _blobCondScaleConst, float* _blobCondScaleMax,
 										float* _trailExpConst, float* _trailFadeConst, int* _trailBlurLevel,					// Shared between modules
 										int* _modMode,																			// Shared - for now
 										bool* _modDrawBlobs, int* _modDrawWhichBlobs,											// Shared between modules
@@ -332,6 +352,10 @@ void margModule::setSharedVarsAddresses(int* _blobMinArea, int* _blobMaxArea, in
 	blobPairMaxDist = _blobPairMaxDist;
 	blobPairMaxAreaDiff = _blobPairMaxAreaDiff;
 	blobPairMaxUnfitness = _blobPairMaxUnfitness;
+	
+	blobDefScaleFactor = _blobDefScaleFactor;
+	blobCondScaleConst = _blobCondScaleConst;
+	blobCondScaleMax   = _blobCondScaleMax;
 	
 	trailExpConst = _trailExpConst;
 	trailFadeConst = _trailFadeConst;
@@ -388,8 +412,10 @@ void margModule::setDistCoeffs(float rdX, float rdY, float tgX, float tgY) {
 
 // -----------------------------------------------
 
-void margModule::setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness) {
-	blobInterp.setInterpolator(_maxDist, _maxAreaDiff, _maxUnfitness);
+void margModule::setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness,
+								 float _blobDefScaleFactor, float _blobCondScaleConst, float _blobCondScaleMax) {
+	blobInterp.setInterpolator(_maxDist, _maxAreaDiff, _maxUnfitness,
+							   _blobDefScaleFactor, _blobCondScaleConst, _blobCondScaleMax);
 }
 
 // -----------------------------------------------
@@ -415,8 +441,18 @@ void margModule::openCaptSettings() {
 
 void margModule::clearQuad() {
 	if (bAdjQuad) {
-		if(adjWhichQuad == CAPT_QUAD) captQuad.clearQuad();
-		else dispQuad.clearQuad();
+		if(adjWhichQuad == CAPT_QUAD) {
+			captQuad.clearQuad();
+			blobCorr.setPersCorrection(captQuad.getTranslateMat());
+		}
+		else {
+			dispQuad.clearQuad();
+			display.setTranslateMat(dispQuad.getTranslateMat());
+			if(!bExhibitionMode) {
+				testDisplay.setTranslateMat(dispQuad.getTranslateMat());
+				testDisplay.feedImg(whitePix, dispWidth, dispHeight, false);
+			}
+		}
 	}
 }
 

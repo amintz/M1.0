@@ -64,6 +64,10 @@ class testApp : public ofBaseApp{
 						maxDist,
 						maxUnfitness;
 	
+	float				blobDefScaleFactor,
+						blobCondScaleConst,
+						blobCondScaleMax;
+	
 	// TRAIL MAKING VARS -------------------------*
 	
 	float				exposureConst,
@@ -102,7 +106,8 @@ class testApp : public ofBaseApp{
 						bControlDisplay,
 						bUpdateSettings;
 	
-	bool				bDrawWhite;
+	bool				bDrawWhite,
+						bDrawUndistorted;
 						
 	bool				bRunThread,
 						bStopThread;

@@ -111,6 +111,11 @@ void margCoordWarping :: clearQuad() {
 	quadDst[3].set(0, h);
 	
 	quadGui.setQuadPoints(quadSrc);
+	
+	warpedPts = quadGui.getScaledQuadPoints(w, h);
+	
+	if(bReverse) calculateMatrix(quadSrc, warpedPts);
+	else calculateMatrix(warpedPts, quadSrc);
 }
 
 // -----------------------------------------------------------

@@ -398,7 +398,7 @@ void	margBlobCorrector::drawBlobs(int x, int y, int w, int h) {
 	
 	// ---------------------------- draw the bounding rectangle
 	
-	ofSetColor(0xDD00CC);
+	ofSetHexColor(0xDD00CC);
 	glPushMatrix();
 	glTranslatef( x, y, 0.0 );
 	glScalef( scalex, scaley, 0.0 );
@@ -411,7 +411,7 @@ void	margBlobCorrector::drawBlobs(int x, int y, int w, int h) {
 	
 	// ---------------------------- draw the blobs
 	
-	ofSetColor(0x00FFFF);
+	ofSetHexColor(0x00FFFF);
 	
 	
 	for( int i=0; i<correctBlobs.size(); i++ ) {

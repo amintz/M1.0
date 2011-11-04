@@ -68,7 +68,7 @@ public:
 	void	playVideos();
 	
 	void	draw(int x, int y, int w, int h);
-	void	drawUndistorted(int x, int y, int w, int h);
+	void	draw(int x, int y, int w, int h, bool bUndistorted);
 	void	drawWhite(int x, int y, int w, int h);
 	
 	
@@ -78,6 +78,7 @@ public:
 	
 	void	setSharedVarsAddresses(int* _blobMinArea, int* _blobMaxArea, int* _blobNConsidered,							// Shared between modules
 								   float* _blobPairMaxDist, float* _blobPairMaxAreaDiff, float* _blobPairMaxUnfitness,	// Shared between modules
+								   float* _blobDefScaleFactor,float* _blobCondScaleConst, float* _blobConsScaleMax,		// Shared between modules
 								   float* _trailExpConst, float* _trailFadeConst, int* _trailBlurLevel,					// Shared between modules
 								   int* _modMode,																		// Shared - for now
 								   bool* _modDrawBlobs, int* _modDrawWhichBlobs,										// Shared between modules
@@ -88,7 +89,8 @@ public:
 	void	setBlobFinder(int _minArea, int _maxArea, int _nConsidered, int _threshMin, int _threshMax); // Sets blob finder parameters
 	void	setCameraMatrix(float fX, float fY, float cX, float cY); // Sets Camera intrinsic parameters
 	void	setDistCoeffs(float rdX, float rdY, float tgX, float tgY); // Sets Camera extrinsics
-	void	setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness); // Sets interpolator parameters
+	void	setInterpolator(float _maxDist, float _maxAreaDiff, float _maxUnfitness,
+							float _blobDefScaleFactor, float _blobCondScaleConst, float _blobCondScaleMax); // Sets interpolator parameters
 	void	setTrailMaker(float _exposureConst, float _fadeConst, int _blurLevel); // Sets trailmaker parameters
 	
 	// Modes
@@ -221,6 +223,10 @@ private:
 	float* blobPairMaxDist;
 	float* blobPairMaxAreaDiff;
 	float* blobPairMaxUnfitness;
+	
+	float* blobDefScaleFactor;
+	float* blobCondScaleConst;
+	float* blobCondScaleMax;
 	
 	float* trailExpConst;
 	float* trailFadeConst;
