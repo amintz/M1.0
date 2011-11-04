@@ -45,8 +45,6 @@ void margVideoPlayer::init(string _xmlPath, string _filePath, int _modIdx) {
 		nextInteractMode= XML.getValue("interactMode", 1, 0);
 	XML.popTag();
 	
-	trig();
-	
 }
 
 // ------------------------------------------------
@@ -54,8 +52,10 @@ void margVideoPlayer::init(string _xmlPath, string _filePath, int _modIdx) {
 void margVideoPlayer::update() {
 	if(!bNeedToPlay) {
 		player.update();
-		if (player.getCurrentFrame() >= nextTriggerFrame) {
-			trig();
+		if (nextTrigger > 0) {
+			if (player.getCurrentFrame() >= nextTriggerFrame) {
+				trig();
+			}
 		}
 	}
 	else if (player.getIsMovieDone()) {
@@ -89,6 +89,7 @@ void margVideoPlayer::play() {
 		player.play();
 		player.setPaused(false);
 		bNeedToPlay = false;
+		trig();
 	}
 }
 

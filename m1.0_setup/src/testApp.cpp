@@ -8,7 +8,7 @@ void testApp::setup(){
 	
 	// SET NUMBER OF MODULES HERE ------------------------------*
 	
-	numMod = 4; // -------------------------------------------***
+	numMod = 1; // -------------------------------------------***
 	
 	// SET OSC HERE --------------------------------------------*
 	
@@ -88,7 +88,7 @@ void testApp::setup(){
 	// INTERFACE SETUP ----------------------------------------*
 	
 	gui.addComboBox("Display Mode", displayMode, 7, modes);
-	gui.addToggle("No warp | control", bDrawUndistorted);
+	gui.addToggle("No warp control", bDrawUndistorted);
 	gui.addToggle("Control Display", bControlDisplay);
 	gui.addToggle("External Display", bExtDisplay);
 	gui.addToggle("Run Thread", bRunThread);
