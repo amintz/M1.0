@@ -103,11 +103,12 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 	
 	// -- VIDEO PLAYER
 	
-	vidPlayer.setUseTexture(false);
-
-	vidPlayer.loadMovie(filesPath + "movies-long/m" + ofToString(dispID) + "g0v0.mov");
-
-	vidPlayer.setLoopState(OF_LOOP_NORMAL);
+	vidPlayer.init(filesPath, filesPath + "movies-long/", dispID);
+//	vidPlayer.setUseTexture(false);
+//
+//	vidPlayer.loadMovie(filesPath + "movies-long/m" + ofToString(dispID) + "g0v0.mov");
+//
+//	vidPlayer.setLoopState(OF_LOOP_NORMAL);
 	
 	// -- VIDEO BLENDER
 	
@@ -144,7 +145,7 @@ void margModule::update() {
 	
 	vidPlayer.update();
 	
-	//setInteractMode(vidPlayer.getInteractMode());
+	setInteractMode(vidPlayer.getInteractMode());
 	
 	if (interactMode == NORMAL_TRAIL || interactMode == NO_FADE_TRAIL) {
 		blobFind.feedPixels(originalPix);
@@ -155,7 +156,7 @@ void margModule::update() {
 		blobInterp.feedBlobs(blobs);
 		blobs = blobInterp.getInterpolatedBlobs();
 		if(mode == TRAIL_MAP || mode == FINAL_IMAGE || bExhibitionMode) trailMaker.updtMap(blobs);
-		if (vidPlayer.isPlaying() && (mode == FINAL_IMAGE || bExhibitionMode)) {
+		if (vidPlayer.getIsPlaying() && (mode == FINAL_IMAGE || bExhibitionMode)) {
 			vidBlender.blendVideo(trailMaker.getMap(), vidPlayer.getPixels());
 		}
 	}
@@ -205,7 +206,7 @@ void margModule::update() {
 				}
 				break;
 			case BYPASS_VIDEO:
-				if(vidPlayer.getWidth()!=0) display.feedImg(vidPlayer.getPixels(), dispWidth, dispHeight);
+				if(vidPlayer.getIsLoaded()) display.feedImg(vidPlayer.getPixels(), dispWidth, dispHeight);
 				break;
 			default:
 				//display.feedImg(vidBlender.getPixels(), dispWidth, dispHeight);
@@ -535,11 +536,11 @@ bool margModule::getNeedToSetIndex() {
 // -----------------------------------------------
 
 bool margModule::getNeedToPlay() {
-	return !vidPlayer.isPlaying();
+	return vidPlayer.getNeedToPlay();
 }
 
 // -----------------------------------------------
 
 bool margModule::getIsVidLoaded() {
-	return vidPlayer.isLoaded();
+	return vidPlayer.getIsLoaded();
 }
