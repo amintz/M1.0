@@ -51,7 +51,7 @@ void margVideoPlayer::init(string _xmlPath, string _filePath, int _modIdx) {
 
 void margVideoPlayer::update() {
 	if (player.getIsMovieDone()) {
-		player.setPosition(0);
+		player.setFrame(0);
 		player.setPaused(true);
 		bNeedToPlay = true;
 	}

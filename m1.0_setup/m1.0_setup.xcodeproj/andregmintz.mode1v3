@@ -278,7 +278,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>7</integer>
+									<integer>5</integer>
+									<integer>2</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -321,7 +322,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>margModule007.cpp</string>
+								<string>margVideoPlayer007.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -329,11 +330,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>margModule007.cpp</string>
+										<string>margVideoPlayer007.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>21652D8B1463B0F1007BB464</string>
+										<string>21652DB314645FB9007BB464</string>
 										<key>history</key>
 										<array>
 											<string>219B9EC51443C1F40078DC3D</string>
@@ -381,11 +382,11 @@
 											<string>21652D431463A175007BB464</string>
 											<string>21652D531463A23F007BB464</string>
 											<string>21652D541463A23F007BB464</string>
-											<string>21652D611463A7A0007BB464</string>
 											<string>21652D621463A7A0007BB464</string>
 											<string>21652D6F1463A8DE007BB464</string>
-											<string>21652D891463B0F1007BB464</string>
-											<string>21652D8A1463B0F1007BB464</string>
+											<string>21652DB014645FB9007BB464</string>
+											<string>21652DB114645FB9007BB464</string>
+											<string>21652DB214645FB9007BB464</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -585,9 +586,9 @@
 	<array>
 		<string>21652D1A146398AF007BB464</string>
 		<string>21652D1B146398AF007BB464</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>219B9D151443B3430078DC3D</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/andregmintz/Dev/openFrameworks/OF_0.070_SL/apps/M1.0/m1.0_setup/m1.0_setup.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -964,7 +965,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
