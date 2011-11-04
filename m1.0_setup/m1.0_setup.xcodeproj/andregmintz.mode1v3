@@ -278,8 +278,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>5</integer>
-									<integer>2</integer>
+									<integer>7</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -322,7 +321,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>margVideoPlayer007.cpp</string>
+								<string>margModule007.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -330,11 +329,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>margVideoPlayer007.cpp</string>
+										<string>margModule007.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>21652D711463A8DE007BB464</string>
+										<string>21652D8B1463B0F1007BB464</string>
 										<key>history</key>
 										<array>
 											<string>219B9EC51443C1F40078DC3D</string>
@@ -384,9 +383,9 @@
 											<string>21652D541463A23F007BB464</string>
 											<string>21652D611463A7A0007BB464</string>
 											<string>21652D621463A7A0007BB464</string>
-											<string>21652D681463A835007BB464</string>
 											<string>21652D6F1463A8DE007BB464</string>
-											<string>21652D701463A8DE007BB464</string>
+											<string>21652D891463B0F1007BB464</string>
+											<string>21652D8A1463B0F1007BB464</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>

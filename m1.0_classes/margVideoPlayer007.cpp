@@ -50,6 +50,11 @@ void margVideoPlayer::init(string _xmlPath, string _filePath, int _modIdx) {
 // ------------------------------------------------
 
 void margVideoPlayer::update() {
+	if (player.getIsMovieDone()) {
+		player.setPosition(0);
+		player.setPaused(true);
+		bNeedToPlay = true;
+	}
 	if(!bNeedToPlay) {
 		player.update();
 		if (nextTrigger > 0) {
@@ -57,11 +62,6 @@ void margVideoPlayer::update() {
 				trig();
 			}
 		}
-	}
-	else if (player.getIsMovieDone()) {
-		player.setPosition(0);
-		player.setPaused(true);
-		bNeedToPlay = true;
 	}
 }
 
@@ -86,10 +86,10 @@ void margVideoPlayer::trig() {
 
 void margVideoPlayer::play() {
 	if(player.isLoaded()) {
+		trig();
 		player.play();
 		player.setPaused(false);
 		bNeedToPlay = false;
-		trig();
 	}
 }
 
