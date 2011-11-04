@@ -94,6 +94,10 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 	blobCorr.loadMats(filesPath + "calibration_matrix.xml");
 	blobCorr.setMode(true, true, true);
 	
+	// -- BLOB FINDER ROI
+	
+	blobFind.setROI(blobCorr.getPersUndistortBoundsRect());
+	
 	// -- BLOB INTERPOLATOR
 	
 	blobInterp.init(dispWidth, dispHeight);
@@ -450,6 +454,7 @@ void margModule::clearQuad() {
 			captQuad.clearQuad();
 			blobCorr.setPersCorrection(captQuad.getTranslateMat());
 			blobCorr.setPersQuadPoints(captQuad.getScaledQuadPts(camWidth, camHeight));
+			blobFind.setROI(blobCorr.getPersUndistortBoundsRect());
 		}
 		else {
 			dispQuad.clearQuad();
@@ -479,6 +484,7 @@ void margModule::updateQuadPoint(int x, int y, int origX, int origY, int w, int 
 			captQuad.updatePoint(x, y, origX, origY, w, h);
 			blobCorr.setPersCorrection(captQuad.getTranslateMat());
 			blobCorr.setPersQuadPoints(captQuad.getScaledQuadPts(camWidth, camHeight));
+			blobFind.setROI(blobCorr.getPersUndistortBoundsRect());
 		}
 		else {
 			dispQuad.updatePoint(x, y, origX, origY, w, h);

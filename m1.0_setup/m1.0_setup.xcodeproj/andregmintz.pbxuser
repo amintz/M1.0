@@ -506,7 +506,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 406";
 		rLen = 0;
-		rLoc = 12058;
+		rLoc = 12142;
 		rType = 0;
 		vrLen = 1562;
 		vrLoc = 10596;
@@ -516,7 +516,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 406";
 		rLen = 0;
-		rLoc = 12058;
+		rLoc = 12142;
 		rType = 0;
 		vrLen = 1510;
 		vrLoc = 7426;
@@ -576,7 +576,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 406";
 		rLen = 0;
-		rLoc = 12058;
+		rLoc = 12142;
 		rType = 0;
 		vrLen = 1510;
 		vrLoc = 7426;
@@ -736,7 +736,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 348";
 		rLen = 0;
-		rLoc = 10185;
+		rLoc = 10269;
 		rType = 0;
 		vrLen = 1705;
 		vrLoc = 8514;
@@ -835,7 +835,7 @@
 		isa = PBXTextBookmark;
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		rLen = 11;
-		rLoc = 7781;
+		rLoc = 7865;
 		rType = 0;
 	};
 	21652992146193B8007BB464 /* PBXTextBookmark */ = {
@@ -843,7 +843,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 290";
 		rLen = 11;
-		rLoc = 7781;
+		rLoc = 7865;
 		rType = 0;
 		vrLen = 805;
 		vrLoc = 7257;
@@ -903,7 +903,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 474";
 		rLen = 11;
-		rLoc = 13959;
+		rLoc = 14161;
 		rType = 0;
 		vrLen = 1341;
 		vrLoc = 12176;
@@ -913,7 +913,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 455";
 		rLen = 0;
-		rLoc = 13124;
+		rLoc = 13267;
 		rType = 0;
 		vrLen = 1414;
 		vrLoc = 12304;
@@ -923,7 +923,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 290";
 		rLen = 11;
-		rLoc = 7781;
+		rLoc = 7865;
 		rType = 0;
 		vrLen = 1064;
 		vrLoc = 8204;
@@ -933,7 +933,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 455";
 		rLen = 0;
-		rLoc = 13124;
+		rLoc = 13267;
 		rType = 0;
 		vrLen = 1452;
 		vrLoc = 12304;
@@ -977,7 +977,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 475";
 		rLen = 8;
-		rLoc = 13825;
+		rLoc = 14027;
 		rType = 0;
 		vrLen = 1452;
 		vrLoc = 12304;
@@ -1067,7 +1067,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 447";
 		rLen = 8;
-		rLoc = 12881;
+		rLoc = 13024;
 		rType = 0;
 		vrLen = 1452;
 		vrLoc = 12304;
@@ -1176,7 +1176,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 472";
 		rLen = 0;
-		rLoc = 12563;
+		rLoc = 12573;
 		rType = 0;
 		vrLen = 313;
 		vrLoc = 10956;
@@ -1195,7 +1195,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 507";
 		rLen = 0;
-		rLoc = 14967;
+		rLoc = 14977;
 		rType = 0;
 		vrLen = 502;
 		vrLoc = 11799;
@@ -1205,7 +1205,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 407";
 		rLen = 69;
-		rLoc = 11569;
+		rLoc = 11653;
 		rType = 0;
 		vrLen = 1624;
 		vrLoc = 10555;
@@ -1244,7 +1244,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 507";
 		rLen = 0;
-		rLoc = 14967;
+		rLoc = 14977;
 		rType = 0;
 		vrLen = 1495;
 		vrLoc = 11358;
@@ -1254,7 +1254,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 506";
 		rLen = 0;
-		rLoc = 14967;
+		rLoc = 14977;
 		rType = 0;
 		vrLen = 502;
 		vrLoc = 11799;
@@ -1264,7 +1264,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 507";
 		rLen = 0;
-		rLoc = 14967;
+		rLoc = 14977;
 		rType = 0;
 		vrLen = 1691;
 		vrLoc = 11406;
@@ -1304,7 +1304,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 507";
 		rLen = 0;
-		rLoc = 14967;
+		rLoc = 14977;
 		rType = 0;
 		vrLen = 1691;
 		vrLoc = 11406;
@@ -1314,7 +1314,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 528";
 		rLen = 0;
-		rLoc = 14967;
+		rLoc = 14977;
 		rType = 0;
 		vrLen = 1370;
 		vrLoc = 11475;
@@ -1324,7 +1324,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 549";
 		rLen = 0;
-		rLoc = 14967;
+		rLoc = 14977;
 		rType = 0;
 		vrLen = 1200;
 		vrLoc = 12591;
@@ -1343,7 +1343,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 533";
 		rLen = 0;
-		rLoc = 14002;
+		rLoc = 14012;
 		rType = 0;
 		vrLen = 398;
 		vrLoc = 12193;
@@ -1353,7 +1353,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 530";
 		rLen = 0;
-		rLoc = 13910;
+		rLoc = 13920;
 		rType = 0;
 		vrLen = 1236;
 		vrLoc = 11656;
@@ -1363,7 +1363,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 535";
 		rLen = 0;
-		rLoc = 14002;
+		rLoc = 14012;
 		rType = 0;
 		vrLen = 368;
 		vrLoc = 12357;
@@ -1373,7 +1373,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 569";
 		rLen = 0;
-		rLoc = 14967;
+		rLoc = 14977;
 		rType = 0;
 		vrLen = 1373;
 		vrLoc = 12587;
@@ -1383,7 +1383,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 543";
 		rLen = 0;
-		rLoc = 14275;
+		rLoc = 14285;
 		rType = 0;
 		vrLen = 1284;
 		vrLoc = 12725;
@@ -1393,7 +1393,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 535";
 		rLen = 0;
-		rLoc = 14002;
+		rLoc = 14012;
 		rType = 0;
 		vrLen = 430;
 		vrLoc = 12213;
@@ -1403,7 +1403,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 530";
 		rLen = 0;
-		rLoc = 13907;
+		rLoc = 13917;
 		rType = 0;
 		vrLen = 1252;
 		vrLoc = 11992;
@@ -1413,7 +1413,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 437";
 		rLen = 0;
-		rLoc = 11961;
+		rLoc = 11971;
 		rType = 0;
 		vrLen = 1118;
 		vrLoc = 9729;
@@ -1423,7 +1423,7 @@
 		fRef = 219B9F7B1443C9B80078DC3D /* margBlobCorrector007.h */;
 		name = "margBlobCorrector007.h: 82";
 		rLen = 27;
-		rLoc = 1896;
+		rLoc = 1920;
 		rType = 0;
 		vrLen = 1184;
 		vrLoc = 1406;
@@ -1443,7 +1443,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 579";
 		rLen = 0;
-		rLoc = 15189;
+		rLoc = 15229;
 		rType = 0;
 		vrLen = 1746;
 		vrLoc = 13308;
@@ -1453,7 +1453,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 537";
 		rLen = 0;
-		rLoc = 14002;
+		rLoc = 14012;
 		rType = 0;
 		vrLen = 371;
 		vrLoc = 12533;
@@ -1463,7 +1463,7 @@
 		fRef = 219B9F7B1443C9B80078DC3D /* margBlobCorrector007.h */;
 		name = "margBlobCorrector007.h: 179";
 		rLen = 0;
-		rLoc = 4820;
+		rLoc = 4925;
 		rType = 0;
 		vrLen = 1241;
 		vrLoc = 3904;
@@ -1473,7 +1473,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 579";
 		rLen = 0;
-		rLoc = 15189;
+		rLoc = 15229;
 		rType = 0;
 		vrLen = 1744;
 		vrLoc = 13308;
@@ -1483,7 +1483,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 578";
 		rLen = 0;
-		rLoc = 14998;
+		rLoc = 15008;
 		rType = 0;
 		vrLen = 1287;
 		vrLoc = 12961;
@@ -1493,7 +1493,7 @@
 		fRef = 219B9F7B1443C9B80078DC3D /* margBlobCorrector007.h */;
 		name = "margBlobCorrector007.h: 179";
 		rLen = 4;
-		rLoc = 4837;
+		rLoc = 4942;
 		rType = 0;
 		vrLen = 937;
 		vrLoc = 878;
@@ -1503,7 +1503,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 578";
 		rLen = 0;
-		rLoc = 14998;
+		rLoc = 15008;
 		rType = 0;
 		vrLen = 1287;
 		vrLoc = 12961;
@@ -1513,7 +1513,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 585";
 		rLen = 0;
-		rLoc = 15189;
+		rLoc = 15229;
 		rType = 0;
 		vrLen = 1394;
 		vrLoc = 13046;
@@ -1523,7 +1523,7 @@
 		fRef = 219B9F7B1443C9B80078DC3D /* margBlobCorrector007.h */;
 		name = "margBlobCorrector007.h: 179";
 		rLen = 0;
-		rLoc = 4820;
+		rLoc = 4925;
 		rType = 0;
 		vrLen = 1165;
 		vrLoc = 3980;
@@ -1533,7 +1533,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 585";
 		rLen = 0;
-		rLoc = 15189;
+		rLoc = 15229;
 		rType = 0;
 		vrLen = 1431;
 		vrLoc = 13015;
@@ -1543,7 +1543,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 407";
 		rLen = 69;
-		rLoc = 11569;
+		rLoc = 11653;
 		rType = 0;
 		vrLen = 1625;
 		vrLoc = 10554;
@@ -1573,7 +1573,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 585";
 		rLen = 0;
-		rLoc = 15189;
+		rLoc = 15229;
 		rType = 0;
 		vrLen = 1400;
 		vrLoc = 13046;
@@ -1583,7 +1583,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 585";
 		rLen = 0;
-		rLoc = 15189;
+		rLoc = 15229;
 		rType = 0;
 		vrLen = 1282;
 		vrLoc = 12915;
@@ -1593,7 +1593,7 @@
 		fRef = 219B9F7B1443C9B80078DC3D /* margBlobCorrector007.h */;
 		name = "margBlobCorrector007.h: 85";
 		rLen = 0;
-		rLoc = 1986;
+		rLoc = 2045;
 		rType = 0;
 		vrLen = 1124;
 		vrLoc = 1380;
@@ -1603,7 +1603,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 594";
 		rLen = 0;
-		rLoc = 15426;
+		rLoc = 15345;
 		rType = 0;
 		vrLen = 1614;
 		vrLoc = 13493;
@@ -1623,7 +1623,7 @@
 		fRef = 219B9F7B1443C9B80078DC3D /* margBlobCorrector007.h */;
 		name = "margBlobCorrector007.h: 85";
 		rLen = 0;
-		rLoc = 1986;
+		rLoc = 2045;
 		rType = 0;
 		vrLen = 1078;
 		vrLoc = 1380;
@@ -1643,7 +1643,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 584";
 		rLen = 0;
-		rLoc = 15189;
+		rLoc = 15229;
 		rType = 0;
 		vrLen = 1331;
 		vrLoc = 13112;
@@ -1653,7 +1653,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 585";
 		rLen = 0;
-		rLoc = 15193;
+		rLoc = 15229;
 		rType = 0;
 		vrLen = 1292;
 		vrLoc = 13153;
@@ -1687,7 +1687,7 @@
 		fRef = 219B9F7B1443C9B80078DC3D /* margBlobCorrector007.h */;
 		name = "margBlobCorrector007.h: 87";
 		rLen = 0;
-		rLoc = 2054;
+		rLoc = 2159;
 		rType = 0;
 		vrLen = 1100;
 		vrLoc = 1380;
@@ -1697,7 +1697,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 620";
 		rLen = 0;
-		rLoc = 16878;
+		rLoc = 16797;
 		rType = 0;
 		vrLen = 1533;
 		vrLoc = 13695;
@@ -1707,7 +1707,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 640";
 		rLen = 0;
-		rLoc = 17929;
+		rLoc = 17794;
 		rType = 0;
 		vrLen = 1575;
 		vrLoc = 14273;
@@ -1727,7 +1727,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 622";
 		rLen = 0;
-		rLoc = 16906;
+		rLoc = 16825;
 		rType = 0;
 		vrLen = 1315;
 		vrLoc = 14615;
@@ -1747,7 +1747,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 655";
 		rLen = 0;
-		rLoc = 17929;
+		rLoc = 17794;
 		rType = 0;
 		vrLen = 1242;
 		vrLoc = 14982;
@@ -1767,7 +1767,7 @@
 		fRef = 219B9F7B1443C9B80078DC3D /* margBlobCorrector007.h */;
 		name = "margBlobCorrector007.h: 85";
 		rLen = 0;
-		rLoc = 1958;
+		rLoc = 1982;
 		rType = 0;
 		vrLen = 1131;
 		vrLoc = 1403;
@@ -1818,7 +1818,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 673;
+		rLoc = 672;
 		rType = 1;
 	};
 	21652B4E1461D0EB007BB464 /* PBXTextBookmark */ = {
@@ -1826,7 +1826,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 643";
 		rLen = 0;
-		rLoc = 16437;
+		rLoc = 16356;
 		rType = 0;
 		vrLen = 1617;
 		vrLoc = 15151;
@@ -1886,7 +1886,7 @@
 		fRef = 219B9F7B1443C9B80078DC3D /* margBlobCorrector007.h */;
 		name = "margBlobCorrector007.h: 85";
 		rLen = 0;
-		rLoc = 1958;
+		rLoc = 1982;
 		rType = 0;
 		vrLen = 394;
 		vrLoc = 1674;
@@ -1896,7 +1896,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 667";
 		rLen = 0;
-		rLoc = 17442;
+		rLoc = 17361;
 		rType = 0;
 		vrLen = 536;
 		vrLoc = 16340;
@@ -1925,7 +1925,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 643";
 		rLen = 0;
-		rLoc = 16437;
+		rLoc = 16356;
 		rType = 0;
 		vrLen = 1623;
 		vrLoc = 15151;
@@ -1985,7 +1985,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 474";
 		rLen = 0;
-		rLoc = 13759;
+		rLoc = 13902;
 		rType = 0;
 		vrLen = 1607;
 		vrLoc = 12587;
@@ -2015,7 +2015,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 474";
 		rLen = 0;
-		rLoc = 13759;
+		rLoc = 13902;
 		rType = 0;
 		vrLen = 1634;
 		vrLoc = 12587;
@@ -2025,7 +2025,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 643";
 		rLen = 0;
-		rLoc = 16437;
+		rLoc = 16356;
 		rType = 0;
 		vrLen = 1604;
 		vrLoc = 15170;
@@ -2035,7 +2035,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 645";
 		rLen = 0;
-		rLoc = 16755;
+		rLoc = 16674;
 		rType = 0;
 		vrLen = 1534;
 		vrLoc = 15273;
@@ -2065,7 +2065,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 685";
 		rLen = 0;
-		rLoc = 17876;
+		rLoc = 17794;
 		rType = 0;
 		vrLen = 1345;
 		vrLoc = 15769;
@@ -2095,7 +2095,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 668";
 		rLen = 0;
-		rLoc = 17425;
+		rLoc = 17344;
 		rType = 0;
 		vrLen = 1361;
 		vrLoc = 15769;
@@ -2125,7 +2125,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 668";
 		rLen = 0;
-		rLoc = 17442;
+		rLoc = 17361;
 		rType = 0;
 		vrLen = 1375;
 		vrLoc = 15769;
@@ -2155,7 +2155,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 665";
 		rLen = 0;
-		rLoc = 17304;
+		rLoc = 17223;
 		rType = 0;
 		vrLen = 1373;
 		vrLoc = 15769;
@@ -2185,7 +2185,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 448";
 		rLen = 0;
-		rLoc = 11650;
+		rLoc = 11648;
 		rType = 0;
 		vrLen = 1165;
 		vrLoc = 10471;
@@ -2215,7 +2215,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 668";
 		rLen = 0;
-		rLoc = 17408;
+		rLoc = 17327;
 		rType = 0;
 		vrLen = 1371;
 		vrLoc = 15769;
@@ -2225,7 +2225,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 668";
 		rLen = 0;
-		rLoc = 17408;
+		rLoc = 17327;
 		rType = 0;
 		vrLen = 1371;
 		vrLoc = 15767;
@@ -2255,7 +2255,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 668";
 		rLen = 0;
-		rLoc = 17408;
+		rLoc = 17327;
 		rType = 0;
 		vrLen = 1371;
 		vrLoc = 15767;
@@ -2312,7 +2312,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 661";
 		rLen = 0;
-		rLoc = 17017;
+		rLoc = 16936;
 		rType = 0;
 		vrLen = 1371;
 		vrLoc = 15769;
@@ -2322,7 +2322,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 474";
 		rLen = 0;
-		rLoc = 13759;
+		rLoc = 13902;
 		rType = 0;
 		vrLen = 1634;
 		vrLoc = 12587;
@@ -2342,7 +2342,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 469";
 		rLen = 77;
-		rLoc = 13488;
+		rLoc = 13631;
 		rType = 0;
 		vrLen = 1489;
 		vrLoc = 12578;
@@ -2352,7 +2352,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 685";
 		rLen = 0;
-		rLoc = 17876;
+		rLoc = 17794;
 		rType = 0;
 		vrLen = 1298;
 		vrLoc = 15840;
@@ -2362,7 +2362,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 685";
 		rLen = 0;
-		rLoc = 17876;
+		rLoc = 17794;
 		rType = 0;
 		vrLen = 1300;
 		vrLoc = 15838;
@@ -2407,24 +2407,6 @@
 		vrLen = 941;
 		vrLoc = 260;
 	};
-	21652BCC1461D852007BB464 /* margBlobCorrector007.cpp:695 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
-		functionName = "margBlobCorrector::calculatePersUndistBounds()";
-		hitCount = 4;
-		ignoreCount = 0;
-		lineNumber = 695;
-		location = emptyExampleDebug;
-		modificationTime = 341960136.814906;
-		originalNumberOfMultipleMatches = 1;
-		state = 1;
-	};
 	21652BD01461D855007BB464 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 219B9E971443BE1B0078DC3D /* margCoordWarping007.h */;
@@ -2440,7 +2422,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 650";
 		rLen = 46;
-		rLoc = 16833;
+		rLoc = 16752;
 		rType = 0;
 		vrLen = 1368;
 		vrLoc = 15770;
@@ -2450,7 +2432,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 650";
 		rLen = 46;
-		rLoc = 16833;
+		rLoc = 16752;
 		rType = 0;
 		vrLen = 1299;
 		vrLoc = 15839;
@@ -2460,7 +2442,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 650";
 		rLen = 46;
-		rLoc = 16833;
+		rLoc = 16752;
 		rType = 0;
 		vrLen = 1300;
 		vrLoc = 15838;
@@ -2470,7 +2452,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 686";
 		rLen = 0;
-		rLoc = 17929;
+		rLoc = 17794;
 		rType = 0;
 		vrLen = 1347;
 		vrLoc = 15840;
@@ -2501,7 +2483,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 451;
+		rLoc = 456;
 		rType = 1;
 	};
 	21652BE71461E1E7007BB464 /* PBXTextBookmark */ = {
@@ -2509,7 +2491,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 446";
 		rLen = 0;
-		rLoc = 12861;
+		rLoc = 12945;
 		rType = 0;
 		vrLen = 552;
 		vrLoc = 12380;
@@ -2559,7 +2541,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 474";
 		rLen = 6;
-		rLoc = 13769;
+		rLoc = 13912;
 		rType = 0;
 		vrLen = 1641;
 		vrLoc = 12719;
@@ -2569,7 +2551,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 475";
 		rLen = 0;
-		rLoc = 13784;
+		rLoc = 13927;
 		rType = 0;
 		vrLen = 1546;
 		vrLoc = 12599;
@@ -2580,7 +2562,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 451;
+		rLoc = 456;
 		rType = 1;
 	};
 	21652BF21461E224007BB464 /* PBXTextBookmark */ = {
@@ -2588,7 +2570,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 446";
 		rLen = 0;
-		rLoc = 12840;
+		rLoc = 12924;
 		rType = 0;
 		vrLen = 496;
 		vrLoc = 12433;
@@ -2598,7 +2580,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 475";
 		rLen = 0;
-		rLoc = 13784;
+		rLoc = 13927;
 		rType = 0;
 		vrLen = 1709;
 		vrLoc = 12599;
@@ -2638,7 +2620,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 674";
 		rLen = 0;
-		rLoc = 17485;
+		rLoc = 17404;
 		rType = 0;
 		vrLen = 1369;
 		vrLoc = 15835;
@@ -2648,7 +2630,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 674";
 		rLen = 0;
-		rLoc = 17485;
+		rLoc = 17404;
 		rType = 0;
 		vrLen = 1369;
 		vrLoc = 15835;
@@ -2658,7 +2640,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 446";
 		rLen = 0;
-		rLoc = 12840;
+		rLoc = 12924;
 		rType = 0;
 		vrLen = 405;
 		vrLoc = 12716;
@@ -2668,7 +2650,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 668";
 		rLen = 0;
-		rLoc = 17172;
+		rLoc = 17091;
 		rType = 0;
 		vrLen = 1374;
 		vrLoc = 15835;
@@ -2678,7 +2660,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 653";
 		rLen = 0;
-		rLoc = 16725;
+		rLoc = 16644;
 		rType = 0;
 		vrLen = 1507;
 		vrLoc = 14997;
@@ -2688,7 +2670,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 446";
 		rLen = 0;
-		rLoc = 12840;
+		rLoc = 12924;
 		rType = 0;
 		vrLen = 315;
 		vrLoc = 12929;
@@ -2698,7 +2680,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 653";
 		rLen = 0;
-		rLoc = 16725;
+		rLoc = 16644;
 		rType = 0;
 		vrLen = 1507;
 		vrLoc = 14997;
@@ -2708,7 +2690,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 694";
 		rLen = 0;
-		rLoc = 17876;
+		rLoc = 17794;
 		rType = 0;
 		vrLen = 1477;
 		vrLoc = 15906;
@@ -2728,7 +2710,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 446";
 		rLen = 0;
-		rLoc = 12840;
+		rLoc = 12924;
 		rType = 0;
 		vrLen = 445;
 		vrLoc = 12936;
@@ -2808,7 +2790,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 650";
 		rLen = 0;
-		rLoc = 16553;
+		rLoc = 16472;
 		rType = 0;
 		vrLen = 1719;
 		vrLoc = 15341;
@@ -2818,7 +2800,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 650";
 		rLen = 0;
-		rLoc = 16539;
+		rLoc = 16458;
 		rType = 0;
 		vrLen = 1455;
 		vrLoc = 15837;
@@ -2828,7 +2810,7 @@
 		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
 		name = "margBlobCorrector007.cpp: 695";
 		rLen = 0;
-		rLoc = 17876;
+		rLoc = 17794;
 		rType = 0;
 		vrLen = 1497;
 		vrLoc = 15908;
@@ -2878,7 +2860,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 287";
 		rLen = 0;
-		rLoc = 7635;
+		rLoc = 7719;
 		rType = 0;
 		vrLen = 964;
 		vrLoc = 6890;
@@ -2907,7 +2889,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 450";
 		rLen = 0;
-		rLoc = 12840;
+		rLoc = 12924;
 		rType = 0;
 		vrLen = 585;
 		vrLoc = 13322;
@@ -2937,7 +2919,7 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 348";
 		rLen = 0;
-		rLoc = 9772;
+		rLoc = 9856;
 		rType = 0;
 		vrLen = 847;
 		vrLoc = 9042;
@@ -2996,10 +2978,838 @@
 		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
 		name = "margModule007.cpp: 334";
 		rLen = 0;
-		rLoc = 8912;
+		rLoc = 8996;
 		rType = 0;
 		vrLen = 1539;
 		vrLoc = 7811;
+	};
+	21652C541462E504007BB464 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+	};
+	21652C591462E585007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */;
+		name = "testApp.cpp: 79";
+		rLen = 0;
+		rLoc = 2187;
+		rType = 0;
+		vrLen = 464;
+		vrLoc = 1837;
+	};
+	21652C5A1462E585007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 83";
+		rLen = 0;
+		rLoc = 1794;
+		rType = 0;
+		vrLen = 301;
+		vrLoc = 1641;
+	};
+	21652C5B1462E585007BB464 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'const' qualifiers cannot be applied to 'ofRectangle&'";
+		fRef = 219B9F7D1443C9B80078DC3D /* margBlobFinder007.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 56;
+		rType = 1;
+	};
+	21652C5C1462E585007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7D1443C9B80078DC3D /* margBlobFinder007.h */;
+		name = "margBlobFinder007.h: 57";
+		rLen = 0;
+		rLoc = 1337;
+		rType = 0;
+		vrLen = 362;
+		vrLoc = 1246;
+	};
+	21652C5F1462E631007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9D871443B3B30078DC3D /* ofxCvImage.h */;
+		name = "ofxCvImage.h: 48";
+		rLen = 36;
+		rLoc = 1039;
+		rType = 0;
+		vrLen = 1811;
+		vrLoc = 419;
+	};
+	21652C601462E631007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7B1443C9B80078DC3D /* margBlobCorrector007.h */;
+		name = "margBlobCorrector007.h: 90";
+		rLen = 0;
+		rLoc = 2159;
+		rType = 0;
+		vrLen = 978;
+		vrLoc = 1194;
+	};
+	21652C611462E631007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		name = "margBlobCorrector007.cpp: 727";
+		rLen = 0;
+		rLoc = 19228;
+		rType = 0;
+		vrLen = 1382;
+		vrLoc = 16726;
+	};
+	21652C621462E631007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7D1443C9B80078DC3D /* margBlobFinder007.h */;
+		name = "margBlobFinder007.h: 57";
+		rLen = 0;
+		rLoc = 1373;
+		rType = 0;
+		vrLen = 1352;
+		vrLoc = 370;
+	};
+	21652C631462E631007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 210";
+		rLen = 0;
+		rLoc = 5511;
+		rType = 0;
+		vrLen = 1900;
+		vrLoc = 4734;
+	};
+	21652C641462E631007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC81443CDE40078DC3D /* margModule007.h */;
+		name = "margModule007.h: 62";
+		rLen = 146;
+		rLoc = 1042;
+		rType = 0;
+		vrLen = 2323;
+		vrLoc = 1402;
+	};
+	21652C651462E631007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 334";
+		rLen = 0;
+		rLoc = 8996;
+		rType = 0;
+		vrLen = 1740;
+		vrLoc = 7811;
+	};
+	21652C661462E631007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 323";
+		rLen = 28;
+		rLoc = 8416;
+		rType = 0;
+		vrLen = 1864;
+		vrLoc = 8080;
+	};
+	21652C691462E631007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652C6D1462E6AC007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 323";
+		rLen = 28;
+		rLoc = 8416;
+		rType = 0;
+		vrLen = 1893;
+		vrLoc = 8080;
+	};
+	21652C6E1462E6AC007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 210";
+		rLen = 0;
+		rLoc = 5511;
+		rType = 0;
+		vrLen = 1821;
+		vrLoc = 4810;
+	};
+	21652C6F1462E6AC007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 320";
+		rLen = 0;
+		rLoc = 8911;
+		rType = 0;
+		vrLen = 1127;
+		vrLoc = 8206;
+	};
+	21652C701462E6AC007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652C761462E772007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 266";
+		rLen = 0;
+		rLoc = 7687;
+		rType = 0;
+		vrLen = 1601;
+		vrLoc = 6159;
+	};
+	21652C771462E772007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652C7B1462E868007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 266";
+		rLen = 0;
+		rLoc = 7687;
+		rType = 0;
+		vrLen = 1632;
+		vrLoc = 6159;
+	};
+	21652C7C1462E868007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		name = "margBlobCorrector007.cpp: 727";
+		rLen = 0;
+		rLoc = 19228;
+		rType = 0;
+		vrLen = 1352;
+		vrLoc = 16756;
+	};
+	21652C7D1462E868007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		name = "margBlobCorrector007.cpp: 707";
+		rLen = 0;
+		rLoc = 17509;
+		rType = 0;
+		vrLen = 1491;
+		vrLoc = 16865;
+	};
+	21652C7E1462E868007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652C841462E9AB007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		name = "margBlobCorrector007.cpp: 724";
+		rLen = 0;
+		rLoc = 17794;
+		rType = 0;
+		vrLen = 1657;
+		vrLoc = 16832;
+	};
+	21652C851462E9AB007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1086;
+		vrLoc = 2555;
+	};
+	21652C881462EA6D007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		name = "margBlobCorrector007.cpp: 724";
+		rLen = 0;
+		rLoc = 17794;
+		rType = 0;
+		vrLen = 1665;
+		vrLoc = 16865;
+	};
+	21652C891462EA6D007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 266";
+		rLen = 0;
+		rLoc = 7687;
+		rType = 0;
+		vrLen = 1632;
+		vrLoc = 6159;
+	};
+	21652C8A1462EA6D007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 266";
+		rLen = 0;
+		rLoc = 7687;
+		rType = 0;
+		vrLen = 1659;
+		vrLoc = 6321;
+	};
+	21652C8B1462EA6D007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1086;
+		vrLoc = 2555;
+	};
+	21652C9414630D4B007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 266";
+		rLen = 0;
+		rLoc = 7687;
+		rType = 0;
+		vrLen = 1396;
+		vrLoc = 6937;
+	};
+	21652C9514630D4B007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7B1443C9B80078DC3D /* margBlobCorrector007.h */;
+		name = "margBlobCorrector007.h: 83";
+		rLen = 0;
+		rLoc = 1884;
+		rType = 0;
+		vrLen = 1027;
+		vrLoc = 1389;
+	};
+	21652C9614630D4B007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		name = "margBlobCorrector007.cpp: 638";
+		rLen = 0;
+		rLoc = 15231;
+		rType = 0;
+		vrLen = 982;
+		vrLoc = 12324;
+	};
+	21652C9714630D4B007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		name = "margBlobCorrector007.cpp: 638";
+		rLen = 0;
+		rLoc = 15228;
+		rType = 0;
+		vrLen = 1608;
+		vrLoc = 14538;
+	};
+	21652C9814630D4B007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652C9C14630DA5007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		name = "margBlobCorrector007.cpp: 489";
+		rLen = 0;
+		rLoc = 11947;
+		rType = 0;
+		vrLen = 1114;
+		vrLoc = 11017;
+	};
+	21652C9D14630DA5007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652C9F14630E1D007BB464 /* margBlobCorrector007.cpp:732 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		functionName = "margBlobCorrector::calculateUndistortBounds()";
+		hitCount = 1;
+		ignoreCount = 0;
+		lineNumber = 732;
+		location = emptyExampleDebug;
+		modificationTime = 342036015.38148;
+		originalNumberOfMultipleMatches = 1;
+		state = 1;
+	};
+	21652CA314630E21007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		name = "margBlobCorrector007.cpp: 735";
+		rLen = 0;
+		rLoc = 18112;
+		rType = 0;
+		vrLen = 1107;
+		vrLoc = 17613;
+	};
+	21652CA414630E21007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		name = "margBlobCorrector007.cpp: 735";
+		rLen = 0;
+		rLoc = 18112;
+		rType = 0;
+		vrLen = 1014;
+		vrLoc = 17706;
+	};
+	21652CA514630E21007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652CAB14630E92007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		name = "margBlobCorrector007.cpp: 729";
+		rLen = 0;
+		rLoc = 17989;
+		rType = 0;
+		vrLen = 1051;
+		vrLoc = 17791;
+	};
+	21652CAC14630E92007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1086;
+		vrLoc = 2555;
+	};
+	21652CB314630F73007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		rLen = 1;
+		rLoc = 318;
+		rType = 1;
+	};
+	21652CB414630F73007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		name = "margBlobCorrector007.cpp: 477";
+		rLen = 0;
+		rLoc = 11614;
+		rType = 0;
+		vrLen = 1118;
+		vrLoc = 10954;
+	};
+	21652CB514630F73007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652CB914631059007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		name = "margBlobCorrector007.cpp: 477";
+		rLen = 0;
+		rLoc = 11614;
+		rType = 0;
+		vrLen = 1162;
+		vrLoc = 10954;
+	};
+	21652CBA14631059007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9D871443B3B30078DC3D /* ofxCvImage.h */;
+		name = "ofxCvImage.h: 48";
+		rLen = 36;
+		rLoc = 1039;
+		rType = 0;
+		vrLen = 1743;
+		vrLoc = 436;
+	};
+	21652CBB14631059007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 222";
+		rLen = 0;
+		rLoc = 5930;
+		rType = 0;
+		vrLen = 1645;
+		vrLoc = 5149;
+	};
+	21652CBC14631059007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 222";
+		rLen = 0;
+		rLoc = 5930;
+		rType = 0;
+		vrLen = 1583;
+		vrLoc = 5222;
+	};
+	21652CBD14631059007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652CC114631077007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 222";
+		rLen = 0;
+		rLoc = 5930;
+		rType = 0;
+		vrLen = 1514;
+		vrLoc = 5337;
+	};
+	21652CC214631077007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652CC61463108A007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 222";
+		rLen = 0;
+		rLoc = 5930;
+		rType = 0;
+		vrLen = 1598;
+		vrLoc = 5364;
+	};
+	21652CC71463108A007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652CCB146310D9007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */;
+		name = "margBlobCorrector007.cpp: 477";
+		rLen = 0;
+		rLoc = 11614;
+		rType = 0;
+		vrLen = 1076;
+		vrLoc = 17578;
+	};
+	21652CCC146310D9007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 222";
+		rLen = 0;
+		rLoc = 5930;
+		rType = 0;
+		vrLen = 1701;
+		vrLoc = 5364;
+	};
+	21652CCD146310D9007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 212";
+		rLen = 0;
+		rLoc = 5536;
+		rType = 0;
+		vrLen = 1805;
+		vrLoc = 4429;
+	};
+	21652CCE146310D9007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652CD21463111A007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 269";
+		rLen = 0;
+		rLoc = 7687;
+		rType = 0;
+		vrLen = 1647;
+		vrLoc = 6428;
+	};
+	21652CD31463111A007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652CD71463114B007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 256";
+		rLen = 0;
+		rLoc = 7137;
+		rType = 0;
+		vrLen = 1668;
+		vrLoc = 6432;
+	};
+	21652CD81463114B007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652CDA146312CC007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 256";
+		rLen = 0;
+		rLoc = 7137;
+		rType = 0;
+		vrLen = 1723;
+		vrLoc = 6432;
+	};
+	21652CDB146312CC007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1086;
+		vrLoc = 2555;
+	};
+	21652CE014638BA5007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 256";
+		rLen = 0;
+		rLoc = 7137;
+		rType = 0;
+		vrLen = 1623;
+		vrLoc = 6655;
+	};
+	21652CE114638BA5007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1086;
+		vrLoc = 2555;
+	};
+	21652CE414638BEA007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 210";
+		rLen = 0;
+		rLoc = 5516;
+		rType = 0;
+		vrLen = 1510;
+		vrLoc = 5183;
+	};
+	21652CE514638BEA007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652CE714638BF8007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7D1443C9B80078DC3D /* margBlobFinder007.h */;
+		name = "margBlobFinder007.h: 57";
+		rLen = 0;
+		rLoc = 1337;
+		rType = 0;
+		vrLen = 142;
+		vrLoc = 2186;
+	};
+	21652CEA14638C77007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1235;
+		vrLoc = 3337;
+	};
+	21652CEB14638C77007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 210";
+		rLen = 0;
+		rLoc = 5535;
+		rType = 0;
+		vrLen = 1304;
+		vrLoc = 3430;
+	};
+	21652CEC14638C77007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 212";
+		rLen = 0;
+		rLoc = 5511;
+		rType = 0;
+		vrLen = 1730;
+		vrLoc = 4614;
+	};
+	21652CED14638C77007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652CEF14638CD6007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7D1443C9B80078DC3D /* margBlobFinder007.h */;
+		name = "margBlobFinder007.h: 57";
+		rLen = 0;
+		rLoc = 1337;
+		rType = 0;
+		vrLen = 138;
+		vrLoc = 2215;
+	};
+	21652CF014638CDB007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 212";
+		rLen = 0;
+		rLoc = 5511;
+		rType = 0;
+		vrLen = 1761;
+		vrLoc = 4614;
+	};
+	21652CF114638CDB007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1086;
+		vrLoc = 2555;
+	};
+	21652CF614638E62007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 224";
+		rLen = 0;
+		rLoc = 5930;
+		rType = 0;
+		vrLen = 1538;
+		vrLoc = 5152;
+	};
+	21652CF714638E62007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 2555;
+	};
+	21652CF914638E99007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 222";
+		rLen = 0;
+		rLoc = 5930;
+		rType = 0;
+		vrLen = 1676;
+		vrLoc = 4834;
+	};
+	21652CFA14638E99007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1086;
+		vrLoc = 2555;
+	};
+	21652CFB14638EEF007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */;
+		name = "margBlobFinder007.cpp: 222";
+		rLen = 0;
+		rLoc = 5930;
+		rType = 0;
+		vrLen = 1860;
+		vrLoc = 4421;
+	};
+	21652CFC14638EEF007BB464 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 144";
+		rLen = 20;
+		rLoc = 3607;
+		rType = 0;
+		vrLen = 1086;
+		vrLoc = 2555;
 	};
 	217494C2144F63A100813BB3 /* goQtUtils.cpp */ = {
 		uiCtxt = {
@@ -3123,7 +3933,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = "";
-		modificationTime = 341960156.717406;
+		modificationTime = 342036099.962184;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = EXC_BAD_ACCESS;
@@ -3275,9 +4085,9 @@
 	};
 	219B9D871443B3B30078DC3D /* ofxCvImage.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {615, 2717}}";
-			sepNavSelRange = "{2069, 0}";
-			sepNavVisRange = "{1369, 1153}";
+			sepNavIntBoundsRect = "{{0, 0}, {922, 2665}}";
+			sepNavSelRange = "{1039, 36}";
+			sepNavVisRange = "{436, 1743}";
 		};
 	};
 	219B9D881443B3B30078DC3D /* ofxCvMain.h */ = {
@@ -3591,30 +4401,30 @@
 	};
 	219B9F7A1443C9B80078DC3D /* margBlobCorrector007.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {942, 9360}}";
-			sepNavSelRange = "{10541, 0}";
-			sepNavVisRange = "{10501, 312}";
+			sepNavIntBoundsRect = "{{0, 0}, {964, 10374}}";
+			sepNavSelRange = "{11614, 0}";
+			sepNavVisRange = "{17578, 1076}";
 		};
 	};
 	219B9F7B1443C9B80078DC3D /* margBlobCorrector007.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {922, 2834}}";
-			sepNavSelRange = "{1386, 0}";
-			sepNavVisRange = "{360, 1357}";
+			sepNavSelRange = "{1884, 0}";
+			sepNavVisRange = "{1389, 1027}";
 		};
 	};
 	219B9F7C1443C9B80078DC3D /* margBlobFinder007.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {922, 4953}}";
-			sepNavSelRange = "{178, 0}";
-			sepNavVisRange = "{0, 1066}";
+			sepNavIntBoundsRect = "{{0, 0}, {922, 4628}}";
+			sepNavSelRange = "{5930, 0}";
+			sepNavVisRange = "{4421, 1860}";
 		};
 	};
 	219B9F7D1443C9B80078DC3D /* margBlobFinder007.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {922, 1833}}";
-			sepNavSelRange = "{248, 0}";
-			sepNavVisRange = "{0, 661}";
+			sepNavIntBoundsRect = "{{0, 0}, {942, 1794}}";
+			sepNavSelRange = "{1337, 0}";
+			sepNavVisRange = "{2215, 138}";
 		};
 	};
 	219B9F7E1443C9B80078DC3D /* margBlobInterpolator007.cpp */ = {
@@ -3644,16 +4454,16 @@
 	};
 	219B9FC71443CDE40078DC3D /* margModule007.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1307, 7345}}";
-			sepNavSelRange = "{8912, 0}";
-			sepNavVisRange = "{7811, 1539}";
+			sepNavIntBoundsRect = "{{0, 0}, {775, 7527}}";
+			sepNavSelRange = "{3607, 20}";
+			sepNavVisRange = "{2555, 1086}";
 		};
 	};
 	219B9FC81443CDE40078DC3D /* margModule007.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1027, 2899}}";
-			sepNavSelRange = "{2201, 0}";
-			sepNavVisRange = "{1036, 2540}";
+			sepNavIntBoundsRect = "{{0, 0}, {1027, 2951}}";
+			sepNavSelRange = "{1042, 146}";
+			sepNavVisRange = "{1402, 2323}";
 		};
 	};
 	219BA0351443D2490078DC3D /* PBXTextBookmark */ = {
@@ -3927,7 +4737,7 @@
 		);
 		breakpoints = (
 			217AC49014571CAF00F0879A /* EXC_BAD_ACCESS */,
-			21652BCC1461D852007BB464 /* margBlobCorrector007.cpp:695 */,
+			21652C9F14630E1D007BB464 /* margBlobCorrector007.cpp:732 */,
 		);
 		codeSenseManager = 219B9D181443B3430078DC3D /* Code sense */;
 		executables = (
@@ -4321,6 +5131,88 @@
 			21652C4C1461F0F8007BB464 /* PBXTextBookmark */ = 21652C4C1461F0F8007BB464 /* PBXTextBookmark */;
 			21652C4D1461F0F8007BB464 /* PBXTextBookmark */ = 21652C4D1461F0F8007BB464 /* PBXTextBookmark */;
 			21652C4E1461F0F8007BB464 /* PBXTextBookmark */ = 21652C4E1461F0F8007BB464 /* PBXTextBookmark */;
+			21652C541462E504007BB464 /* PBXBookmark */ = 21652C541462E504007BB464 /* PBXBookmark */;
+			21652C591462E585007BB464 /* PBXTextBookmark */ = 21652C591462E585007BB464 /* PBXTextBookmark */;
+			21652C5A1462E585007BB464 /* PBXTextBookmark */ = 21652C5A1462E585007BB464 /* PBXTextBookmark */;
+			21652C5B1462E585007BB464 /* XCBuildMessageTextBookmark */ = 21652C5B1462E585007BB464 /* XCBuildMessageTextBookmark */;
+			21652C5C1462E585007BB464 /* PBXTextBookmark */ = 21652C5C1462E585007BB464 /* PBXTextBookmark */;
+			21652C5F1462E631007BB464 /* PBXTextBookmark */ = 21652C5F1462E631007BB464 /* PBXTextBookmark */;
+			21652C601462E631007BB464 /* PBXTextBookmark */ = 21652C601462E631007BB464 /* PBXTextBookmark */;
+			21652C611462E631007BB464 /* PBXTextBookmark */ = 21652C611462E631007BB464 /* PBXTextBookmark */;
+			21652C621462E631007BB464 /* PBXTextBookmark */ = 21652C621462E631007BB464 /* PBXTextBookmark */;
+			21652C631462E631007BB464 /* PBXTextBookmark */ = 21652C631462E631007BB464 /* PBXTextBookmark */;
+			21652C641462E631007BB464 /* PBXTextBookmark */ = 21652C641462E631007BB464 /* PBXTextBookmark */;
+			21652C651462E631007BB464 /* PBXTextBookmark */ = 21652C651462E631007BB464 /* PBXTextBookmark */;
+			21652C661462E631007BB464 /* PBXTextBookmark */ = 21652C661462E631007BB464 /* PBXTextBookmark */;
+			21652C691462E631007BB464 /* PBXTextBookmark */ = 21652C691462E631007BB464 /* PBXTextBookmark */;
+			21652C6D1462E6AC007BB464 /* PBXTextBookmark */ = 21652C6D1462E6AC007BB464 /* PBXTextBookmark */;
+			21652C6E1462E6AC007BB464 /* PBXTextBookmark */ = 21652C6E1462E6AC007BB464 /* PBXTextBookmark */;
+			21652C6F1462E6AC007BB464 /* PBXTextBookmark */ = 21652C6F1462E6AC007BB464 /* PBXTextBookmark */;
+			21652C701462E6AC007BB464 /* PBXTextBookmark */ = 21652C701462E6AC007BB464 /* PBXTextBookmark */;
+			21652C761462E772007BB464 /* PBXTextBookmark */ = 21652C761462E772007BB464 /* PBXTextBookmark */;
+			21652C771462E772007BB464 /* PBXTextBookmark */ = 21652C771462E772007BB464 /* PBXTextBookmark */;
+			21652C7B1462E868007BB464 /* PBXTextBookmark */ = 21652C7B1462E868007BB464 /* PBXTextBookmark */;
+			21652C7C1462E868007BB464 /* PBXTextBookmark */ = 21652C7C1462E868007BB464 /* PBXTextBookmark */;
+			21652C7D1462E868007BB464 /* PBXTextBookmark */ = 21652C7D1462E868007BB464 /* PBXTextBookmark */;
+			21652C7E1462E868007BB464 /* PBXTextBookmark */ = 21652C7E1462E868007BB464 /* PBXTextBookmark */;
+			21652C841462E9AB007BB464 /* PBXTextBookmark */ = 21652C841462E9AB007BB464 /* PBXTextBookmark */;
+			21652C851462E9AB007BB464 /* PBXTextBookmark */ = 21652C851462E9AB007BB464 /* PBXTextBookmark */;
+			21652C881462EA6D007BB464 /* PBXTextBookmark */ = 21652C881462EA6D007BB464 /* PBXTextBookmark */;
+			21652C891462EA6D007BB464 /* PBXTextBookmark */ = 21652C891462EA6D007BB464 /* PBXTextBookmark */;
+			21652C8A1462EA6D007BB464 /* PBXTextBookmark */ = 21652C8A1462EA6D007BB464 /* PBXTextBookmark */;
+			21652C8B1462EA6D007BB464 /* PBXTextBookmark */ = 21652C8B1462EA6D007BB464 /* PBXTextBookmark */;
+			21652C9414630D4B007BB464 /* PBXTextBookmark */ = 21652C9414630D4B007BB464 /* PBXTextBookmark */;
+			21652C9514630D4B007BB464 /* PBXTextBookmark */ = 21652C9514630D4B007BB464 /* PBXTextBookmark */;
+			21652C9614630D4B007BB464 /* PBXTextBookmark */ = 21652C9614630D4B007BB464 /* PBXTextBookmark */;
+			21652C9714630D4B007BB464 /* PBXTextBookmark */ = 21652C9714630D4B007BB464 /* PBXTextBookmark */;
+			21652C9814630D4B007BB464 /* PBXTextBookmark */ = 21652C9814630D4B007BB464 /* PBXTextBookmark */;
+			21652C9C14630DA5007BB464 /* PBXTextBookmark */ = 21652C9C14630DA5007BB464 /* PBXTextBookmark */;
+			21652C9D14630DA5007BB464 /* PBXTextBookmark */ = 21652C9D14630DA5007BB464 /* PBXTextBookmark */;
+			21652CA314630E21007BB464 /* PBXTextBookmark */ = 21652CA314630E21007BB464 /* PBXTextBookmark */;
+			21652CA414630E21007BB464 /* PBXTextBookmark */ = 21652CA414630E21007BB464 /* PBXTextBookmark */;
+			21652CA514630E21007BB464 /* PBXTextBookmark */ = 21652CA514630E21007BB464 /* PBXTextBookmark */;
+			21652CAB14630E92007BB464 /* PBXTextBookmark */ = 21652CAB14630E92007BB464 /* PBXTextBookmark */;
+			21652CAC14630E92007BB464 /* PBXTextBookmark */ = 21652CAC14630E92007BB464 /* PBXTextBookmark */;
+			21652CB314630F73007BB464 /* PBXTextBookmark */ = 21652CB314630F73007BB464 /* PBXTextBookmark */;
+			21652CB414630F73007BB464 /* PBXTextBookmark */ = 21652CB414630F73007BB464 /* PBXTextBookmark */;
+			21652CB514630F73007BB464 /* PBXTextBookmark */ = 21652CB514630F73007BB464 /* PBXTextBookmark */;
+			21652CB914631059007BB464 /* PBXTextBookmark */ = 21652CB914631059007BB464 /* PBXTextBookmark */;
+			21652CBA14631059007BB464 /* PBXTextBookmark */ = 21652CBA14631059007BB464 /* PBXTextBookmark */;
+			21652CBB14631059007BB464 /* PBXTextBookmark */ = 21652CBB14631059007BB464 /* PBXTextBookmark */;
+			21652CBC14631059007BB464 /* PBXTextBookmark */ = 21652CBC14631059007BB464 /* PBXTextBookmark */;
+			21652CBD14631059007BB464 /* PBXTextBookmark */ = 21652CBD14631059007BB464 /* PBXTextBookmark */;
+			21652CC114631077007BB464 /* PBXTextBookmark */ = 21652CC114631077007BB464 /* PBXTextBookmark */;
+			21652CC214631077007BB464 /* PBXTextBookmark */ = 21652CC214631077007BB464 /* PBXTextBookmark */;
+			21652CC61463108A007BB464 /* PBXTextBookmark */ = 21652CC61463108A007BB464 /* PBXTextBookmark */;
+			21652CC71463108A007BB464 /* PBXTextBookmark */ = 21652CC71463108A007BB464 /* PBXTextBookmark */;
+			21652CCB146310D9007BB464 /* PBXTextBookmark */ = 21652CCB146310D9007BB464 /* PBXTextBookmark */;
+			21652CCC146310D9007BB464 /* PBXTextBookmark */ = 21652CCC146310D9007BB464 /* PBXTextBookmark */;
+			21652CCD146310D9007BB464 /* PBXTextBookmark */ = 21652CCD146310D9007BB464 /* PBXTextBookmark */;
+			21652CCE146310D9007BB464 /* PBXTextBookmark */ = 21652CCE146310D9007BB464 /* PBXTextBookmark */;
+			21652CD21463111A007BB464 /* PBXTextBookmark */ = 21652CD21463111A007BB464 /* PBXTextBookmark */;
+			21652CD31463111A007BB464 /* PBXTextBookmark */ = 21652CD31463111A007BB464 /* PBXTextBookmark */;
+			21652CD71463114B007BB464 /* PBXTextBookmark */ = 21652CD71463114B007BB464 /* PBXTextBookmark */;
+			21652CD81463114B007BB464 /* PBXTextBookmark */ = 21652CD81463114B007BB464 /* PBXTextBookmark */;
+			21652CDA146312CC007BB464 /* PBXTextBookmark */ = 21652CDA146312CC007BB464 /* PBXTextBookmark */;
+			21652CDB146312CC007BB464 /* PBXTextBookmark */ = 21652CDB146312CC007BB464 /* PBXTextBookmark */;
+			21652CE014638BA5007BB464 /* PBXTextBookmark */ = 21652CE014638BA5007BB464 /* PBXTextBookmark */;
+			21652CE114638BA5007BB464 /* PBXTextBookmark */ = 21652CE114638BA5007BB464 /* PBXTextBookmark */;
+			21652CE414638BEA007BB464 /* PBXTextBookmark */ = 21652CE414638BEA007BB464 /* PBXTextBookmark */;
+			21652CE514638BEA007BB464 /* PBXTextBookmark */ = 21652CE514638BEA007BB464 /* PBXTextBookmark */;
+			21652CE714638BF8007BB464 /* PBXTextBookmark */ = 21652CE714638BF8007BB464 /* PBXTextBookmark */;
+			21652CEA14638C77007BB464 /* PBXTextBookmark */ = 21652CEA14638C77007BB464 /* PBXTextBookmark */;
+			21652CEB14638C77007BB464 /* PBXTextBookmark */ = 21652CEB14638C77007BB464 /* PBXTextBookmark */;
+			21652CEC14638C77007BB464 /* PBXTextBookmark */ = 21652CEC14638C77007BB464 /* PBXTextBookmark */;
+			21652CED14638C77007BB464 /* PBXTextBookmark */ = 21652CED14638C77007BB464 /* PBXTextBookmark */;
+			21652CEF14638CD6007BB464 /* PBXTextBookmark */ = 21652CEF14638CD6007BB464 /* PBXTextBookmark */;
+			21652CF014638CDB007BB464 /* PBXTextBookmark */ = 21652CF014638CDB007BB464 /* PBXTextBookmark */;
+			21652CF114638CDB007BB464 /* PBXTextBookmark */ = 21652CF114638CDB007BB464 /* PBXTextBookmark */;
+			21652CF614638E62007BB464 /* PBXTextBookmark */ = 21652CF614638E62007BB464 /* PBXTextBookmark */;
+			21652CF714638E62007BB464 /* PBXTextBookmark */ = 21652CF714638E62007BB464 /* PBXTextBookmark */;
+			21652CF914638E99007BB464 /* PBXTextBookmark */ = 21652CF914638E99007BB464 /* PBXTextBookmark */;
+			21652CFA14638E99007BB464 /* PBXTextBookmark */ = 21652CFA14638E99007BB464 /* PBXTextBookmark */;
+			21652CFB14638EEF007BB464 /* PBXTextBookmark */ = 21652CFB14638EEF007BB464 /* PBXTextBookmark */;
+			21652CFC14638EEF007BB464 /* PBXTextBookmark */ = 21652CFC14638EEF007BB464 /* PBXTextBookmark */;
 			217AC4081456F5EC00F0879A = 217AC4081456F5EC00F0879A /* PBXTextBookmark */;
 			217AC4171456F66000F0879A = 217AC4171456F66000F0879A /* PBXTextBookmark */;
 			217AC4211456F6B400F0879A = 217AC4211456F6B400F0879A /* PBXTextBookmark */;
@@ -4379,7 +5271,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {942, 5083}}";
 			sepNavSelRange = "{2187, 0}";
-			sepNavVisRange = "{1695, 597}";
+			sepNavVisRange = "{1837, 464}";
 		};
 	};
 	E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {

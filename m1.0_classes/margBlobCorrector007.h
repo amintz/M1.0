@@ -80,12 +80,16 @@ public:
 	
 	margBlob lensUndistBounds;
 	margBlob persUndistBounds;
+	margBlob undistBounds;
 	ofVec2f* persQuadPoints;
 	
 	void	 calculateLensUndistBounds();
 	void	 calculatePersUndistBounds();
+	void	 calculateUndistortBounds();
 	ofPoint	 bestIfOutOfLensBounds(ofPoint inPt);
 	void	 setPersQuadPoints(ofVec2f* quadPoints);
+	
+	ofRectangle& getPersUndistortBoundsRect();
 	
 	
 	// UTILS ---------------------------------------------------- *

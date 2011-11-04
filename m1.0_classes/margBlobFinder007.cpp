@@ -80,6 +80,12 @@ void margBlobFinder::reset() {
 
 // ------------------------------------------------------------
 
+void margBlobFinder::setROI(const ofRectangle& _rectROI) {
+	rectROI = _rectROI;
+}
+
+// ------------------------------------------------------------
+
 void margBlobFinder::threadedFunction () {
 	if (input.getWidth()!=0) {
 		while ( isThreadRunning() != 0 ) {
@@ -98,6 +104,7 @@ void margBlobFinder::threadedFunction () {
 
 void margBlobFinder::feedPixels(unsigned char* inPix) {
 	threshold(inPix);
+	input.setROI(rectROI);
 	input.setFromPixels(threshPix, width, height);
 	bNewFrame = true;
 }
@@ -200,8 +207,9 @@ int margBlobFinder::findContours(ofxCvGrayscaleImage&  _input,
 		inputCopy.setUseTexture(false);		
         inputCopy.allocate( width, height );
 	}
-	
-    inputCopy.setROI( _input.getROI() );
+
+	inputCopy.setROI( _input.getROI() );
+
     inputCopy = _input;
 	
 	CvSeq* contour_list = NULL;
@@ -243,8 +251,8 @@ int margBlobFinder::findContours(ofxCvGrayscaleImage&  _input,
 		blobs[i].area                     = fabs(area);
 		blobs[i].hole                     = area < 0 ? true : false;
 		blobs[i].length 			      = cvArcLength(cvSeqBlobs[i]);
-		blobs[i].boundingRect.x           = rect.x;
-		blobs[i].boundingRect.y           = rect.y;
+		blobs[i].boundingRect.x           = rect.x + rectROI.x;
+		blobs[i].boundingRect.y           = rect.y + rectROI.y;
 		blobs[i].boundingRect.width       = rect.width;
 		blobs[i].boundingRect.height      = rect.height;
 		blobs[i].centroid.x 			  = (myMoments->m10 / myMoments->m00);
@@ -257,7 +265,7 @@ int margBlobFinder::findContours(ofxCvGrayscaleImage&  _input,
 		
     	for( int j=0; j < cvSeqBlobs[i]->total; j++ ) {
 			CV_READ_SEQ_ELEM( pt, reader );
-            blobs[i].pts.push_back( ofPoint((float)pt.x, (float)pt.y) );
+            blobs[i].pts.push_back( ofPoint((float)pt.x + rectROI.x, (float)pt.y + rectROI.y) );
 		}
 		blobs[i].nPts	  = blobs[i].pts.size();
 		blobs[i].exposure = 1;

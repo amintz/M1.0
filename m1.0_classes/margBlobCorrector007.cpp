@@ -474,19 +474,19 @@ void margBlobCorrector::drawUndistortBounds(int x, int y, int w, int h) {
 	
 	// ---------------------------- draw perspective undistort bounds
 	
-	margBlob scaledPers = scaleBlob(persUndistBounds);
+	margBlob scaledBounds = scaleBlob(undistBounds);
 	
 	ofSetHexColor(0xFF00FF);
 	
 	ofNoFill();
 	ofBeginShape();
 	for(int j = 0; j<persUndistBounds.nPts; j++) {
-		ofVertex( scaledPers.pts[j].x, scaledPers.pts[j].y);
+		ofVertex( scaledBounds.pts[j].x, scaledBounds.pts[j].y);
 	}
 	ofEndShape();
 	
 	ofSetHexColor(0x0000FF);
-	ofRect(scaledPers.boundingRect.x, scaledPers.boundingRect.y, scaledPers.boundingRect.width, scaledPers.boundingRect.height);
+	ofRect(scaledBounds.boundingRect.x, scaledBounds.boundingRect.y, scaledBounds.boundingRect.width, scaledBounds.boundingRect.height);
 	
 	glPopMatrix();
 	ofPopStyle();
@@ -635,10 +635,9 @@ void margBlobCorrector::calculateLensUndistBounds() {
 	lensUndistBounds.boundingRect.width = maxX - minX;
 	lensUndistBounds.boundingRect.height = maxY - minY;
 	
-	//lensUndistBounds = scaleBlob(lensUndistBounds);
-}
+	calculateUndistortBounds();
 
-// -----------------------------------------------------------------
+}
 
 // -----------------------------------------------------------------
 
@@ -702,10 +701,10 @@ void margBlobCorrector::calculatePersUndistBounds() {
 			float x = ceil(persQuadPoints[v].x + (x_st * i));
 			float y = ceil(persQuadPoints[v].y + (y_st * i));
 			persUndistBounds.pts.push_back(ofVec2f( x, y ));
-			minX = x < minX ? x : minX;
-			maxX = x > maxX ? x : maxX;
-			minY = y < minY ? y : minY;
-			maxY = y > maxY ? y : maxY;
+			minX = MIN(minX, x);
+			maxX = MAX(maxX, x);
+			minY = MIN(minY, y);
+			maxY = MAX(maxY, y);
 		}
 	
 	}
@@ -717,6 +716,69 @@ void margBlobCorrector::calculatePersUndistBounds() {
 	persUndistBounds.boundingRect.width = maxX - minX;
 	persUndistBounds.boundingRect.height= maxY - minY;
 	
-	persUndistBounds = lensCorrectBlob(persUndistBounds);
+	calculateUndistortBounds();
 	
+}
+
+// ----------------------------------------------------------------
+
+void	margBlobCorrector::calculateUndistortBounds() {
+
+	if(persUndistBounds.pts.size() == 0) return;
+	
+	undistBounds.pts.clear();
+	
+	int persNPts = persUndistBounds.pts.size();
+	
+	int minX = inW;
+	int maxX = 0;
+	int minY = inH;
+	int maxY = 0;
+	
+	int u, v, i;
+	float x0 = (float)inW/2.0f,
+	y0 = float(inH)/2.0f;
+	float k1 = rX,  
+	k2 = rY,
+	k3 = 0,
+	p1 = tX,  
+	p2 = tY;
+	
+	
+	for (int j = 0; j < persNPts; j++) {
+		
+		v = round(persUndistBounds.pts[j].y);
+		u = round(persUndistBounds.pts[j].x);
+		
+		float y = (v - cY)*ifY, y2 = y*y;
+		float x = (u - cX)*ifX,
+		x2 = x*x,
+		r2 = x2 + y2,
+		_2xy = 2*x*y;
+		float kr = 1 + ((k3*r2 + k2)*r2 + k1)*r2;
+		float _x = fX*(x*kr + p1*_2xy + p2*(r2 + 2*x2)) + x0;
+		float _y = fY*(y*kr + p1*(r2 + 2*y2) + p2*_2xy) + y0;
+		int   ix = cvFloor(_x),
+		iy = cvFloor(_y);
+		
+		undistBounds.pts.push_back(ofPoint(ix, iy));
+		minX = ix < minX? ix : minX;
+		maxX = ix > maxX? ix : maxX;
+		minY = iy < minY? iy : minY;
+		maxY = iy > maxY? iy : maxY;
+	}
+	
+	undistBounds.nPts = persNPts;
+	
+	undistBounds.boundingRect.x = minX;
+	undistBounds.boundingRect.y = minY;
+	undistBounds.boundingRect.width = maxX - minX;
+	undistBounds.boundingRect.height = maxY - minY;
+	
+}
+
+// ----------------------------------------------------------------
+
+ofRectangle& margBlobCorrector::getPersUndistortBoundsRect() {
+	return undistBounds.boundingRect;
 }
