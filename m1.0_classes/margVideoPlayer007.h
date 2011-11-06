@@ -17,7 +17,7 @@ public:
 	
 	void	init(string _xmlPath, string _filePath, int _modIdx);
 	void	update();
-	void	updateVid();
+//	void	updateVid();
 	void	play();
 	void	setNextIndex(int _nextIndex);
 	unsigned char* getPixels();
@@ -25,35 +25,38 @@ public:
 	bool	getIsLoaded();
 	bool	getNeedToPlay();
 	int		getInteractMode();
-	int		getAudioIndex();
-	int		getGroupIndex();
-	bool	getNeedToSetIndex();
+	
+	void	trig();
+//	int		getAudioIndex();
+//	int		getGroupIndex();
+//	bool	getNeedToSetIndex();
 	
 	
-	ofVideoPlayerAdapt player;
+	ofVideoPlayer player;
 	
 private:
 	
 	ofxXmlSettings XML;
 	
-	unsigned char* blackPix;
+//	unsigned char* blackPix;
 	
 	string	filePath,
 			xmlPath;
-	bool	bNeedToSetIndex,
-			bNeedToPlay,
-			bNeedToLoadNext,
-			bReturnBlack;
+	bool	bNeedToPlay;
 	int		curInteractMode,
-			curVidGroup,
-			curVidIndex,
-			curAudioIndex,
-			nextVidGroup,
-			nextVidIndex,
+			curTrigger,
+			nextTrigger,
 			nextInteractMode,
-			nextAudioIndex,
-			numNextVidPossibilities,
-			nGroups,
+			nextTriggerFrame,
+//			curVidGroup,
+//			curVidIndex,
+//			curAudioIndex,
+//			nextVidGroup,
+//			nextVidIndex,
+//			nextInteractMode,
+//			nextAudioIndex,
+//			numNextVidPossibilities,
+			nTriggers,
 			modIdx;
 	
 };
