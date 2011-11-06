@@ -142,9 +142,7 @@ void margModule::update() {
 	
 	vidPlayer.update();
 	
-	if (interactMode != vidPlayer.getInteractMode()) {
-		setInteractMode(vidPlayer.getInteractMode());
-	}
+	//setInteractMode(vidPlayer.getInteractMode());
 	
 	if (interactMode == NORMAL_TRAIL || interactMode == NO_FADE_TRAIL) {
 		blobFind.feedPixels(originalPix);
@@ -205,7 +203,7 @@ void margModule::update() {
 				}
 				break;
 			case BYPASS_VIDEO:
-				if(vidPlayer.getIsLoaded()) display.feedImg(vidPlayer.getPixels(), dispWidth, dispHeight);
+				if(vidPlayer.getWidth()!=0) display.feedImg(vidPlayer.getPixels(), dispWidth, dispHeight);
 				break;
 			default:
 				//display.feedImg(vidBlender.getPixels(), dispWidth, dispHeight);
@@ -512,7 +510,6 @@ void margModule::setInteractMode(int _interactMode) {
 			trailMaker.setTrailMaker(*trailExpConst, *trailFadeConst, *trailBlurLevel, false);
 			break;
 		case BYPASS_TRAIL:
-			trailMaker.clearMap();
 			break;
 		default:
 			trailMaker.setTrailMaker(*trailExpConst, *trailFadeConst, *trailBlurLevel, true);

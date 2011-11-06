@@ -44,8 +44,6 @@ public:
 	void					exposePix(int idx, float exposure, int iterLevel);
 	void					exposePix2(int idx, float exposure, int iterLevel);
 	
-	void					clearMap();
-	
 	unsigned char *			getMap();
 	ofxCvGrayscaleImage&	getTrailImg();
 	

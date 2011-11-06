@@ -171,14 +171,6 @@ void margTrailMaker::exposeBlob(margBlob& blob, float exposureConst) {
 
 // --------------------------------------
 
-void margTrailMaker::clearMap() {
-	for (int i = 0; i < nMapVals; i++) {
-		trailMap[i] = 0;
-	}
-}
-
-// --------------------------------------
-
 unsigned char* margTrailMaker::getMap() {
 
 	return trailMap;

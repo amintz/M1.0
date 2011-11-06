@@ -12,37 +12,52 @@
 
 
 void margVideoPlayer::init(string _xmlPath, string _filePath, int _modIdx) {
+
+	bNeedToSetIndex		= true;
+	bNeedToPlay			= true;
+	bNeedToLoadNext		= false;
+	bReturnBlack		= false;
 	
-	modIdx	 = _modIdx;
+	curVidGroup			= 0;
+	modIdx				= _modIdx;
 	
-	xmlPath  = _xmlPath;
-	filePath = _filePath;
+	xmlPath = _xmlPath;
 	
-	XML.loadFile(xmlPath + "m" + ofToString(modIdx) + "vid-triggers.xml");
+	XML.loadFile(xmlPath + "m" + ofToString(modIdx) + "vids.xml");
+	
+	filePath			= _filePath;
+
 	
 	player.setUseTexture(false);
 	
+	bool success = player.loadMovie(filePath + "m" + ofToString(modIdx) + "g" + ofToString(curVidGroup) + "v0.mov");
 	
-	bool success = false;
-	while (!success) {
-		success = player.loadMovie(filePath + "m" + ofToString(modIdx) + "g0v0.mov");
-	}
+	if(success) cout << "Module " + ofToString(modIdx) + " successful" << endl;
 	
 	player.setLoopState(OF_LOOP_NONE);
-	
-	bNeedToPlay = true;
 	
 	int w = player.getWidth();
 	int h = player.getHeight();
 	int pixN = w*h*3;
 	
-	nTriggers = XML.getNumTags("trigger");
+	blackPix = new unsigned char[pixN];
 	
-	nextTrigger= 0;
+	for (int i = 0; i < pixN; i++) {
+		blackPix[i] = 0;
+	}
 	
-	XML.pushTag("trigger", nextTrigger);
-		nextTriggerFrame= XML.getValue("frame", 0, 0);
-		nextInteractMode= XML.getValue("interactMode", 1, 0);
+	nGroups = XML.getNumTags("group");
+	
+	XML.pushTag("group", curVidGroup);
+		XML.pushTag("video", 0);
+			curInteractMode = XML.getValue("interactMode", 1, 0);
+		XML.popTag();
+	XML.popTag();
+	
+	nextVidGroup		= 1;
+	
+	XML.pushTag("group", nextVidGroup);
+		numNextVidPossibilities = XML.getNumTags("video");
 	XML.popTag();
 	
 }
@@ -50,45 +65,43 @@ void margVideoPlayer::init(string _xmlPath, string _filePath, int _modIdx) {
 // ------------------------------------------------
 
 void margVideoPlayer::update() {
-	if (player.getIsMovieDone()) {
-		player.setFrame(0);
-		player.setPaused(true);
-		bNeedToPlay = true;
+	player.update();
+	if (player.getIsMovieDone() && !bNeedToLoadNext) {
+		bReturnBlack = true;
+		bNeedToLoadNext = true;
 	}
-	if(!bNeedToPlay) {
-		player.update();
-		if (nextTrigger > 0) {
-			if (player.getCurrentFrame() >= nextTriggerFrame) {
-				trig();
-			}
-		}
+	if (bNeedToLoadNext) {
+		updateVid();
+	}
+	else if(bReturnBlack && player.isPlaying() && player.isLoaded() && player.getPosition() < 0.5 && player.getPosition() > 0) {
+		bReturnBlack = false;
 	}
 }
 
 // ------------------------------------------------
 
-void margVideoPlayer::trig() {
-	
-	curTrigger = nextTrigger;
-	
-	nextTrigger = nextTrigger+1 > nTriggers? 0 : nextTrigger+1;
-	
-	curInteractMode = nextInteractMode;
-	
-	XML.pushTag("trigger", nextTrigger);
-		nextTriggerFrame= XML.getValue("frame", 0, 0);
-		nextInteractMode= XML.getValue("interactMode", 1, 0);
-	XML.popTag();
-	
+void margVideoPlayer::updateVid() {
+	player.close();
+	player.setUseTexture(false);
+	bool success = player.loadMovie(filePath + "m" + ofToString(modIdx) + "g" + ofToString(nextVidGroup) + "v" + ofToString(nextVidIndex) + ".mov");
+	player.setLoopState(OF_LOOP_NONE);
+	if(success) {
+		bNeedToLoadNext		= false;
+		bNeedToPlay			= true;
+		bNeedToSetIndex		= true;
+		curVidGroup			= nextVidGroup;
+		curInteractMode		= nextInteractMode;
+		curAudioIndex		= nextAudioIndex;
+		curVidIndex			= nextVidIndex;
+		nextVidGroup		= (curVidGroup+1) > (nGroups-1) ? 0 : curVidGroup + 1;
+	}
 }
 
 // ------------------------------------------------
 
 void margVideoPlayer::play() {
 	if(player.isLoaded()) {
-		trig();
 		player.play();
-		player.setPaused(false);
 		bNeedToPlay = false;
 	}
 }
@@ -96,7 +109,29 @@ void margVideoPlayer::play() {
 // ------------------------------------------------
 
 unsigned char* margVideoPlayer::getPixels() {
-	return player.getPixels();
+	if(bReturnBlack){
+		return blackPix;
+	}
+	else {
+		return player.getPixels();
+	}
+}
+
+// ------------------------------------------------
+
+void margVideoPlayer::setNextIndex(int _nextIndex) {
+	
+	XML.pushTag("group", nextVidGroup);
+		numNextVidPossibilities = XML.getNumTags("video");
+	nextVidIndex = _nextIndex%numNextVidPossibilities;
+		XML.pushTag("video", nextVidIndex);
+			nextInteractMode = XML.getValue("interactMode", 0, 0);
+			nextAudioIndex = XML.getValue("audioIndex", 0, 0);
+		XML.popTag();
+	XML.popTag();
+	
+	bNeedToSetIndex = false;
+	
 }
 
 // ------------------------------------------------
@@ -126,6 +161,24 @@ bool margVideoPlayer::getNeedToPlay() {
 
 int margVideoPlayer::getInteractMode() {
 	return curInteractMode;
+}
+
+// ------------------------------------------------
+
+int margVideoPlayer::getAudioIndex() {
+	return curAudioIndex;
+}
+
+// ------------------------------------------------
+
+int margVideoPlayer::getGroupIndex() {
+	return curVidGroup;
+}
+
+// ------------------------------------------------
+
+bool margVideoPlayer::getNeedToSetIndex() {
+	return bNeedToSetIndex;
 }
 
 // ------------------------------------------------
