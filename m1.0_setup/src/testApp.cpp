@@ -15,6 +15,8 @@ void testApp::setup(){
 	oscHost = "localhost"; // -------------------------------***
 	oscPort = 2222; // ---------------------------------------***
 	
+	oscSender.setup(oscHost, oscPort);
+	
 	// ---------------------------------------------------------*
 	
 	// DRAWING VARS --------------------------------------------*
@@ -79,16 +81,19 @@ void testApp::setup(){
 										  &bAdjQuad, &whichQuad);
 	}
 	
+	oscMessage.setAddress("/sound/play");
+	
 	if (checkEveryModNeedPlay()) {
 		for (int i = 0; i < numMod; i++) {
 			modules[i].playVideos();
 		}
+		oscSender.sendMessage(oscMessage);
 	}
 	
 	// INTERFACE SETUP ----------------------------------------*
 	
 	gui.addComboBox("Display Mode", displayMode, 7, modes);
-	gui.addToggle("No warp | control", bDrawUndistorted);
+	gui.addToggle("No warp control", bDrawUndistorted);
 	gui.addToggle("Control Display", bControlDisplay);
 	gui.addToggle("External Display", bExtDisplay);
 	gui.addToggle("Run Thread", bRunThread);
@@ -103,7 +108,7 @@ void testApp::setup(){
 	for (int i = 0 ; i < numMod; i++) {
 		gui.addPage("Capture " + ofToString(i));
 		//gui.addComboBox("Capture Device", 0, 0, "");
-		gui.addButton("Video Settings", opVidSet);
+		gui.addToggle("Video Settings", opVidSet);
 		gui.addComboBox("Interaction Mode", modules[i].interactMode, 3, interactModes);
 		gui.addToggle("Adj Quad", bAdjQuad);
 		gui.addComboBox("Which Quad to Adj", whichQuad, 2, quads);
@@ -154,13 +159,6 @@ void testApp::setup(){
 	for(int i = 0; i < numMod; i++) {
 		modules[i].updateSettings();
 	}
-	
-	curVidGroup = 0;
-	nextVidGroup = 1;
-	curVidIdx = 0;
-	
-	oscMessage.setAddress("/sound/group" + ofToString(curVidGroup));
-	oscMessage.addIntArg(curVidIdx);
 
 }
 
@@ -218,29 +216,19 @@ void testApp::update(){
 	}
 	
 	if (checkEveryModNeedPlay()) {
-		//curVidIdx = nextVidIdx;
-		//curVidGroup = nextVidGroup;
-		//nextVidGroup = nextVidGroup + 1 > 2? 0 : nextVidGroup + 1; 
-		
-		//oscSender.sendMessage(oscMessage);
+		oscMessage.clear();
+		oscMessage.setAddress("/sound/stop");
+		oscSender.sendMessage(oscMessage);
 		
 		oscMessage.clear();
-		oscMessage.setAddress("/sound"+ofToString(curVidGroup));
-		oscMessage.addIntArg(curVidIdx);
+		oscMessage.setAddress("/sound/play");
 		
 		for (int i = 0; i < numMod; i++) {
 			modules[i].playVideos();
 		}
 		
-		//oscSender.sendMessage(oscMessage);
+		oscSender.sendMessage(oscMessage);
 	}
-	
-//	if (checkEveryModNeedVidIndex()) {
-//		nextVidIdx = ofRandom(0, 200);
-//		for (int i = 0; i < numMod; i++) {
-//			modules[i].setNextVidIndex(nextVidIdx);
-//		}
-//	}
 	
 }
 
