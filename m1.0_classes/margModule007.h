@@ -13,7 +13,7 @@
 #include "margBlobInterpolator007.h"
 #include "margTrailMaker007.h"
 
-#include "margVideoPlayer007.h"
+#include "ofVideoPlayer.h"
 
 #include "margVideoBlender007.h"
 #include "margDisplay007.h"
@@ -181,7 +181,7 @@ private:
 	margBlobInterpolator	blobInterp;
 	margTrailMaker			trailMaker;
 
-	margVideoPlayer			vidPlayer;
+	ofVideoPlayer			vidPlayer;
 	
 	margVideoBlender		vidBlender;
 	margDisplay				display;
