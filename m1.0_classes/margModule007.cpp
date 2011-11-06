@@ -103,12 +103,7 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 	
 	// -- VIDEO PLAYER
 	
-	vidPlayer.init(filesPath, filesPath + "movies-long/", dispID);
-//	vidPlayer.setUseTexture(false);
-//
-//	vidPlayer.loadMovie(filesPath + "movies-long/m" + ofToString(dispID) + "g0v0.mov");
-//
-//	vidPlayer.setLoopState(OF_LOOP_NORMAL);
+	vidPlayer.init(filesPath, filesPath + "movies/", dispID);
 	
 	// -- VIDEO BLENDER
 	

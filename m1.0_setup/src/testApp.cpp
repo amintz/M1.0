@@ -81,8 +81,7 @@ void testApp::setup(){
 										  &bAdjQuad, &whichQuad);
 	}
 	
-	oscMessage.setAddress("/sound");
-	oscMessage.addIntArg(1);
+	oscMessage.setAddress("/sound/play");
 	
 	if (checkEveryModNeedPlay()) {
 		for (int i = 0; i < numMod; i++) {
@@ -218,13 +217,11 @@ void testApp::update(){
 	
 	if (checkEveryModNeedPlay()) {
 		oscMessage.clear();
-		oscMessage.setAddress("/sound");
-		oscMessage.addIntArg(0);
+		oscMessage.setAddress("/sound/stop");
 		oscSender.sendMessage(oscMessage);
 		
 		oscMessage.clear();
-		oscMessage.setAddress("/sound");
-		oscMessage.addIntArg(1);
+		oscMessage.setAddress("/sound/play");
 		
 		for (int i = 0; i < numMod; i++) {
 			modules[i].playVideos();

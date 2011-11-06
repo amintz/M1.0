@@ -334,7 +334,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>21652DB314645FB9007BB464</string>
+										<string>210F538814671F9100AE6121</string>
 										<key>history</key>
 										<array>
 											<string>219B9EC51443C1F40078DC3D</string>
@@ -386,7 +386,7 @@
 											<string>21652D6F1463A8DE007BB464</string>
 											<string>21652DB014645FB9007BB464</string>
 											<string>21652DB114645FB9007BB464</string>
-											<string>21652DB214645FB9007BB464</string>
+											<string>21652DB41465AA35007BB464</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -444,9 +444,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>21652D0B1463973D007BB464</string>
+				<string>210F538914671F9100AE6121</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>21652D0C1463973D007BB464</string>
+				<string>210F538A14671F9100AE6121</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -584,11 +584,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>21652D1A146398AF007BB464</string>
-		<string>21652D1B146398AF007BB464</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>219B9D151443B3430078DC3D</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/andregmintz/Dev/openFrameworks/OF_0.070_SL/apps/M1.0/m1.0_setup/m1.0_setup.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -613,7 +609,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>margModule007.cpp</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -630,8 +626,6 @@
 							<string>229pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -671,7 +665,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>219B9D151443B3430078DC3D</string>
-				<string>21652D0D1463973D007BB464</string>
+				<string>210F538B14671F9100AE6121</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -684,7 +678,7 @@
 			<key>WindowToolGUID</key>
 			<string>219B9D151443B3430078DC3D</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
