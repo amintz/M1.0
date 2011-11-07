@@ -4,6 +4,8 @@
 #include "margModule007.h"
 #include "ofxOsc.h"
 
+#include "ofxXmlSettings.h"
+
 #include "ofMain.h"
 
 class testApp : public ofBaseApp{
@@ -36,6 +38,8 @@ class testApp : public ofBaseApp{
 	
 	ofxOscMessage		oscMessage;
 	
+	string				filesPath;
+	
 	int					curVidGroup;
 	int					nextVidGroup;
 	int					curVidIdx;
@@ -45,6 +49,7 @@ class testApp : public ofBaseApp{
 	
 	margModule*			modules;
 	ofxOscSender		oscSender;
+	ofxXmlSettings		XML;
 	
 	
 	// SETUP UTILS -------------------------------*

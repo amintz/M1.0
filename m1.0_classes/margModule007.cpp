@@ -32,7 +32,16 @@ margModule::~margModule() {
 // ---------------------------------------------------
 
 void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHeight,
-					  int captDev, int _dispID, string settingFilesPath, bool _bExhibitionMode)				{
+					  int captDev, int _dispID, string settingFilesPath,
+					  bool _bExhibitionMode)				{
+	init(_camWidth, _camHeight, _dispWidth, _dispHeight,
+		 captDev, _dispID, settingFilesPath, settingFilesPath + "movies/",
+		 _bExhibitionMode);
+}
+
+void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHeight,
+					  int captDev, int _dispID, string settingFilesPath, string _moviePath,
+					  bool _bExhibitionMode)				{
 	
 	dispID = _dispID;
 	camWidth  = _camWidth;
@@ -41,6 +50,7 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 	dispHeight= _dispHeight;
 	
 	filesPath = settingFilesPath;
+	moviePath= _moviePath;
 	
 	bExhibitionMode = _bExhibitionMode;
 	
@@ -103,7 +113,7 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 	
 	// -- VIDEO PLAYER
 	
-	vidPlayer.init(filesPath, filesPath + "movies/", dispID);
+	vidPlayer.init(filesPath, moviePath, dispID);
 	
 	// -- VIDEO BLENDER
 	

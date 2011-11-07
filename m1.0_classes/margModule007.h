@@ -62,6 +62,10 @@ public:
 	void	init(int _camWidth, int _camHeight, int _dispWidth, int _dispHeight,
 				 int captDev, int _dispID, string settingFilesPath, bool bExhibitionMode);
 	
+	void	init(int _camWidth, int _camHeight, int _dispWidth, int _dispHeight,
+				 int captDev, int _dispID, string settingFilesPath, string _moviePath,
+				 bool bExhibitionMode);
+	
 	void	update();
 	void	threadedFunction();
 	
@@ -201,7 +205,8 @@ private:
 	int						camWidth,  camHeight,
 							dispWidth, dispHeight;
 	
-	string					filesPath;
+	string					filesPath,
+							moviePath;
 	
 	int						mode;
 	

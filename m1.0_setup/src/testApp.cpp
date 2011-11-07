@@ -6,14 +6,24 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	
+	
+	// XML LOAD ------------------------------------------------*
+	
+	XML.loadFile("app_settings.xml");
+	
 	// SET NUMBER OF MODULES HERE ------------------------------*
 	
-	numMod = 4; // -------------------------------------------***
+	XML.pushTag("all", 0);
+	numMod = XML.getValue("numMod", 1, 0); // -------------------------------------------***
+	filesPath = XML.getValue("filesPath", "", 0);
+	XML.popTag();
 	
 	// SET OSC HERE --------------------------------------------*
 	
-	oscHost = "localhost"; // -------------------------------***
-	oscPort = 2222; // ---------------------------------------***
+	XML.pushTag("all", 0);
+	oscHost = XML.getValue("oscHost", "localhost", 0); // -------------------------------***
+	oscPort = XML.getValue("oscPort", 1234, 0); // ---------------------------------------***
+	XML.popTag();
 	
 	oscSender.setup(oscHost, oscPort);
 	
@@ -72,7 +82,14 @@ void testApp::setup(){
 	// MODULE INITIALIZATION -----------------------------------*
 	
 	for (int i = 0; i < numMod; i++) {
-		modules[i].init(camWidth, camHeight, dispWidth, dispHeight, i+1, i, "../../../../M1.0_data/", false);
+		XML.pushTag("module", i);
+		
+		int capt = XML.getValue("captDev", -1, 0);
+		string moviePath = XML.getValue("moviePath", filesPath + "movies/", 0);
+		
+		XML.popTag();
+		
+		modules[i].init(camWidth, camHeight, dispWidth, dispHeight, capt, i, filesPath, moviePath, false);
 		modules[i].setSharedVarsAddresses(&minBlob, &maxBlob, &numBlob,
 										  &maxDist, &maxAreaDiff, &maxUnfitness,
 										  &blobDefScaleFactor, &blobCondScaleConst, &blobCondScaleMax,
