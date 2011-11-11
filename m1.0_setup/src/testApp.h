@@ -121,6 +121,8 @@ class testApp : public ofBaseApp{
 						whichBlobs,
 						whichQuad;
 	
+	bool				bDynInteractMode;
+	
 	string				modes[7],
 						interactModes[3],
 						quads[2],

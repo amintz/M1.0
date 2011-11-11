@@ -44,6 +44,85 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
+	2186C1EE146DB824008863EF /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 219B9FC81443CDE40078DC3D /* margModule007.h */;
+	};
+	2186C1F1146DB966008863EF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC81443CDE40078DC3D /* margModule007.h */;
+		name = "margModule007.h: 87";
+		rLen = 0;
+		rLoc = 2198;
+		rType = 0;
+		vrLen = 1944;
+		vrLoc = 1483;
+	};
+	2186C1F2146DB966008863EF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC71443CDE40078DC3D /* margModule007.cpp */;
+		name = "margModule007.cpp: 157";
+		rLen = 0;
+		rLoc = 3900;
+		rType = 0;
+		vrLen = 888;
+		vrLoc = 3583;
+	};
+	2186C1F3146DB966008863EF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E4B69E1F0A3A1BDC003C02F2 /* testApp.h */;
+		name = "testApp.h: 124";
+		rLen = 0;
+		rLoc = 2271;
+		rType = 0;
+		vrLen = 569;
+		vrLoc = 1853;
+	};
+	2186C1F4146DB966008863EF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */;
+		name = "testApp.cpp: 97";
+		rLen = 0;
+		rLoc = 2642;
+		rType = 0;
+		vrLen = 1552;
+		vrLoc = 2794;
+	};
+	2186C1F5146DB966008863EF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */;
+		name = "testApp.cpp: 243";
+		rLen = 0;
+		rLoc = 7292;
+		rType = 0;
+		vrLen = 1042;
+		vrLoc = 1864;
+	};
+	2186C1F8146DB966008863EF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 219B9FC81443CDE40078DC3D /* margModule007.h */;
+		name = "margModule007.h: 87";
+		rLen = 0;
+		rLoc = 2198;
+		rType = 0;
+		vrLen = 2266;
+		vrLoc = 1375;
+	};
+	219B9FC71443CDE40078DC3D /* margModule007.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 7410}}";
+			sepNavSelRange = "{3900, 0}";
+			sepNavVisRange = "{3583, 888}";
+		};
+	};
+	219B9FC81443CDE40078DC3D /* margModule007.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1153, 2938}}";
+			sepNavSelRange = "{2198, 0}";
+			sepNavVisRange = "{1375, 2266}";
+			sepNavWindowFrame = "{{15, 18}, {706, 755}}";
+		};
+	};
 	E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 21692CCE146763CB00002662 /* emptyExample */;
@@ -58,7 +137,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					341,
+					833,
 					20,
 					48,
 					43,
@@ -75,8 +154,17 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 342320687;
-			PBXWorkspaceStateSaveDate = 342320687;
+			PBXPerProjectTemplateStateSaveDate = 342734628;
+			PBXWorkspaceStateSaveDate = 342734628;
+		};
+		perUserProjectItems = {
+			2186C1EE146DB824008863EF /* PBXBookmark */ = 2186C1EE146DB824008863EF /* PBXBookmark */;
+			2186C1F1146DB966008863EF /* PBXTextBookmark */ = 2186C1F1146DB966008863EF /* PBXTextBookmark */;
+			2186C1F2146DB966008863EF /* PBXTextBookmark */ = 2186C1F2146DB966008863EF /* PBXTextBookmark */;
+			2186C1F3146DB966008863EF /* PBXTextBookmark */ = 2186C1F3146DB966008863EF /* PBXTextBookmark */;
+			2186C1F4146DB966008863EF /* PBXTextBookmark */ = 2186C1F4146DB966008863EF /* PBXTextBookmark */;
+			2186C1F5146DB966008863EF /* PBXTextBookmark */ = 2186C1F5146DB966008863EF /* PBXTextBookmark */;
+			2186C1F8146DB966008863EF /* PBXTextBookmark */ = 2186C1F8146DB966008863EF /* PBXTextBookmark */;
 		};
 		sourceControlManager = 21692CF6146763CF00002662 /* Source Control */;
 		userBuildSettings = {
@@ -87,5 +175,19 @@
 		executables = (
 			21692CCE146763CB00002662 /* emptyExample */,
 		);
+	};
+	E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 4966}}";
+			sepNavSelRange = "{7292, 0}";
+			sepNavVisRange = "{1864, 1042}";
+		};
+	};
+	E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 2262}}";
+			sepNavSelRange = "{2271, 0}";
+			sepNavVisRange = "{1853, 569}";
+		};
 	};
 }

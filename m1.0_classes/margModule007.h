@@ -84,7 +84,7 @@ public:
 								   float* _blobPairMaxDist, float* _blobPairMaxAreaDiff, float* _blobPairMaxUnfitness,	// Shared between modules
 								   float* _blobDefScaleFactor,float* _blobCondScaleConst, float* _blobConsScaleMax,		// Shared between modules
 								   float* _trailExpConst, float* _trailFadeConst, int* _trailBlurLevel,					// Shared between modules
-								   int* _modMode,																		// Shared - for now
+								   int* _modMode, bool* _dynInteractMode,																		// Shared - for now
 								   bool* _modDrawBlobs, int* _modDrawWhichBlobs,										// Shared between modules
 								   bool* _modAdjQuad, int* _modAdjWhichQuad);
 	
@@ -239,6 +239,7 @@ private:
 	
 	int* modMode;
 	int  bufInteractMode;
+	bool* dynInteractMode;
 	
 	bool* modDrawBlobs;
 	int* modDrawWhichBlobs;

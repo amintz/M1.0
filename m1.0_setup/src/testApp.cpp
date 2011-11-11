@@ -94,7 +94,8 @@ void testApp::setup(){
 										  &maxDist, &maxAreaDiff, &maxUnfitness,
 										  &blobDefScaleFactor, &blobCondScaleConst, &blobCondScaleMax,
 										  &exposureConst, &fadeConst, &blurLevel,
-										  &displayMode, &bDrawBlobs, &whichBlobs,
+										  &displayMode, &bDynInteractMode,
+										  &bDrawBlobs, &whichBlobs,
 										  &bAdjQuad, &whichQuad);
 	}
 	
@@ -111,6 +112,7 @@ void testApp::setup(){
 	
 	gui.addComboBox("Display Mode", displayMode, 7, modes);
 	gui.addToggle("No warp control", bDrawUndistorted);
+	gui.addToggle("Dynamic Interact Mode", bDynInteractMode);
 	gui.addToggle("Control Display", bControlDisplay);
 	gui.addToggle("External Display", bExtDisplay);
 	gui.addToggle("Run Thread", bRunThread);
@@ -124,7 +126,6 @@ void testApp::setup(){
 	
 	for (int i = 0 ; i < numMod; i++) {
 		gui.addPage("Capture " + ofToString(i));
-		//gui.addComboBox("Capture Device", 0, 0, "");
 		gui.addToggle("Video Settings", opVidSet);
 		gui.addComboBox("Interaction Mode", modules[i].interactMode, 3, interactModes);
 		gui.addToggle("Adj Quad", bAdjQuad);
@@ -233,6 +234,10 @@ void testApp::update(){
 	}
 	
 	if (checkEveryModNeedPlay()) {
+		oscMessage.clear();
+		oscMessage.setAddress("/sound/stop");
+		oscSender.sendMessage(oscMessage);
+		
 		oscMessage.clear();
 		oscMessage.setAddress("/sound/stop");
 		oscSender.sendMessage(oscMessage);

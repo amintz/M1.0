@@ -150,8 +150,10 @@ void margModule::update() {
 	
 	vidPlayer.update();
 	
-	if (interactMode != vidPlayer.getInteractMode()) {
-		setInteractMode(vidPlayer.getInteractMode());
+	if (dynInteractMode) {
+		if (interactMode != vidPlayer.getInteractMode()) {
+			setInteractMode(vidPlayer.getInteractMode());
+		}
 	}
 	
 	if (interactMode == NORMAL_TRAIL || interactMode == NO_FADE_TRAIL) {
@@ -348,7 +350,7 @@ void margModule::setSharedVarsAddresses(int* _blobMinArea, int* _blobMaxArea, in
 										float* _blobPairMaxDist, float* _blobPairMaxAreaDiff, float* _blobPairMaxUnfitness,		// Shared between modules
 										float* _blobDefScaleFactor, float* _blobCondScaleConst, float* _blobCondScaleMax,
 										float* _trailExpConst, float* _trailFadeConst, int* _trailBlurLevel,					// Shared between modules
-										int* _modMode,																			// Shared - for now
+										int* _modMode, bool* _dynInteractMode,																		// Shared - for now
 										bool* _modDrawBlobs, int* _modDrawWhichBlobs,											// Shared between modules
 										bool* _modAdjQuad, int* _modAdjWhichQuad)												// Shared between modules
 { 
@@ -370,6 +372,7 @@ void margModule::setSharedVarsAddresses(int* _blobMinArea, int* _blobMaxArea, in
 	trailBlurLevel = _trailBlurLevel;
 	
 	modMode = _modMode;
+	dynInteractMode = _dynInteractMode;
 	
 	modDrawBlobs = _modDrawBlobs;
 	modDrawWhichBlobs = _modDrawWhichBlobs;
