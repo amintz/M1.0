@@ -56,7 +56,7 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 	
 	interactMode = NORMAL_TRAIL;
 	
-	curModuleFr = 0;
+	lastUpdateTime = 0;
 	
 	numPixVals = dispWidth*dispHeight*3;
 	
@@ -247,8 +247,9 @@ void margModule::update() {
 
 
 	if(!bExhibitionMode) {
-		curModuleFr++;
-		moduleFPS = curModuleFr / ofGetElapsedTimef();
+		float curTime = ofGetElapsedTimeMillis();
+		moduleFPS = 1000.0f / (curTime-lastUpdateTime);
+		lastUpdateTime = curTime;
 	}
 }
 

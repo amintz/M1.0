@@ -131,7 +131,7 @@ public:
 	float	correctFX, correctFY, correctCX, correctCY, correctRdX, correctRdY, correctTgX, correctTgY;
 	
 	float	moduleFPS;
-	float	curModuleFr;
+	float	lastUpdateTime;
 	
 	int		interactMode;
 	
