@@ -22,6 +22,8 @@ public:
 	void	feedImg(unsigned char* pixels, int _w, int _h, bool bIsColor);
 	void	feedImg(unsigned char* pixels, int _w, int _h);
 	
+	unsigned char* getPixels();
+	
 	void	setTranslateMat(CvMat* _translate);
 	void	clearTranslateMat();
 	

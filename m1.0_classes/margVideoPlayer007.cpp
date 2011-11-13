@@ -32,9 +32,13 @@ void margVideoPlayer::init(string _xmlPath, string _filePath, int _modIdx) {
 	
 	bNeedToPlay = true;
 	
-	int w = player.getWidth();
-	int h = player.getHeight();
-	int pixN = w*h*3;
+	pixN = player.getWidth()*player.getHeight()*3;
+	
+	bufVideoPix = new unsigned char[pixN];
+	finalVideoPix = new unsigned char[pixN];
+	
+	bVideoPixLocked = false;
+	bVideoPixFlushed = true;
 	
 	nTriggers = XML.getNumTags("trigger");
 	
@@ -61,6 +65,13 @@ void margVideoPlayer::update() {
 			if (player.getCurrentFrame() >= nextTriggerFrame) {
 				trig();
 			}
+		}
+	}
+	if (bVideoPixFlushed) {
+		if(tryLockPix()) {
+			memcpy(bufVideoPix, player.getPixels(), pixN);
+			bVideoPixFlushed = false;
+			bVideoPixLocked = false;
 		}
 	}
 }
@@ -96,7 +107,26 @@ void margVideoPlayer::play() {
 // ------------------------------------------------
 
 unsigned char* margVideoPlayer::getPixels() {
-	return player.getPixels();
+	if(!bVideoPixFlushed && !bVideoPixLocked){
+		bVideoPixLocked = true;
+		memcpy(finalVideoPix, bufVideoPix, pixN);
+		bVideoPixLocked = false;
+		bVideoPixFlushed = true;
+	}
+	return finalVideoPix;
+}
+
+// ------------------------------------------------
+
+bool margVideoPlayer::tryLockPix() {
+	if (bVideoPixLocked) {
+		return false;
+	}
+	else {
+		bVideoPixLocked = true;
+		return true;
+	}
+
 }
 
 // ------------------------------------------------

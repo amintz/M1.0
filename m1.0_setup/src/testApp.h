@@ -48,6 +48,7 @@ class testApp : public ofBaseApp{
 	// OBJECTS -----------------------------------*
 	
 	margModule*			modules;
+	ofTexture*			textures;
 	ofxOscSender		oscSender;
 	ofxXmlSettings		XML;
 	

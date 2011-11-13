@@ -74,6 +74,8 @@ public:
 	void	draw(int x, int y, int w, int h);
 	void	draw(int x, int y, int w, int h, bool bUndistorted);
 	void	drawWhite(int x, int y, int w, int h);
+	unsigned char* getPixels();
+	bool	tryLockPixels();
 	
 	
 	// SETUP FUNCTIONS
@@ -141,6 +143,11 @@ public:
 	vector<margBlob> interpolatedBlobs;
 	unsigned char* trailMap;
 	unsigned char* finalPixels;
+	unsigned char*  bufFinalPixels;
+	unsigned char*	bufTransitionPixels;
+	
+	bool	bFinalPixFlushed,
+			bFinalPixLocked;
 	
 	
 	// TRIGGERING VARS
@@ -204,6 +211,8 @@ private:
 	
 	int						camWidth,  camHeight,
 							dispWidth, dispHeight;
+	
+	int						numPixVals;
 	
 	string					filesPath,
 							moviePath;

@@ -17,7 +17,6 @@ public:
 	
 	void	init(string _xmlPath, string _filePath, int _modIdx);
 	void	update();
-//	void	updateVid();
 	void	play();
 	void	setNextIndex(int _nextIndex);
 	unsigned char* getPixels();
@@ -27,9 +26,6 @@ public:
 	int		getInteractMode();
 	
 	void	trig();
-//	int		getAudioIndex();
-//	int		getGroupIndex();
-//	bool	getNeedToSetIndex();
 	
 	
 	ofVideoPlayer player;
@@ -37,8 +33,6 @@ public:
 private:
 	
 	ofxXmlSettings XML;
-	
-//	unsigned char* blackPix;
 	
 	string	filePath,
 			xmlPath;
@@ -48,15 +42,16 @@ private:
 			nextTrigger,
 			nextInteractMode,
 			nextTriggerFrame,
-//			curVidGroup,
-//			curVidIndex,
-//			curAudioIndex,
-//			nextVidGroup,
-//			nextVidIndex,
-//			nextInteractMode,
-//			nextAudioIndex,
-//			numNextVidPossibilities,
 			nTriggers,
 			modIdx;
+	
+	int		pixN;
+	
+	unsigned char* bufVideoPix;
+	unsigned char* finalVideoPix;
+	bool		bVideoPixLocked,
+				bVideoPixFlushed;
+	
+	bool	tryLockPix();
 	
 };

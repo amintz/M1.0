@@ -5,6 +5,7 @@ void testApp::setup(){
 	
 	ofSetVerticalSync(true);
 	ofSetLogLevel(OF_LOG_VERBOSE);
+	ofSetFrameRate(60);
 	
 	
 	// XML LOAD ------------------------------------------------*
@@ -53,7 +54,7 @@ void testApp::setup(){
 	// OBJECT ARRAYS -------------------------------------------*
 	
 	modules = new margModule[numMod];
-	
+	textures = new ofTexture[numMod];	
 	
 	// SETUP VARS ----------------------------------------------*
 	
@@ -97,6 +98,7 @@ void testApp::setup(){
 										  &displayMode, &bDynInteractMode,
 										  &bDrawBlobs, &whichBlobs,
 										  &bAdjQuad, &whichQuad);
+		textures[i].allocate(dispWidth, dispHeight, GL_RGB);
 	}
 	
 	oscMessage.setAddress("/sound/play");
@@ -226,11 +228,16 @@ void testApp::update(){
 		}
 		bStopThread = false;
 	}
+	
 	for (int i = 0; i < numMod; i++) {
+		
 		if (!modules[i].isThreadRunning()) {
 			modules[i].update();
 			if(bUpdateSettings)modules[i].updateSettings();
 		}
+		
+		textures[i].loadData(modules[i].getPixels(), dispWidth, dispHeight, GL_RGB);
+		
 	}
 	
 	if (checkEveryModNeedPlay()) {
@@ -266,14 +273,14 @@ void testApp::draw(){
 	
 	if(bControlDisplay) {
 		if(bDrawUndistorted) modules[curMod].draw(drawX, drawY, drawWidth, drawHeight, true);
-		else modules[curMod].draw(drawX, drawY, drawWidth, drawHeight);
+		else textures[curMod].draw(drawX, drawY, drawWidth, drawHeight);
 	}
 	
 	// DRAW EXTERNAL DISPLAYS IF APPLICABLE --------------------*
 	
 	if (bExtDisplay) {
 		for (int i = 0; i < numMod; i++) {
-			modules[i].draw(dispWidth * (i + 1), 0, dispWidth, dispHeight);
+			textures[i].draw(dispWidth * (i + 1), 0, dispWidth, dispHeight);
 		}
 	}
 	

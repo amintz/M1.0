@@ -21,6 +21,8 @@ void margDisplay::init(int _width, int _height, bool bExhibitionMode) {
 	
 	translate = cvCreateMat(3,3,CV_32FC1);
 	
+	image.setUseTexture(false);
+	
 	image.allocate(width, height);
 	
 	if(bExhibitionMode) source.setUseTexture(false);
@@ -85,6 +87,12 @@ void margDisplay::feedImg(unsigned char* pixels, int _w, int _h, bool bIsColor) 
 
 void margDisplay::feedImg(unsigned char* pixels, int _w, int _h) {
 	feedImg(pixels, _w, _h, true);
+}
+
+// --------------------------------------------------------------
+
+unsigned char* margDisplay::getPixels() {
+	return image.getPixels();
 }
 
 // --------------------------------------------------------------

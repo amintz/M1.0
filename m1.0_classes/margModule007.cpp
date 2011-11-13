@@ -58,12 +58,19 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 	
 	curModuleFr = 0;
 	
+	numPixVals = dispWidth*dispHeight*3;
+	
 	originalPix = new unsigned char[camWidth * camHeight];
 	originalBlobs.reserve(10 * sizeof(margBlob));
 	correctedBlobs.reserve(10 * sizeof(margBlob));
 	interpolatedBlobs.reserve(10 * sizeof(margBlob));
 	trailMap	= new unsigned char[dispWidth * dispHeight];
 	finalPixels = new unsigned char[dispWidth * dispHeight * 3];
+	bufFinalPixels = new unsigned char[dispWidth * dispHeight * 3];
+	bufTransitionPixels = new unsigned char[dispWidth * dispHeight * 3];
+	
+	bFinalPixFlushed = true;
+	bFinalPixLocked = false;
 	
 	// White Pix
 	
@@ -150,7 +157,7 @@ void margModule::update() {
 	
 	vidPlayer.update();
 	
-	if (dynInteractMode) {
+	if (*dynInteractMode) {
 		if (interactMode != vidPlayer.getInteractMode()) {
 			setInteractMode(vidPlayer.getInteractMode());
 		}
@@ -222,6 +229,15 @@ void margModule::update() {
 				break;
 		}
 	}
+	
+	if (bFinalPixFlushed) {
+		if (tryLockPixels()) { 
+			memcpy(bufFinalPixels, display.getPixels(), numPixVals);
+			bFinalPixLocked = false;
+			bFinalPixFlushed = false;
+		}
+	}
+
 
 	if(!bExhibitionMode) {
 		curModuleFr++;
@@ -317,6 +333,32 @@ void margModule::drawWhite(int x, int y, int w, int h) {
 
 // ------------------------------------------------
 
+unsigned char* margModule::getPixels() {
+	if(!bFinalPixFlushed && !bFinalPixLocked) {
+		bFinalPixLocked = true;
+		memcpy(finalPixels, bufFinalPixels, numPixVals);
+		bFinalPixLocked = false;
+		bFinalPixFlushed = true;
+	}
+	
+	return finalPixels;
+}
+
+// ------------------------------------------------
+
+bool margModule::tryLockPixels() {
+	if (!bFinalPixLocked) {
+		bFinalPixLocked = true;
+		return true;
+	}
+	else {
+		return false;
+	}
+
+}
+
+// ------------------------------------------------
+
 // ------------------------------------------------ ***
 // SETUP FUNCTIONS -------------------------------- ***
 // ------------------------------------------------ ***
@@ -340,7 +382,7 @@ void margModule::updateSettings() {
 		
 		setMode(*modMode, *modDrawBlobs, *modDrawWhichBlobs, *modAdjQuad, *modAdjWhichQuad);
 		
-		if (bufInteractMode != interactMode) setInteractMode(interactMode);
+		setInteractMode(interactMode);
 	}
 }
 
