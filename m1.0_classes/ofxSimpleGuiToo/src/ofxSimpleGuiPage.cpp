@@ -54,6 +54,10 @@ ofxSimpleGuiPage &ofxSimpleGuiPage::setXMLName(string s) {
 	return *this;
 }
 
+void ofxSimpleGuiPage::setXMLPath(string p) {
+	xmlFilename = p + xmlFilename;
+}
+
 
 void ofxSimpleGuiPage::loadFromXML() {
 	ofLog(OF_LOG_VERBOSE, "ofxSimpleGuiPage::loadFromXML: " + xmlFilename);

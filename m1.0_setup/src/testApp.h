@@ -58,6 +58,8 @@ class testApp : public ofBaseApp{
 	ofTexture			testTex;
 	unsigned char*		whitePix;
 	
+	bool				bExhibitionMode;
+	
 	
 	// MODULE VARS -------------------------------*
 	

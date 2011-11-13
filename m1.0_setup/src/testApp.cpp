@@ -17,6 +17,7 @@ void testApp::setup(){
 	XML.pushTag("all", 0);
 	numMod = XML.getValue("numMod", 1, 0); // -------------------------------------------***
 	filesPath = XML.getValue("filesPath", "", 0);
+	bExhibitionMode = XML.getValue("bExhibitionMode", false, 0);
 	XML.popTag();
 	
 	// SET OSC HERE --------------------------------------------*
@@ -90,7 +91,7 @@ void testApp::setup(){
 		
 		XML.popTag();
 		
-		modules[i].init(camWidth, camHeight, dispWidth, dispHeight, capt, i, filesPath, moviePath, false);
+		modules[i].init(camWidth, camHeight, dispWidth, dispHeight, capt, i, filesPath, moviePath, bExhibitionMode);
 		modules[i].setSharedVarsAddresses(&minBlob, &maxBlob, &numBlob,
 										  &maxDist, &maxAreaDiff, &maxUnfitness,
 										  &blobDefScaleFactor, &blobCondScaleConst, &blobCondScaleMax,
@@ -122,6 +123,8 @@ void testApp::setup(){
 	gui.addToggle("Update Settings", bUpdateSettings);
 	gui.addToggle("Draw White", bDrawWhite);
 	
+	gui.currentPage().setXMLPath(filesPath);
+	
 	for (int i = 0; i < numMod; i++) {
 		gui.addSlider("Module " + ofToString(i) + " FPS", (float&)modules[i].moduleFPS, 0, 1);
 	}
@@ -144,6 +147,7 @@ void testApp::setup(){
 		gui.addSlider("FocalY", (float&)modules[i].correctFY, (float)0.000, (float)camHeight);
 		gui.addSlider("CenterX", (float&)modules[i].correctCX, (float)0.000, (float)camWidth);
 		gui.addSlider("CenterY", (float&)modules[i].correctCY, (float)0.000, (float)camHeight);
+		gui.currentPage().setXMLPath(filesPath);
 	}
 	
 	gui.addPage("Blob Detection");
@@ -168,6 +172,8 @@ void testApp::setup(){
 	gui.addSlider("Exp Const", exposureConst, 0, 15);
 	gui.addSlider("Fade Const", fadeConst, 0, 1.0);
 	gui.addSlider("Blur Level", blurLevel, 0, 10);
+	
+	gui.currentPage().setXMLPath(filesPath);
 	
 	gui.loadFromXML();
 	
@@ -197,43 +203,55 @@ void testApp::update(){
 	
 	// RESPONSE TO DEMANDS -------------------------------------*
 	
-	// VIDEO SETTINGS
+	if (!bExhibitionMode) {
+		
+		// VIDEO SETTINGS
+		
+		if (opVidSet) {
+			modules[curMod].openCaptSettings();
+			opVidSet = false;
+		}
+		
+		// QUAD RESET
+		
+		if (clearQuad) {
+			modules[curMod].clearQuad();
+			clearQuad = false;
+		}
 	
-	if (opVidSet) {
-		modules[curMod].openCaptSettings();
-		opVidSet = false;
-	}
-	
-	// QUAD RESET
-	
-	if (clearQuad) {
-		modules[curMod].clearQuad();
-		clearQuad = false;
 	}
 	
 	// ---------------------------------------------------------*
 	
 	// EACH MODULE UPDATE --------------------------------------*
 	
-	
-	if (bRunThread) {
-		for (int i = 0; i < numMod; i++) {
-			modules[i].startThread(true, false);
+	if(!bExhibitionMode) {
+			
+		if (bRunThread) {
+			for (int i = 0; i < numMod; i++) {
+				modules[i].startThread(true, false);
+			}
+			bRunThread = false;
 		}
-		bRunThread = false;
-	}
-	if (bStopThread) {
-		for (int i = 0; i < numMod; i++) {
-			modules[i].stopThread(false);
+		if (bStopThread) {
+			for (int i = 0; i < numMod; i++) {
+				modules[i].stopThread(false);
+			}
+			bStopThread = false;
 		}
-		bStopThread = false;
+		
 	}
 	
 	for (int i = 0; i < numMod; i++) {
 		
 		if (!modules[i].isThreadRunning()) {
-			modules[i].update();
-			if(bUpdateSettings)modules[i].updateSettings();
+			if(bExhibitionMode) {
+				modules[i].startThread(true, false);
+			}
+			else {
+				modules[i].update();
+				if(bUpdateSettings)modules[i].updateSettings();
+			}
 		}
 		
 		textures[i].loadData(modules[i].getPixels(), dispWidth, dispHeight, GL_RGB);
@@ -271,25 +289,34 @@ void testApp::draw(){
 	
 	ofSetColor(255, 255, 255);
 	
-	if(bControlDisplay) {
-		if(bDrawUndistorted) modules[curMod].draw(drawX, drawY, drawWidth, drawHeight, true);
-		else textures[curMod].draw(drawX, drawY, drawWidth, drawHeight);
-	}
-	
-	// DRAW EXTERNAL DISPLAYS IF APPLICABLE --------------------*
-	
-	if (bExtDisplay) {
+	if(bExhibitionMode) {
 		for (int i = 0; i < numMod; i++) {
 			textures[i].draw(dispWidth * (i + 1), 0, dispWidth, dispHeight);
 		}
+		if (bControlDisplay) {
+			textures[curMod].draw(drawX, drawY, drawWidth, drawHeight);
+		}
 	}
-	
-	if(bDrawWhite) {
-		modules[curMod].drawWhite(dispWidth * (curMod + 1), 0, dispWidth, dispHeight);
+	else {
+		if(bControlDisplay) {
+			if(bDrawUndistorted) modules[curMod].draw(drawX, drawY, drawWidth, drawHeight, true);
+			else textures[curMod].draw(drawX, drawY, drawWidth, drawHeight);
+		}
+		
+		// DRAW EXTERNAL DISPLAYS IF APPLICABLE --------------------*
+		
+		if (bExtDisplay) {
+			for (int i = 0; i < numMod; i++) {
+				textures[i].draw(dispWidth * (i + 1), 0, dispWidth, dispHeight);
+			}
+		}
+		
+		if(bDrawWhite) {
+			modules[curMod].drawWhite(dispWidth * (curMod + 1), 0, dispWidth, dispHeight);
+		}
+		
+		// DRAW PERSPECTIVE CONTROLS IF APPLICABLE -----------------*
 	}
-	
-	// DRAW PERSPECTIVE CONTROLS IF APPLICABLE -----------------*
-	
 	gui.draw();
 }
 

@@ -157,7 +157,12 @@ void margModule::update() {
 	
 	vidPlayer.update();
 	
-	if (*dynInteractMode) {
+	if (bExhibitionMode) {
+		if (interactMode != vidPlayer.getInteractMode()) {
+			setInteractMode(vidPlayer.getInteractMode());
+		}
+	}
+	else if (*dynInteractMode) {
 		if (interactMode != vidPlayer.getInteractMode()) {
 			setInteractMode(vidPlayer.getInteractMode());
 		}
@@ -231,11 +236,13 @@ void margModule::update() {
 	}
 	
 	if (bFinalPixFlushed) {
-		if (tryLockPixels()) { 
-			memcpy(bufFinalPixels, display.getPixels(), numPixVals);
-			bFinalPixLocked = false;
-			bFinalPixFlushed = false;
+		bool success = false;
+		while (!success) {
+			success = tryLockPixels();
 		}
+		memcpy(bufFinalPixels, display.getPixels(), numPixVals);
+		bFinalPixLocked = false;
+		bFinalPixFlushed = false;
 	}
 
 
@@ -354,7 +361,6 @@ bool margModule::tryLockPixels() {
 	else {
 		return false;
 	}
-
 }
 
 // ------------------------------------------------

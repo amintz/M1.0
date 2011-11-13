@@ -68,11 +68,13 @@ void margVideoPlayer::update() {
 		}
 	}
 	if (bVideoPixFlushed) {
-		if(tryLockPix()) {
-			memcpy(bufVideoPix, player.getPixels(), pixN);
-			bVideoPixFlushed = false;
-			bVideoPixLocked = false;
+		bool success = false;
+		while (!success) {
+			success = tryLockPix();
 		}
+		memcpy(bufVideoPix, player.getPixels(), pixN);
+		bVideoPixFlushed = false;
+		bVideoPixLocked = false;
 	}
 }
 

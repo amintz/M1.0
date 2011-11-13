@@ -15,58 +15,83 @@ void margDisplay::init(int _width, int _height) {
 
 // -----------------------------------------------
 
-void margDisplay::init(int _width, int _height, bool bExhibitionMode) {
+void margDisplay::init(int _width, int _height, bool _bExhibitionMode) {
 	width  = _width;
 	height = _height;
+	
+	bExhibitionMode = _bExhibitionMode;
 	
 	translate = cvCreateMat(3,3,CV_32FC1);
 	
 	image.setUseTexture(false);
 	
+	bPixelsLocked = false;
+	bPixelsFlushed= true;
+	
 	image.allocate(width, height);
 	
+	updatePixN();
+	
+	bufPixels = new unsigned char[pixN];
+	finalPixels=new unsigned char[pixN];
+	
 	if(bExhibitionMode) source.setUseTexture(false);
-	gSource.setUseTexture(false);
+	
+	if(!bExhibitionMode) gSource.setUseTexture(false);
+	if(!bExhibitionMode) gSource.allocate(width, height);
+
 	
 	source.allocate(width, height);
-	gSource.allocate(width, height);
+
 }
 
 // --------------------------------------------------------------
 
 void margDisplay::feedImg(ofxCvColorImage& _source) {
-	if (image.getWidth() != _source.getWidth()) {
-		image.clear();
-		image.allocate(source.getWidth(), source.getHeight());
+	if(!bExhibitionMode) {
+		if (image.getWidth() != _source.getWidth()) {
+			image.clear();
+			image.allocate(source.getWidth(), source.getHeight());
+			updatePixN();
+		}
 	}
 
 	cvWarpPerspective(_source.getCvImage(), image.getCvImage(), translate);
 	image.flagImageChanged();
+	updatePixels();
 }
 
 // --------------------------------------------------------------
 
 void margDisplay::feedImg(ofxCvGrayscaleImage& _source) {
-	if (image.getWidth() != _source.getWidth()) {
-		image.clear();
-		image.allocate(source.getWidth(), source.getHeight());
+	if(!bExhibitionMode) {
+		if (image.getWidth() != _source.getWidth()) {
+			image.clear();
+			image.allocate(source.getWidth(), source.getHeight());
+			updatePixN();
+		}
 	}
 	
 	source = _source;
 	cvWarpPerspective(source.getCvImage(), image.getCvImage(), translate);
 	image.flagImageChanged();
+	updatePixels();
 }
 
 // --------------------------------------------------------------
 
 void margDisplay::feedImg(unsigned char* pixels, int _w, int _h, bool bIsColor) {
-	if (_w != image.getWidth()) {
-		if(image.getWidth() != 0)image.clear();
-		image.allocate(_w, _h);
-	}
-	if (source.getWidth() != _w) {
-		if(source.getWidth() != 0) source.clear();
-		source.allocate(_w, _h);
+	if(!bExhibitionMode) {
+		if (_w != image.getWidth()) {
+			if(image.getWidth() != 0)image.clear();
+			image.allocate(_w, _h);
+			updatePixN();
+		}
+		if (source.getWidth() != _w) {
+			if(source.getWidth() != 0) source.clear();
+			source.allocate(_w, _h);
+			updatePixN();
+		}
 	}
 	if (bIsColor) {
 		source.setFromPixels(pixels, _w, _h);
@@ -81,6 +106,7 @@ void margDisplay::feedImg(unsigned char* pixels, int _w, int _h, bool bIsColor) 
 	}
 	cvWarpPerspective(source.getCvImage(), image.getCvImage(), translate);
 	image.flagImageChanged();
+	updatePixels();
 }
 
 // --------------------------------------------------------------
@@ -92,7 +118,45 @@ void margDisplay::feedImg(unsigned char* pixels, int _w, int _h) {
 // --------------------------------------------------------------
 
 unsigned char* margDisplay::getPixels() {
-	return image.getPixels();
+	if(!bPixelsLocked && !bPixelsFlushed) {
+		bPixelsLocked = true;
+		memcpy(finalPixels, bufPixels, pixN);
+		bPixelsLocked = false;
+		bPixelsFlushed= true;
+	}
+	return finalPixels;
+}
+
+// --------------------------------------------------------------
+
+bool margDisplay::tryLockPix() {
+	if (bPixelsLocked) {
+		return false;
+	}
+	else {
+		bPixelsLocked = true;
+		return true;
+	}
+}
+
+// --------------------------------------------------------------
+
+void margDisplay::updatePixels() {
+	if(bPixelsFlushed) {
+		bool success = false;
+		while (!success) {
+			success = tryLockPix();
+		}
+		memcpy(bufPixels, image.getPixels(), pixN);
+		bPixelsLocked = false;
+		bPixelsFlushed= false;
+	}
+}
+
+// --------------------------------------------------------------
+
+void margDisplay::updatePixN() {
+	pixN = image.getWidth() * image.getHeight() * 3;
 }
 
 // --------------------------------------------------------------

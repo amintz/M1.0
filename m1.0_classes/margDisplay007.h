@@ -15,7 +15,7 @@ class margDisplay {
 public:
 	
 	void	init(int _width, int _height);
-	void	init(int _width, int _height, bool bExhibitionMode);
+	void	init(int _width, int _height, bool _bExhibitionMode);
 	
 	void	feedImg(ofxCvColorImage& _source);
 	void	feedImg(ofxCvGrayscaleImage& _source);
@@ -37,7 +37,20 @@ public:
 protected:
 	
 	int		width,
-			height;
+			height,
+			pixN;
+	
+	bool	bExhibitionMode;
+	
+	unsigned char* bufPixels;
+	unsigned char* finalPixels;
+	
+	bool	bPixelsLocked;
+	bool	bPixelsFlushed;
+	
+	bool	tryLockPix();
+	void	updatePixels();
+	void	updatePixN();
 	
 	CvMat*	translate;
 

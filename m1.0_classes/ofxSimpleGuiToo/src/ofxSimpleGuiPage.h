@@ -46,6 +46,8 @@ public:
 	void						draw(float x, float y, bool alignRight);
 	
 	ofxSimpleGuiPage&			setXMLName(string xmlFilename);
+	void						setXMLPath(string xmlPath);
+	
 	void						loadFromXML();
 	void						saveToXML();	
 	
