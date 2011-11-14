@@ -48,6 +48,7 @@ public:
 	ofPoint	 undistortPoint(float _x, float _y);
 	
 	void	 drawBlobs(int x, int y, int w, int h);
+	void	 drawUndistortBounds(int x, int y, int w, int h);
 	
 	CvMat*	 getPerspMat();
 	CvMat*   getCamMat();
@@ -78,10 +79,19 @@ public:
 			 bScale;
 	
 	margBlob lensUndistBounds;
+	margBlob persUndistBounds;
+	margBlob undistBounds;
+	ofVec2f* persQuadPoints;
 	
 	void	 calculateLensUndistBounds();
-	ofPoint	 bestIfOutOfBounds(ofPoint inPt);
-
+	void	 calculatePersUndistBounds();
+	void	 calculateUndistortBounds();
+	ofPoint	 bestIfOutOfLensBounds(ofPoint inPt);
+	void	 setPersQuadPoints(ofVec2f* quadPoints);
+	
+	ofRectangle& getPersUndistortBoundsRect();
+	
+	
 	// UTILS ---------------------------------------------------- *
 	
 	double* normCoords (double x, double y, double w, double h) {
