@@ -301,7 +301,7 @@ void testApp::draw(){
 	else {
 		if(bControlDisplay) {
 			if(bDrawUndistorted) modules[curMod].draw(drawX, drawY, drawWidth, drawHeight, true);
-			else textures[curMod].draw(drawX, drawY, drawWidth, drawHeight);
+			else modules[curMod].draw(drawX, drawY, drawWidth, drawHeight);
 		}
 		
 		// DRAW EXTERNAL DISPLAYS IF APPLICABLE --------------------*
