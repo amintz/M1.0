@@ -69,7 +69,7 @@ void testApp::setup(){
 								  &exposureConst, &fadeConst, &blurLevel,
 								  &displayMode, &bDynInteractMode,
 								  &bDrawBlobs, &whichBlobs,
-								  &bAdjQuad, &whichQuad, &bDrawUndistortBounds);
+								  &bAdjQuad, &whichQuad);
 	texture.allocate(dispWidth, dispHeight, GL_RGB);
 	
 	displayMode			= 5;
