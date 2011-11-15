@@ -83,7 +83,7 @@ void testApp::setup(){
 	// GUI SETUP -----------------------------------------------*
 	gui.addToggle("Run All", bRunAll);
 	for (int i = 0; i < numMod; i++) {
-		gui.addToggle("Mod " + ofToString(i) + " checked in", mod_checkedin[i]);
+		gui.addTitle("Module " + ofToString(i), 50);
 		gui.addSlider("Mod " + ofToString(i) + " Thread FPS", (float&)mod_ThreadFPS[i], 0, 60);
 		gui.addSlider("Mod " + ofToString(i) + " App FPS", (float&)mod_AppFPS[i], 0, 60);
 	}
