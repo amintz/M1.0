@@ -141,9 +141,3 @@ void margCoordWarping :: updatePoint(float x, float y, float offsetX, float offs
 void margCoordWarping :: drawQuad(float x, float y, float width, float height) {
 	quadGui.draw(x, y, width, height);
 }
-
-// ------------------------------------------
-
-ofVec2f* margCoordWarping :: getScaledQuadPts(float width, float height) {
-	return quadGui.getScaledQuadPoints(width, height);
-}

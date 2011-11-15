@@ -13,7 +13,7 @@ void testApp::setup(){
 	XML.loadFile("app_settings.xml");
 	
 	// SET NUMBER OF MODULES HERE ------------------------------*
-
+	
 	XML.pushTag("all", 0);
 	numMod = XML.getValue("numMod", 1, 0); // -------------------------------------------***
 	filesPath = XML.getValue("filesPath", "", 0);
@@ -98,7 +98,7 @@ void testApp::setup(){
 										  &exposureConst, &fadeConst, &blurLevel,
 										  &displayMode, &bDynInteractMode,
 										  &bDrawBlobs, &whichBlobs,
-										  &bAdjQuad, &whichQuad, &bDrawUndistortBounds);
+										  &bAdjQuad, &whichQuad);
 		textures[i].allocate(dispWidth, dispHeight, GL_RGB);
 	}
 	
@@ -114,7 +114,7 @@ void testApp::setup(){
 	// INTERFACE SETUP ----------------------------------------*
 	
 	gui.addComboBox("Display Mode", displayMode, 7, modes);
-	gui.addToggle("No warp disp", bDrawUndistorted);
+	gui.addToggle("No warp control", bDrawUndistorted);
 	gui.addToggle("Dynamic Interact Mode", bDynInteractMode);
 	gui.addToggle("Control Display", bControlDisplay);
 	gui.addToggle("External Display", bExtDisplay);
@@ -136,7 +136,6 @@ void testApp::setup(){
 		gui.addToggle("Adj Quad", bAdjQuad);
 		gui.addComboBox("Which Quad to Adj", whichQuad, 2, quads);
 		gui.addToggle("Clear Quad", clearQuad);
-		gui.addToggle("Draw Undist Bounds", bDrawUndistortBounds);
 		gui.addSlider("Threshold Min", modules[i].blobFindThreshMin, 0, 255);
 		gui.addSlider("Threshold Max", modules[i].blobFindThreshMax, 0, 255);
 		gui.addTitle("Lens Correction");

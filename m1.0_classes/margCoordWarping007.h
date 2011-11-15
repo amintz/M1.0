@@ -39,8 +39,6 @@ public:
 	// Drawing
 	void			drawQuad(float x, float y, float width, float height);
 	
-	ofVec2f*		getScaledQuadPts(float width, float height);
-	
 	
 	// RESOURCES
 	

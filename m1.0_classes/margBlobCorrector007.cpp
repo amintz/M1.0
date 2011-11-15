@@ -23,8 +23,6 @@ void	margBlobCorrector::init() {
 	float dist_c[] = {0, 0, 0, 0};
 	
 	cvInitMatHeader(dist_coeffs, 1, 4, CV_32FC1, dist_c);
-	
-	persQuadPoints = new ofVec2f[4];
 }
 
 // ------------------------------------------------------------
@@ -50,7 +48,6 @@ void	margBlobCorrector::setOutDimensions(double _outW, double _outH) {
 void	margBlobCorrector::setPersCorrection(CvMat* _translate) {
 	translate = _translate;
 	data = translate->data.fl;
-	calculatePersUndistBounds();
 }
 
 // ------------------------------------------------------------
@@ -79,7 +76,6 @@ void	margBlobCorrector::setCameraMatrix(float _fX, float _fY, float _cX, float _
 	cvInitMatHeader(camera_matrix, 3, 3, CV_32FC1, _camera_matrix);
 	
 	calculateLensUndistBounds();
-	calculatePersUndistBounds();
 	
 	delete[] _camera_matrix;
 }
@@ -103,7 +99,6 @@ void	margBlobCorrector::setDistCoeffs(float _rX, float _rY, float _tX, float _tY
 	cvInitMatHeader(dist_coeffs, 1, 4, CV_32FC1, _dist_coeffs);
 	
 	calculateLensUndistBounds();
-	calculatePersUndistBounds();
 	
 	delete[] _dist_coeffs;
 	
@@ -170,7 +165,6 @@ void	margBlobCorrector::loadMats(string xmlFile) {
 	}
 	
 	calculateLensUndistBounds();
-	calculatePersUndistBounds();
 	
 	delete [] _camera_matrix;
 	delete [] _dist_coeffs;
@@ -193,7 +187,6 @@ void	margBlobCorrector::setAll(CvMat* _camera_matrix, CvMat* _dist_coeffs, CvMat
 	outH		  = _outH;
 	
 	calculateLensUndistBounds();
-	calculatePersUndistBounds();
 	
 }
 
@@ -240,7 +233,7 @@ ofPoint margBlobCorrector::undistortPoint(float _x, float _y) {
 	
 	return ofPoint(x,y);
 	
-	//return bestIfOutOfLensBounds(ofPoint(x,y));
+	//return bestIfOutOfBounds(ofPoint(x,y));
 	
 }
 
@@ -429,65 +422,6 @@ void	margBlobCorrector::drawBlobs(int x, int y, int w, int h) {
 		}
 		ofEndShape();
 	}
-	
-	glPopMatrix();
-	ofPopStyle();
-	
-}
-
-void margBlobCorrector::drawUndistortBounds(int x, int y, int w, int h) {
-	
-	float scalex = 0.0f;
-    float scaley = 0.0f;
-    if( outW != 0 ) { scalex = w/outW; } else { scalex = 1.0f; }
-    if( outH != 0 ) { scaley = h/outH; } else { scaley = 1.0f; }
-	
-    if(bAnchorIsPct){
-        x -= anchor.x * w;
-        y -= anchor.y * h;
-    }else{
-        x -= anchor.x;
-        y -= anchor.y;
-    }
-	
-	
-	ofPushStyle();
-	glPushMatrix();
-	glTranslatef( x, y, 0.0 );
-	glScalef( scalex, scaley, 0.0 );
-	
-	// ---------------------------- draw lens undistort bounds
-	
-	margBlob scaledLens = scaleBlob(lensUndistBounds);
-	
-	ofSetHexColor(0xFF0000);
-	
-	ofNoFill();
-	ofBeginShape();
-	for(int j = 0; j<lensUndistBounds.nPts; j++) {
-		ofVertex( scaledLens.pts[j].x, scaledLens.pts[j].y);
-	}
-	ofEndShape();
-	
-	ofSetHexColor(0x00FF00);
-	ofRect(scaledLens.boundingRect.x, scaledLens.boundingRect.y, scaledLens.boundingRect.width, scaledLens.boundingRect.height);
-	
-	// ---------------------------- draw perspective undistort bounds
-	
-	margBlob scaledBounds = scaleBlob(undistBounds);
-	
-	ofSetHexColor(0xFF00FF);
-	
-	ofNoFill();
-	ofBeginShape();
-	for(int j = 0; j<persUndistBounds.nPts; j++) {
-		ofVertex( scaledBounds.pts[j].x, scaledBounds.pts[j].y);
-	}
-	ofEndShape();
-	
-	ofSetHexColor(0x0000FF);
-	ofRect(scaledBounds.boundingRect.x, scaledBounds.boundingRect.y, scaledBounds.boundingRect.width, scaledBounds.boundingRect.height);
-	
 	glPopMatrix();
 	ofPopStyle();
 	
@@ -524,13 +458,6 @@ void margBlobCorrector::calculateLensUndistBounds() {
 	
 	lensUndistBounds.pts.clear();
 	
-	int nPts = 0;
-	
-	int minX = inW;
-	int maxX = 0;
-	int minY = inH;
-	int maxY = 0;
-	
 	int u, v, i;
 	float x0 = (float)inW/2.0f,
 		  y0 = float(inH)/2.0f;
@@ -540,108 +467,31 @@ void margBlobCorrector::calculateLensUndistBounds() {
 	      p1 = tX,  
 	      p2 = tY;
 	
-	v = 0;
-	
-	for( u = 0; u < inW; u++ )	{
-		float y = (v - cY)*ifY, y2 = y*y;
-		float x = (u - cX)*ifX,
-		x2 = x*x,
-		r2 = x2 + y2,
-		_2xy = 2*x*y;
-		float kr = 1 + ((k3*r2 + k2)*r2 + k1)*r2;
-		float _x = fX*(x*kr + p1*_2xy + p2*(r2 + 2*x2)) + x0;
-		float _y = fY*(y*kr + p1*(r2 + 2*y2) + p2*_2xy) + y0;
-		int   ix = cvFloor(_x),
-		iy = cvFloor(_y);
-		
-		lensUndistBounds.pts.push_back(ofPoint(ix, iy));
-		minX = ix < minX? ix : minX;
-		maxX = ix > maxX? ix : maxX;
-		minY = iy < minY? iy : minY;
-		maxY = iy > maxY? iy : maxY;
-		nPts++;
-	}
-	
-	u = inW-1;
-	
-	for (v = 0; v < inH; v++) {
-		float y = (v - cY)*ifY, y2 = y*y;
-		float x = (u - cX)*ifX,
-		x2 = x*x,
-		r2 = x2 + y2,
-		_2xy = 2*x*y;
-		float kr = 1 + ((k3*r2 + k2)*r2 + k1)*r2;
-		float _x = fX*(x*kr + p1*_2xy + p2*(r2 + 2*x2)) + x0;
-		float _y = fY*(y*kr + p1*(r2 + 2*y2) + p2*_2xy) + y0;
-		int   ix = cvFloor(_x),
-		iy = cvFloor(_y);
-		
-		lensUndistBounds.pts.push_back(ofPoint(ix, iy));
-		minX = ix < minX? ix : minX;
-		maxX = ix > maxX? ix : maxX;
-		minY = iy < minY? iy : minY;
-		maxY = iy > maxY? iy : maxY;
-		nPts++;
-	}
-	
-	v = inH-1;
-	
-	for( u = inW-1; u > -1; u-- ) {
-		float y = (v - cY)*ifY, y2 = y*y;
-		float x = (u - cX)*ifX,
-		x2 = x*x,
-		r2 = x2 + y2,
-		_2xy = 2*x*y;
-		float kr = 1 + ((k3*r2 + k2)*r2 + k1)*r2;
-		float _x = fX*(x*kr + p1*_2xy + p2*(r2 + 2*x2)) + x0;
-		float _y = fY*(y*kr + p1*(r2 + 2*y2) + p2*_2xy) + y0;
-		int   ix = cvFloor(_x),
-		iy = cvFloor(_y);
-		
-		lensUndistBounds.pts.push_back(ofPoint(ix, iy));
-		minX = ix < minX? ix : minX;
-		maxX = ix > maxX? ix : maxX;
-		minY = iy < minY? iy : minY;
-		maxY = iy > maxY? iy : maxY;
-		nPts++;
-	}
-	
-	u = 0;
-	
-    for( v = inH-1; v > -1; v--) {
+    for( v = 0; v < inH; v++)
+    {
         float y = (v - cY)*ifY, y2 = y*y;
-		float x = (u - cX)*ifX,
-		x2 = x*x,
-		r2 = x2 + y2,
-		_2xy = 2*x*y;
-		float kr = 1 + ((k3*r2 + k2)*r2 + k1)*r2;
-		float _x = fX*(x*kr + p1*_2xy + p2*(r2 + 2*x2)) + x0;
-		float _y = fY*(y*kr + p1*(r2 + 2*y2) + p2*_2xy) + y0;
-		int   ix = cvFloor(_x),
-		iy = cvFloor(_y);
 		
-		lensUndistBounds.pts.push_back(ofPoint(ix, iy));
-		minX = ix < minX? ix : minX;
-		maxX = ix > maxX? ix : maxX;
-		minY = iy < minY? iy : minY;
-		maxY = iy > maxY? iy : maxY;
-		nPts++;
+        for( u = 0; u < inW; u++ )
+        {
+            float x = (u - cX)*ifX,
+				  x2 = x*x,
+				  r2 = x2 + y2,
+			      _2xy = 2*x*y;
+            float kr = 1 + ((k3*r2 + k2)*r2 + k1)*r2;
+            float _x = fX*(x*kr + p1*_2xy + p2*(r2 + 2*x2)) + x0;
+            float _y = fY*(y*kr + p1*(r2 + 2*y2) + p2*_2xy) + y0;
+            int   ix = cvFloor(_x),
+				  iy = cvFloor(_y);
+			
+            lensUndistBounds.pts.push_back(ofPoint(ix, iy));
+        }
     }
-	
-	lensUndistBounds.nPts = nPts;
-	
-	lensUndistBounds.boundingRect.x = minX;
-	lensUndistBounds.boundingRect.y = minY;
-	lensUndistBounds.boundingRect.width = maxX - minX;
-	lensUndistBounds.boundingRect.height = maxY - minY;
-	
-	calculateUndistortBounds();
-
+	lensUndistBounds.nPts = lensUndistBounds.pts.size();
 }
 
 // -----------------------------------------------------------------
 
-ofPoint	margBlobCorrector::bestIfOutOfLensBounds(ofPoint inPt) {
+ofPoint	margBlobCorrector::bestIfOutOfBounds(ofPoint inPt) {
 	int j = lensUndistBounds.nPts-1;
 	int minDist = 300000;
 	int minDistIdx = -1;
@@ -665,120 +515,4 @@ ofPoint	margBlobCorrector::bestIfOutOfLensBounds(ofPoint inPt) {
 	}
 	if(bIsInBounds) return inPt;
 	else return lensUndistBounds.pts[minDist];
-}
-
-// ----------------------------------------------------------------
-
-
-void margBlobCorrector::setPersQuadPoints(ofVec2f* quadPoints) {
-	memcpy(persQuadPoints, quadPoints, 8*sizeof(int));
-	for (int i = 0; i < 4; i++) {
-		cout << "QuadPoints[" << i << "].x = " << quadPoints[i].x << endl;
-		cout << "QuadPoints[" << i << "].y = " << quadPoints[i].y << endl;
-	}
-	calculatePersUndistBounds();
-}
-
-// ----------------------------------------------------------------
-
-void margBlobCorrector::calculatePersUndistBounds() {
-	
-	persUndistBounds.pts.clear();
-	
-	int minX = inW;
-	int maxX = 0;
-	int minY = inH;
-	int maxY = 0;
-	
-	for (int v = 0; v < 4; v++) {
-		
-		int nextV = v + 1 < 4 ? v + 1 : 0;
-		
-		int d = round(ofDist(persQuadPoints[v].x, persQuadPoints[v].y, persQuadPoints[nextV].x, persQuadPoints[nextV].y));
-		float x_st = (persQuadPoints[nextV].x - persQuadPoints[v].x)/d;
-		float y_st = (persQuadPoints[nextV].y - persQuadPoints[v].y)/d;
-		for (int i = 0; i < d; i++) {
-			float x = ceil(persQuadPoints[v].x + (x_st * i));
-			float y = ceil(persQuadPoints[v].y + (y_st * i));
-			persUndistBounds.pts.push_back(ofVec2f( x, y ));
-			minX = MIN(minX, x);
-			maxX = MAX(maxX, x);
-			minY = MIN(minY, y);
-			maxY = MAX(maxY, y);
-		}
-	
-	}
-	
-	persUndistBounds.nPts = persUndistBounds.pts.size();
-	
-	persUndistBounds.boundingRect.x = minX;
-	persUndistBounds.boundingRect.y = minY;
-	persUndistBounds.boundingRect.width = maxX - minX;
-	persUndistBounds.boundingRect.height= maxY - minY;
-	
-	calculateUndistortBounds();
-	
-}
-
-// ----------------------------------------------------------------
-
-void	margBlobCorrector::calculateUndistortBounds() {
-
-	if(persUndistBounds.pts.size() == 0) return;
-	
-	undistBounds.pts.clear();
-	
-	int persNPts = persUndistBounds.pts.size();
-	
-	int minX = inW;
-	int maxX = 0;
-	int minY = inH;
-	int maxY = 0;
-	
-	int u, v, i;
-	float x0 = (float)inW/2.0f,
-	y0 = float(inH)/2.0f;
-	float k1 = rX,  
-	k2 = rY,
-	k3 = 0,
-	p1 = tX,  
-	p2 = tY;
-	
-	
-	for (int j = 0; j < persNPts; j++) {
-		
-		v = round(persUndistBounds.pts[j].y);
-		u = round(persUndistBounds.pts[j].x);
-		
-		float y = (v - cY)*ifY, y2 = y*y;
-		float x = (u - cX)*ifX,
-		x2 = x*x,
-		r2 = x2 + y2,
-		_2xy = 2*x*y;
-		float kr = 1 + ((k3*r2 + k2)*r2 + k1)*r2;
-		float _x = fX*(x*kr + p1*_2xy + p2*(r2 + 2*x2)) + x0;
-		float _y = fY*(y*kr + p1*(r2 + 2*y2) + p2*_2xy) + y0;
-		int   ix = cvFloor(_x),
-		iy = cvFloor(_y);
-		
-		undistBounds.pts.push_back(ofPoint(ix, iy));
-		minX = ix < minX? ix : minX;
-		maxX = ix > maxX? ix : maxX;
-		minY = iy < minY? iy : minY;
-		maxY = iy > maxY? iy : maxY;
-	}
-	
-	undistBounds.nPts = persNPts;
-	
-	undistBounds.boundingRect.x = minX;
-	undistBounds.boundingRect.y = minY;
-	undistBounds.boundingRect.width = maxX - minX;
-	undistBounds.boundingRect.height = maxY - minY;
-	
-}
-
-// ----------------------------------------------------------------
-
-ofRectangle& margBlobCorrector::getPersUndistortBoundsRect() {
-	return undistBounds.boundingRect;
 }

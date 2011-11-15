@@ -106,14 +106,9 @@ void margModule::init(int _camWidth, int _camHeight, int _dispWidth, int _dispHe
 	blobCorr.init();
 	blobCorr.setInDimensions(camWidth, camHeight);
 	blobCorr.setOutDimensions(dispWidth, dispHeight);
-	blobCorr.setPersCorrection(captQuad.getTranslateMat());
-	blobCorr.setPersQuadPoints(captQuad.getScaledQuadPts(camWidth, camHeight));
 	blobCorr.loadMats(filesPath + "calibration_matrix.xml");
+	blobCorr.setPersCorrection(captQuad.getTranslateMat());
 	blobCorr.setMode(true, true, true);
-	
-	// -- BLOB FINDER ROI
-	
-	blobFind.setROI(blobCorr.getPersUndistortBoundsRect());
 	
 	// -- BLOB INTERPOLATOR
 	
@@ -322,10 +317,6 @@ void margModule::draw(int x, int y, int w, int h, bool bUndistorted) {
 				break;
 		}
 	}
-	
-	if (bDrawUndistortBounds) {
-		blobCorr.drawUndistortBounds(x, y, w, h);
-	}
 }
 
 // ------------------------------------------------
@@ -396,7 +387,7 @@ void margModule::updateSettings() {
 		
 		setTrailMaker(*trailExpConst, *trailFadeConst, *trailBlurLevel);
 		
-		setMode(*modMode, *modDrawBlobs, *modDrawUndistortBounds, *modDrawWhichBlobs, *modAdjQuad, *modAdjWhichQuad);
+		setMode(*modMode, *modDrawBlobs, *modDrawWhichBlobs, *modAdjQuad, *modAdjWhichQuad);
 		
 		setInteractMode(interactMode);
 	}
@@ -410,7 +401,7 @@ void margModule::setSharedVarsAddresses(int* _blobMinArea, int* _blobMaxArea, in
 										float* _trailExpConst, float* _trailFadeConst, int* _trailBlurLevel,					// Shared between modules
 										int* _modMode, bool* _dynInteractMode,																		// Shared - for now
 										bool* _modDrawBlobs, int* _modDrawWhichBlobs,											// Shared between modules
-										bool* _modAdjQuad, int* _modAdjWhichQuad, bool* _modDrawUndistortBounds)												// Shared between modules
+										bool* _modAdjQuad, int* _modAdjWhichQuad)												// Shared between modules
 { 
 	
 	blobMinArea = _blobMinArea;
@@ -437,8 +428,6 @@ void margModule::setSharedVarsAddresses(int* _blobMinArea, int* _blobMaxArea, in
 	
 	modAdjQuad = _modAdjQuad;
 	modAdjWhichQuad = _modAdjWhichQuad;
-	
-	modDrawUndistortBounds = _modDrawUndistortBounds;
 	
 	bAddressSet = true;
 }
@@ -515,8 +504,6 @@ void margModule::clearQuad() {
 		if(adjWhichQuad == CAPT_QUAD) {
 			captQuad.clearQuad();
 			blobCorr.setPersCorrection(captQuad.getTranslateMat());
-			blobCorr.setPersQuadPoints(captQuad.getScaledQuadPts(camWidth, camHeight));
-			blobFind.setROI(blobCorr.getPersUndistortBoundsRect());
 		}
 		else {
 			dispQuad.clearQuad();
@@ -545,8 +532,6 @@ void margModule::updateQuadPoint(int x, int y, int origX, int origY, int w, int 
 		if (adjWhichQuad == CAPT_QUAD) {
 			captQuad.updatePoint(x, y, origX, origY, w, h);
 			blobCorr.setPersCorrection(captQuad.getTranslateMat());
-			blobCorr.setPersQuadPoints(captQuad.getScaledQuadPts(camWidth, camHeight));
-			blobFind.setROI(blobCorr.getPersUndistortBoundsRect());
 		}
 		else {
 			dispQuad.updatePoint(x, y, origX, origY, w, h);
@@ -568,15 +553,8 @@ void margModule::saveQuad() {
 
 // -----------------------------------------------
 void margModule::setMode(int _mode, bool _bDrawBlobs, int _drawWhichBlobs, bool _bAdjQuad, int _adjWhichQuad) {
-	setMode(_mode, _bDrawBlobs, false, _drawWhichBlobs, _bAdjQuad, _adjWhichQuad);
-}
-
-// -----------------------------------------------
-
-void margModule::setMode(int _mode, bool _bDrawBlobs, bool _bDrawUndistortBounds, int _drawWhichBlobs, bool _bAdjQuad, int _adjWhichQuad) {
 	mode = _mode;
 	bDrawBlobs = _bDrawBlobs;
-	bDrawUndistortBounds = _bDrawUndistortBounds;
 	drawWhichBlobs = _drawWhichBlobs;
 	bAdjQuad = _bAdjQuad;
 	adjWhichQuad = _adjWhichQuad;

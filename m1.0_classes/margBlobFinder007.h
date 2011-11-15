@@ -54,8 +54,6 @@ public:
 										int		_threshMin,
 										int		_threshMax);
 	
-	void				setROI(const ofRectangle& _rectROI);
-	
 	void				threadedFunction();
 	
 	int					findContours(ofxCvGrayscaleImage& _input,
@@ -111,8 +109,6 @@ protected:
 	int				width,
 					height,
 					size;
-	
-	ofRectangle		rectROI;
 	
 	ofPoint			anchor;
     bool			bAnchorIsPct;      
