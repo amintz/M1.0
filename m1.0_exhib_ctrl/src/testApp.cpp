@@ -57,6 +57,13 @@ void testApp::setup(){
 	msg[ASK_SHUTDOWN]	= "/ask/quit";
 	msg[ASK_SND_STOP]	= "/sound/stop";
 	
+	numLastMessages = 30;
+	curMessageIdx = 0;
+	lastMessages = new string[numLastMessages];
+	
+	for(int i = 0; i < numLastMessages; i ++) {
+		lastMessages[i] = "";
+	}
 	
 	// DRAWING VARS --------------------------------------------*
 	
@@ -128,37 +135,33 @@ void testApp::update(){
 		
 		for (int i = 0; i < numMod; i++) {
 			if (!mod_checkedin[i] && m.getAddress() == "/m" + ofToString(i) + "/checkin") {
-				cout << "RCV: " << m.getAddress() << endl;
+				pushNewMessage("RCV: " + m.getAddress());
 				mod_checkedin[i] = true;
 				oscModMessage.clear();
 				oscModMessage.setAddress(msg[RCV_CHECKIN]);
 				oscModSender[i].sendMessage(oscModMessage);
-				cout << "SNT: " << oscModMessage.getAddress() << endl;
-				break;
+				pushNewMessage("SNT: " + oscModMessage.getAddress() + " (" + ofToString(i) + ")");
 			}
 			else if (!mod_needPlay[i] && m.getAddress() == "/m" + ofToString(i) + "/needPlay") {
-				cout << "RCV: " << m.getAddress() << endl;
+				pushNewMessage("RCV: " + m.getAddress());
 				mod_needPlay[i] = true;
 				mod_isPlaying[i] = false;
 				oscModMessage.clear();
 				oscModMessage.setAddress(msg[RCV_NEEDPLAY]);
 				oscModSender[i].sendMessage(oscModMessage);
-				cout << "SNT: " << oscModMessage.getAddress() << endl;
-				break;
+				pushNewMessage("SNT: " + oscModMessage.getAddress() + " (" + ofToString(i) + ")");
 			}
 			else if (!mod_isPlaying[i] && m.getAddress() == "/m" + ofToString(i) + "/isPlaying") {
-				cout << "RCV: " << m.getAddress() << endl;
+				pushNewMessage("RCV: " + m.getAddress());
 				mod_isPlaying[i] = true;
 				mod_needPlay[i] = false;
 				oscModMessage.clear();
 				oscModMessage.setAddress(msg[RCV_ISPLAYING]);
 				oscModSender[i].sendMessage(oscModMessage);
-				break;
 			}
 			else if (m.getAddress() == "/m" + ofToString(i) + "/FPS") {
 				mod_ThreadFPS[i] = m.getArgAsFloat(0);
 				mod_AppFPS[i] = m.getArgAsFloat(1);
-				break;
 			}
 		}
 	}
@@ -176,10 +179,11 @@ void testApp::update(){
 			oscModMessage.clear();
 			oscModMessage.setAddress(msg[ASK_CHECKIN]);
 			oscModSender[i].sendMessage(oscModMessage);
-			cout << "SNT: " << oscModMessage.getAddress() << endl;
+			pushNewMessage("SNT: " + oscModMessage.getAddress() + " (" + ofToString(i) + ")");
 		
 		}
 	}
+	
 	
 	// If already told everyone to play
 	
@@ -199,27 +203,27 @@ void testApp::update(){
 			for (int i = 0; i < numMod; i++) {		 
 				if(!mod_isPlaying[i]) {										// Find lazy mod
 					oscModSender[i].sendMessage(oscModMessage);				// Ask to play once more
-					cout << "SNT: " << oscModMessage.getAddress() << endl;
+					pushNewMessage("SNT: " + oscModMessage.getAddress() + " (" + ofToString(i) + ")");
 				}
 			}
 		}
 		
 	}
 	
-	// And if everyone needs a play and we haven't told them to play yet
-		
-	if (checkEveryModNeedPlay() && !all_toldToPlay) {
+	// And if everyone needs a play 
+	
+	if (checkEveryModNeedPlay()) {
 		
 		// And if we are go
 		
-		if (bRunAll) {
+		if (bRunAll && !all_toldToPlay) {
 		
 			// Tell sound to play
 			
 			oscSoundMessage.clear();
 			oscSoundMessage.setAddress(msg[ASK_SND_PLAY]);
 			oscSoundSender.sendMessage(oscSoundMessage);
-			cout << "SNT: " << oscSoundMessage.getAddress() << endl;
+			pushNewMessage("SNT: " + oscSoundMessage.getAddress() + " (sound)");
 			
 			oscModMessage.clear();
 			oscModMessage.setAddress(msg[ASK_PLAY]);
@@ -229,7 +233,7 @@ void testApp::update(){
 			for (int i = 0; i < numMod; i++) {
 				if (mod_needPlay[i]) {
 					oscModSender[i].sendMessage(oscModMessage);
-					cout << "SNT: " << oscModMessage.getAddress() << endl;
+					pushNewMessage("SNT: " + oscModMessage.getAddress() + " (" + ofToString(i) + ")");
 				}
 			}
 			
@@ -253,6 +257,10 @@ void testApp::draw(){
 	ofSetColor(255, 255, 255);
 	
 	gui.draw();
+	
+	for(int i = 0; i < numLastMessages; i++) {
+		ofDrawBitmapString(lastMessages[i], 400, 125 + (i * 20));
+	}
 	
 }
 
@@ -309,26 +317,24 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 bool testApp::checkEveryModNeedPlay() {
 	
-	bool result = true;
 	
 	for (int i = 0 ; i < numMod; i++) {
-		result = mod_needPlay[i];
+		if(!mod_needPlay[i]) return false;
 	}
 	
-	return result;
+	return true;
 }
 
 // -------------------------------------------------------------
 
 bool testApp::checkNoModNeedPlay() {
 	
-	bool result = false;
 	
 	for (int i = 0 ; i < numMod; i++) {
-		result = mod_needPlay[i];
+		if(mod_needPlay[i]) return false;
 	}
 	
-	return !result;
+	return true;
 	
 }
 
@@ -336,27 +342,34 @@ bool testApp::checkNoModNeedPlay() {
 
 bool testApp::checkEveryModCheckedIn() {	
 	
-	bool result = true;
-	
 	for (int i = 0 ; i < numMod; i++) {
-		result = mod_checkedin[i];
+		if(!mod_checkedin[i]) return false;
 	}
 	
-	return result;
+	return true;
 
 }
 
 // -------------------------------------------------------------
 
 bool testApp::checkEveryModIsPlaying() {
-
-	bool result = true;
 	
 	for (int i = 0; i < numMod; i++) {
-		result = mod_isPlaying[i];
+		if(!mod_isPlaying[i]) return false;
 	}
 	
-	return result;
+	return true;
+	
+}
+
+// -----------------------------------------------------------
+
+void testApp::pushNewMessage(string message) {
+
+	for(int i = 1; i < numLastMessages; i++) {
+		lastMessages[numLastMessages-i] = lastMessages[numLastMessages-i-1];
+	}
+	lastMessages[0] = message;
 	
 }
 

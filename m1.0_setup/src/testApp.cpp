@@ -409,24 +409,21 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 bool testApp::checkEveryModNeedPlay() {
 	
-	bool need = true;
-	
 	for (int i = 0 ; i < numMod; i++) {
-		need = modules[i].getNeedToPlay();
+		if (!modules[i].getNeedToPlay()) return false;
 	}
 	
-	return need;
+	return true;
 }
 
 // -------------------------------------------------------------
 
 bool testApp::checkEveryModNeedVidIndex() {	
-	
-	bool need = true;
+
 	
 	for (int i = 0; i < numMod; i++) {
-		if(!modules[i].getNeedToSetIndex()) need = false;
+		if(!modules[i].getNeedToSetIndex()) return false;
 	}
 	
-	return need;
+	return true;
 }

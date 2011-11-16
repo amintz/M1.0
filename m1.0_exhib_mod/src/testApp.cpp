@@ -295,7 +295,7 @@ void testApp::update(){
 	
 	if(bUpdateModule) {
 		if(!module[0].isThreadRunning()) module[0].startThread(true, false);	// Start thread if it isn't running
-		if(module[o].getIsPlaying()) texture.loadData(module[0].getPixels(), dispWidth, dispHeight, GL_RGB);	// Load data from module into the texture
+		if(module[0].getIsPlaying()) texture.loadData(module[0].getPixels(), dispWidth, dispHeight, GL_RGB);	// Load data from module into the texture
 	}
 }
 

@@ -37,9 +37,9 @@
 	};
 	219B9F7E1443C9B80078DC3D /* margBlobInterpolator007.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {939, 7995}}";
+			sepNavIntBoundsRect = "{{0, 0}, {939, 7826}}";
 			sepNavSelRange = "{13912, 67}";
-			sepNavVisRange = "{12390, 1624}";
+			sepNavVisRange = "{12428, 1586}";
 		};
 	};
 	219B9FC71443CDE40078DC3D /* margModule007.cpp */ = {
@@ -77,19 +77,25 @@
 		vrLen = 1066;
 		vrLoc = 0;
 	};
-	21E54DB21472D0E90012C30F /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 219B9F7E1443C9B80078DC3D /* margBlobInterpolator007.cpp */;
-	};
-	21E54DB31472D0E90012C30F /* PBXTextBookmark */ = {
+	21E85B0C1473D5DB00851B20 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 219B9F7E1443C9B80078DC3D /* margBlobInterpolator007.cpp */;
-		name = "margBlobInterpolator007.cpp: 455";
-		rLen = 67;
-		rLoc = 13912;
+		fRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */;
+		name = "testApp.cpp: 132";
+		rLen = 0;
+		rLoc = 3794;
 		rType = 0;
-		vrLen = 1624;
-		vrLoc = 12390;
+		vrLen = 1604;
+		vrLoc = 1818;
+	};
+	21E85B0D1473D5DB00851B20 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */;
+		name = "testApp.cpp: 411";
+		rLen = 0;
+		rLoc = 11336;
+		rType = 0;
+		vrLen = 1045;
+		vrLoc = 10623;
 	};
 	21EB14861470AD7800F9E55A /* emptyExample */ = {
 		isa = PBXExecutable;
@@ -169,14 +175,14 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 343016896;
-			PBXWorkspaceStateSaveDate = 343016896;
+			PBXPerProjectTemplateStateSaveDate = 343134389;
+			PBXWorkspaceStateSaveDate = 343134389;
 		};
 		perUserProjectItems = {
 			21E54DB01472D0E90012C30F /* PBXTextBookmark */ = 21E54DB01472D0E90012C30F /* PBXTextBookmark */;
 			21E54DB11472D0E90012C30F /* PBXTextBookmark */ = 21E54DB11472D0E90012C30F /* PBXTextBookmark */;
-			21E54DB21472D0E90012C30F /* PBXBookmark */ = 21E54DB21472D0E90012C30F /* PBXBookmark */;
-			21E54DB31472D0E90012C30F /* PBXTextBookmark */ = 21E54DB31472D0E90012C30F /* PBXTextBookmark */;
+			21E85B0C1473D5DB00851B20 /* PBXTextBookmark */ = 21E85B0C1473D5DB00851B20 /* PBXTextBookmark */;
+			21E85B0D1473D5DB00851B20 /* PBXTextBookmark */ = 21E85B0D1473D5DB00851B20 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 21EB14AB1470AD9700F9E55A /* Source Control */;
 		userBuildSettings = {
@@ -190,9 +196,9 @@
 	};
 	E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {939, 5083}}";
-			sepNavSelRange = "{3794, 0}";
-			sepNavVisRange = "{1818, 1604}";
+			sepNavIntBoundsRect = "{{0, 0}, {939, 5837}}";
+			sepNavSelRange = "{11336, 0}";
+			sepNavVisRange = "{10623, 1045}";
 		};
 	};
 	E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {

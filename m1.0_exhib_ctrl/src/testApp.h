@@ -42,6 +42,8 @@ class testApp : public ofBaseApp{
 		bool checkEveryModCheckedIn();
 		bool checkEveryModIsPlaying();
 	
+		void pushNewMessage(string message);
+	
 	// GENERAL -----------------------------------*
 	
 	int					screenWidth,
@@ -72,6 +74,10 @@ class testApp : public ofBaseApp{
 	string				curMessage;
 	string*				messageStrings;
 	float*				timers;
+	
+	string*				lastMessages;
+	int					numLastMessages;
+	int					curMessageIdx;
 	
 	
 	// SETUP UTILS -------------------------------*
