@@ -109,6 +109,7 @@ public:
 	void	setNextVidIndex(int idx);
 	bool	getNeedToSetIndex();
 	bool	getNeedToPlay();
+	bool	getIsPlaying();
 	bool	getIsVidLoaded();
 	
 	// Quad adjustments

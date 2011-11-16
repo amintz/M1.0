@@ -25,7 +25,7 @@ void testApp::setup(){
 		oscModHost		= XML.getValue("oscModHost", "localhost", 0);
 		oscModPort		= XML.getValue("oscModPort", 8001, 0);
 		oscSoundHost	= XML.getValue("oscSoundHost", "localhost", 0);
-		oscSoundPort	= XML.getValue("oscSoundPort", 8000, 0);
+		oscSoundPort	= XML.getValue("oscSoundPort", 8005, 0);
 		oscListenPort	= 8000; //XML.getValue("oscListenPort", 8000, 0);
 		oscMaxMessages	= XML.getValue("oscMaxMessages", 20, 0);
 	XML.popTag();
@@ -43,7 +43,20 @@ void testApp::setup(){
 		oscModSender[i].setup(oscModHost, oscModPort + i);
 	}
 	
-	// ---------------------------------------------------------*
+	// MESSAGES    ---------------------------------------------*
+	
+	msg	  = new string [9];
+	
+	msg[ASK_CHECKIN]	= "/ask/checkin";
+	msg[RCV_CHECKIN]	= "/rcv/checkin";
+	msg[ASK_NEEDPLAY]	= "/ask/needplay";
+	msg[RCV_NEEDPLAY]	= "/rcv/needplay";
+	msg[ASK_PLAY]		= "/ask/play";
+	msg[RCV_ISPLAYING]	= "/rcv/isPlaying";
+	msg[ASK_SND_PLAY]	= "/sound/play";
+	msg[ASK_SHUTDOWN]	= "/ask/quit";
+	msg[ASK_SND_STOP]	= "/sound/stop";
+	
 	
 	// DRAWING VARS --------------------------------------------*
 	
@@ -75,8 +88,8 @@ void testApp::setup(){
 		mod_AppFPS[i] = 0.0f;
 	}
 	
-	oscSoundMessage.setAddress("/sound/play");
-	oscModMessage.setAddress("/mod0/checkin_received");
+	oscSoundMessage.setAddress(msg[ASK_SND_PLAY]);
+	oscModMessage.setAddress(msg[RCV_CHECKIN]);
 	
 	bRunAll = false;
 	
@@ -110,88 +123,123 @@ void testApp::update(){
 		ofxOscMessage m;
 		oscReceiver.getNextMessage( &m );
 		
-		cout << "RCV: " << m.getAddress() << endl	;
 		
 		// check for possibilities
 		
-		// module check-in
 		for (int i = 0; i < numMod; i++) {
 			if (!mod_checkedin[i] && m.getAddress() == "/m" + ofToString(i) + "/checkin") {
+				cout << "RCV: " << m.getAddress() << endl;
 				mod_checkedin[i] = true;
 				oscModMessage.clear();
-				oscModMessage.setAddress("/m" + ofToString(i) + "/checkedIn");
+				oscModMessage.setAddress(msg[RCV_CHECKIN]);
 				oscModSender[i].sendMessage(oscModMessage);
 				cout << "SNT: " << oscModMessage.getAddress() << endl;
+				break;
 			}
-			if (!mod_needPlay[i] && m.getAddress() == "/m" + ofToString(i) + "/needPlay") {
+			else if (!mod_needPlay[i] && m.getAddress() == "/m" + ofToString(i) + "/needPlay") {
+				cout << "RCV: " << m.getAddress() << endl;
 				mod_needPlay[i] = true;
 				mod_isPlaying[i] = false;
 				oscModMessage.clear();
-				oscModMessage.setAddress("/m" + ofToString(i) + "/awareNeedPlay");
+				oscModMessage.setAddress(msg[RCV_NEEDPLAY]);
 				oscModSender[i].sendMessage(oscModMessage);
 				cout << "SNT: " << oscModMessage.getAddress() << endl;
+				break;
 			}
-			if (!mod_isPlaying[i] && m.getAddress() == "/m" + ofToString(i) + "/isPlaying") {
+			else if (!mod_isPlaying[i] && m.getAddress() == "/m" + ofToString(i) + "/isPlaying") {
+				cout << "RCV: " << m.getAddress() << endl;
 				mod_isPlaying[i] = true;
 				mod_needPlay[i] = false;
+				oscModMessage.clear();
+				oscModMessage.setAddress(msg[RCV_ISPLAYING]);
+				oscModSender[i].sendMessage(oscModMessage);
+				break;
 			}
-			if (m.getAddress() == "/m" + ofToString(i) + "/FPS") {
+			else if (m.getAddress() == "/m" + ofToString(i) + "/FPS") {
 				mod_ThreadFPS[i] = m.getArgAsFloat(0);
 				mod_AppFPS[i] = m.getArgAsFloat(1);
+				break;
 			}
 		}
 	}
 	
+	// For each Mod
+	
 	for (int i = 0; i < numMod; i++) {
+		
+		// If it hasn't checked in yet
+		
 		if (!mod_checkedin[i]) {
+			
+			// Ask to checkin, in case it has missed
+			
 			oscModMessage.clear();
-			oscModMessage.setAddress("/m" + ofToString(i) + "/please_checkin");
+			oscModMessage.setAddress(msg[ASK_CHECKIN]);
 			oscModSender[i].sendMessage(oscModMessage);
 			cout << "SNT: " << oscModMessage.getAddress() << endl;
-		}
-		else {
-			if (!mod_isPlaying[i]) {
-				if (!mod_needPlay[i]) {
-					oscModMessage.clear();
-					oscModMessage.setAddress("/m"+ ofToString(i) + "/do_you_need_play");
-					oscModSender[i].sendMessage(oscModMessage);
-					cout << "SNT: " << oscModMessage.getAddress() << endl;
-				}
-			}
-		}
-	}
 		
-	if (checkEveryModCheckedIn()) {
+		}
+	}
+	
+	// If already told everyone to play
+	
+	if (all_toldToPlay) {
+		
+		// If all got the message and responded (no mod needs play)
+		
+		if (checkNoModNeedPlay()) {
+			all_toldToPlay = false;	// Forget about it
+		}
+		
+		// If someone didn't get the message or didn't respond yet
+		
+		else {
+			oscModMessage.clear();
+			oscModMessage.setAddress(msg[ASK_PLAY]);
+			for (int i = 0; i < numMod; i++) {		 
+				if(!mod_isPlaying[i]) {										// Find lazy mod
+					oscModSender[i].sendMessage(oscModMessage);				// Ask to play once more
+					cout << "SNT: " << oscModMessage.getAddress() << endl;
+				}
+			}
+		}
+		
+	}
+	
+	// And if everyone needs a play and we haven't told them to play yet
+		
+	if (checkEveryModNeedPlay() && !all_toldToPlay) {
+		
+		// And if we are go
+		
 		if (bRunAll) {
-			if (checkEveryModNeedPlay()) {
-				oscSoundMessage.clear();
-				oscSoundMessage.setAddress("/sound/stop");
-				oscSoundSender.sendMessage(oscSoundMessage);
-				cout << "SNT: " << oscSoundMessage.getAddress() << endl;
-				
-				oscSoundMessage.clear();
-				oscSoundMessage.setAddress("/sound/stop");
-				oscSoundSender.sendMessage(oscSoundMessage);
-				cout << "SNT: " << oscSoundMessage.getAddress() << endl;
-				
-				oscSoundMessage.clear();
-				oscSoundMessage.setAddress("/sound/play");
-				oscSoundSender.sendMessage(oscSoundMessage);
-				cout << "SNT: " << oscSoundMessage.getAddress() << endl;
-				
-				oscModMessage.clear();
-				oscModMessage.setAddress("/all/play");
-				for (int i = 0; i < numMod; i++) {
+		
+			// Tell sound to play
+			
+			oscSoundMessage.clear();
+			oscSoundMessage.setAddress(msg[ASK_SND_PLAY]);
+			oscSoundSender.sendMessage(oscSoundMessage);
+			cout << "SNT: " << oscSoundMessage.getAddress() << endl;
+			
+			oscModMessage.clear();
+			oscModMessage.setAddress(msg[ASK_PLAY]);
+			
+			// Tell each mod to play too
+			
+			for (int i = 0; i < numMod; i++) {
+				if (mod_needPlay[i]) {
 					oscModSender[i].sendMessage(oscModMessage);
 					cout << "SNT: " << oscModMessage.getAddress() << endl;
 				}
-				all_toldToPlay = true;
 			}
+			
+			// Take note: we have told them to play already
+			
+			all_toldToPlay = true;
+			
 		}
 	}
-	else {
-		cout << "waiting for every mod to check-in" << endl;
-	}
+	
 }
 
 //--------------------------------------------------------------
@@ -272,6 +320,20 @@ bool testApp::checkEveryModNeedPlay() {
 
 // -------------------------------------------------------------
 
+bool testApp::checkNoModNeedPlay() {
+	
+	bool result = false;
+	
+	for (int i = 0 ; i < numMod; i++) {
+		result = mod_needPlay[i];
+	}
+	
+	return !result;
+	
+}
+
+// -------------------------------------------------------------
+
 bool testApp::checkEveryModCheckedIn() {	
 	
 	bool result = true;
@@ -302,9 +364,13 @@ bool testApp::checkEveryModIsPlaying() {
 
 void testApp::exit() {
 	oscModMessage.clear();
-	oscModMessage.setAddress("/all/quit");
+	oscModMessage.setAddress(msg[ASK_SHUTDOWN]);
 	for (int i = 0; i < numMod; i++) {
 		oscModSender[i].sendMessage(oscModMessage);
 		cout << "SNT: " << oscModMessage.getAddress() << endl;
 	}
+	oscSoundMessage.clear();
+	oscSoundMessage.setAddress(msg[ASK_SND_STOP]);
+	oscSoundSender.sendMessage(oscSoundMessage);
+	cout << "SNT: " << oscSoundMessage.getAddress() << endl;
 }

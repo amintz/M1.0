@@ -10,6 +10,9 @@
 
 #include "margVideoPlayer007.h"
 
+margVideoPlayer::~margVideoPlayer() {
+	player.close();
+}
 
 void margVideoPlayer::init(string _xmlPath, string _filePath, int _modIdx) {
 	
@@ -84,14 +87,22 @@ void margVideoPlayer::trig() {
 	
 	curTrigger = nextTrigger;
 	
-	nextTrigger = nextTrigger+1 > nTriggers? 0 : nextTrigger+1;
-	
 	curInteractMode = nextInteractMode;
+	
+	nextTrigger = nextTrigger+1 >= nTriggers? 0 : nextTrigger+1;
 	
 	XML.pushTag("trigger", nextTrigger);
 		nextTriggerFrame= XML.getValue("frame", 0, 0);
 		nextInteractMode= XML.getValue("interactMode", 1, 0);
 	XML.popTag();
+	
+	if (nextTriggerFrame > player.getTotalNumFrames()) {
+		nextTrigger = 0;
+		XML.pushTag("trigger", nextTrigger);
+			nextTriggerFrame= XML.getValue("frame", 0, 0);
+			nextInteractMode= XML.getValue("interactMode", 1, 0);
+		XML.popTag();
+	}
 	
 }
 

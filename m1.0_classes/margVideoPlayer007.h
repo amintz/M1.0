@@ -15,6 +15,8 @@ class margVideoPlayer {
 
 public:
 	
+	~margVideoPlayer();
+	
 	void	init(string _xmlPath, string _filePath, int _modIdx);
 	void	update();
 	void	play();

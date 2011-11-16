@@ -25,6 +25,7 @@ margModule::margModule() {
 // ---------------------------------------------------
 
 margModule::~margModule() {
+	stopThread();
 	correctDisp.clear();
 	tempSource.clear();
 }
@@ -597,6 +598,12 @@ bool margModule::getNeedToSetIndex() {
 
 bool margModule::getNeedToPlay() {
 	return vidPlayer.getNeedToPlay();
+}
+
+// -----------------------------------------------
+
+bool margModule::getIsPlaying() {
+	return vidPlayer.getIsPlaying();
 }
 
 // -----------------------------------------------

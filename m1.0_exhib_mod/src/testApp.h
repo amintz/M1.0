@@ -8,6 +8,21 @@
 
 #include "ofMain.h"
 
+#define ASK_CHECKIN		0
+#define RCV_CHECKIN		1
+#define ASK_NEEDPLAY	2
+#define RCV_NEEDPLAY	3
+#define ASK_PLAY		4
+#define RCV_ISPLAYING	5
+#define ASK_SND_PLAY	6
+#define ASK_SHUTDOWN	7
+#define ASK_SND_STOP	8
+
+#define MOD_CHECKIN		0
+#define MOD_NEEDPLAY	1
+#define MOD_ISPLAYING	2
+#define MOD_FPS			3
+
 class testApp : public ofBaseApp{
 
 	public:
@@ -40,6 +55,9 @@ class testApp : public ofBaseApp{
 	
 	int					modIdx;
 	
+	string*				ctrlMsg;
+	string*				myMsg;
+	
 	// OBJECTS -----------------------------------*
 	
 	margModule*			module;
@@ -60,6 +78,7 @@ class testApp : public ofBaseApp{
 	
 	bool				bNeedToCheckIn,
 						bAwareNeedPlay,
+						bGotPlay,
 						bIsPlaying;
 	
 	bool				bUpdateModule;

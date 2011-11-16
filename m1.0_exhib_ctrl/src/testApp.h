@@ -8,6 +8,17 @@
 
 #include "ofMain.h"
 
+#define ASK_CHECKIN		0
+#define RCV_CHECKIN		1
+#define ASK_NEEDPLAY	2
+#define RCV_NEEDPLAY	3
+#define ASK_PLAY		4
+#define RCV_ISPLAYING	5
+#define ASK_SND_PLAY	6
+#define ASK_SHUTDOWN	7
+#define ASK_SND_STOP	8
+
+
 class testApp : public ofBaseApp{
 
 	public:
@@ -27,6 +38,7 @@ class testApp : public ofBaseApp{
 		void exit();
 	
 		bool checkEveryModNeedPlay();
+		bool checkNoModNeedPlay();
 		bool checkEveryModCheckedIn();
 		bool checkEveryModIsPlaying();
 	
@@ -46,6 +58,7 @@ class testApp : public ofBaseApp{
 	
 	string				filesPath;
 	
+	string*				msg;
 	
 	// OBJECTS -----------------------------------*
 

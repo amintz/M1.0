@@ -36,7 +36,27 @@ void testApp::setup(){
 	
 	bNeedToCheckIn = true;
 	
-	// ---------------------------------------------------------*
+	// MESSAGES ---------------------------------------------*
+	
+	ctrlMsg = new string[9];
+	
+	ctrlMsg[ASK_CHECKIN]	= "/ask/checkin";
+	ctrlMsg[RCV_CHECKIN]	= "/rcv/checkin";
+	ctrlMsg[ASK_NEEDPLAY]	= "/ask/needplay";
+	ctrlMsg[RCV_NEEDPLAY]	= "/rcv/needplay";
+	ctrlMsg[ASK_PLAY]		= "/ask/play";
+	ctrlMsg[RCV_ISPLAYING]	= "/rcv/isPlaying";
+	ctrlMsg[ASK_SND_PLAY]	= "/sound/play";
+	ctrlMsg[ASK_SHUTDOWN]	= "/ask/quit";
+	ctrlMsg[ASK_SND_STOP]	= "/sound/stop";
+	
+	myMsg = new string[4];
+	
+	myMsg[MOD_CHECKIN]		= "/m" + ofToString(modIdx) + "/checkin";
+	myMsg[MOD_NEEDPLAY]		= "/m" + ofToString(modIdx) + "/needPlay";
+	myMsg[MOD_ISPLAYING]	= "/m" + ofToString(modIdx) + "/isPlaying";
+	myMsg[MOD_FPS]			= "/m" + ofToString(modIdx) + "/FPS";
+	
 	
 	// DRAWING VARS --------------------------------------------*
 	
@@ -53,14 +73,14 @@ void testApp::setup(){
 	
 	// MODULE INITIALIZATION -----------------------------------*
 	
+	module = new margModule[1];
+	
 	XML.pushTag("module", 0);
 		
 	int capt = XML.getValue("captDev", -1, 0);
 	string moviePath = XML.getValue("moviePath", filesPath + "movies/", 0);
 	
 	XML.popTag();
-	
-	module = new margModule;
 	
 	module[0].init(camWidth, camHeight, dispWidth, dispHeight, capt, modIdx, filesPath, moviePath, false);
 	module[0].setSharedVarsAddresses(&minBlob, &maxBlob, &numBlob,
@@ -72,6 +92,14 @@ void testApp::setup(){
 								  &bAdjQuad, &whichQuad);
 	texture.allocate(dispWidth, dispHeight, GL_RGB);
 	
+	unsigned char* blackPix = new unsigned char[dispWidth * dispHeight * 3];
+	for (int i = 0; i < dispWidth * dispHeight * 3; i++) {
+		blackPix[i] = 0;
+	}
+	texture.loadData(blackPix, dispWidth, dispHeight, GL_RGB);
+	
+	delete[] blackPix;
+	
 	displayMode			= 5;
 	bDynInteractMode	= true;
 	bDrawBlobs			= false;
@@ -82,7 +110,9 @@ void testApp::setup(){
 	module[0].interactMode = 2;
 	
 	bUpdateModule = false;
-	bIsPlaying	= false;
+	bAwareNeedPlay= false;
+	bIsPlaying	  = false;
+	bGotPlay	  = false;
 	
 	// LOAD SETTINGS
 	
@@ -164,7 +194,6 @@ void testApp::setup(){
 	
 	module[0].updateSettings();
 	
-
 }
 
 //--------------------------------------------------------------
@@ -188,65 +217,85 @@ void testApp::update(){
 		cout << "RCV: " << m.getAddress() << endl;
 		
 		// check for possibilities
-		if (m.getAddress() == "/all/play") {
-			if(!bIsPlaying) {
-				module[0].playVideos();
-				bUpdateModule = true;
-				bIsPlaying = true;
-			}
-			if (bIsPlaying) {
-				oscMessage.clear();
-				oscMessage.setAddress("/m" + ofToString(modIdx) + "/isPlaying");
+		
+		// if message asks to play
+		
+		if (m.getAddress() == ctrlMsg[ASK_PLAY]) {
+			if(!bGotPlay) {										// If they haven't told us yet
+				module[0].playVideos();							// We play
+				bUpdateModule = true;							// We take note to keep it running
+				bGotPlay = true;								// We take note we have got this message
+				oscMessage.clear();								// Respond to control
+				oscMessage.setAddress(myMsg[MOD_ISPLAYING]);	// We are playing
 				oscSender.sendMessage(oscMessage);
 				cout << "SNT: " << oscMessage.getAddress() << endl;
 				bAwareNeedPlay = false;
 			}
 		}
-		else if (m.getAddress() == "/m" + ofToString(modIdx) + "/please_checkin") {
-			bNeedToCheckIn = true;
+		
+		// If control tells us we are checked in
+		else if (m.getAddress() == ctrlMsg[RCV_CHECKIN]) {
+			bNeedToCheckIn = false;	// No longer check in
 		}
-		else if (m.getAddress() == "/m" + ofToString(modIdx) + "/checkedIn") {
-			bNeedToCheckIn = false;
+		
+		// If control asks us to tell if we need play
+		else if (m.getAddress() == ctrlMsg[ASK_NEEDPLAY]) {
+			bAwareNeedPlay = false; // Take note to tell them soon enough
 		}
-		else if (m.getAddress() == "/m" + ofToString(modIdx) + "/do_you_need_play") {
-			bAwareNeedPlay = false;
+		
+		// If control tells us they know we need play
+		else if (m.getAddress() == ctrlMsg[RCV_NEEDPLAY]) {
+			bAwareNeedPlay = true;	// No longer tell them that
 		}
-		else if (m.getAddress() == "/m" + ofToString(modIdx) + "/awareNeedPlay") {
-			bAwareNeedPlay = true;
-		}
-		else if (m.getAddress() == "/all/quit") {
-			std::exit(0);
+		
+		// If they tell us to die
+		else if (m.getAddress() == ctrlMsg[ASK_SHUTDOWN]) {
+			std::exit(0); // Die
 		}
 	}
 	
-	if (bNeedToCheckIn) {
+	// If we need to checkin and if video is loaded
+	
+	if (bNeedToCheckIn && module[0].getIsVidLoaded()) {
+		
+		// Tell control we are listening
+		
 		oscMessage.clear();
-		oscMessage.setAddress("/m" + ofToString(modIdx) + "/checkin");
+		oscMessage.setAddress(myMsg[MOD_CHECKIN]);
 		oscSender.sendMessage(oscMessage);
-		
 		cout << "SNT: " << oscMessage.getAddress() << endl;
+		
 	}
 	
-	if (!bAwareNeedPlay) {
-		if (module[0].getNeedToPlay()) {
+	// If we are in but they don't know we need play
+	
+	if (!bNeedToCheckIn && !bAwareNeedPlay) {
+		if (module[0].getNeedToPlay()) {				// Find out if we do need play
 			oscMessage.clear();
-			oscMessage.setAddress("/m" + ofToString(modIdx) + "/needPlay");
+			oscMessage.setAddress(myMsg[MOD_NEEDPLAY]); // Tell them, if we do
 			oscSender.sendMessage(oscMessage);
-			bIsPlaying = false;
+			bIsPlaying = false;							// Take note that we are NOT playing yet
 			cout << "SNT: " << oscMessage.getAddress() << endl;
+			bGotPlay = false;							// Take note we are waiting for control to respond
 		}
 	}
 	
-	oscMessage.clear();
-	oscMessage.setAddress("/m" + ofToString(modIdx) + "/FPS");
-	oscMessage.addFloatArg(module[0].moduleFPS);
-	oscMessage.addFloatArg(ofGetFrameRate());
-	oscSender.sendMessage(oscMessage);
+	
+	// Tell control how fast we are going
+	
+	if (!bNeedToCheckIn) {
+		oscMessage.clear();
+		oscMessage.setAddress(myMsg[MOD_FPS]);
+		oscMessage.addFloatArg(module[0].moduleFPS);
+		oscMessage.addFloatArg(ofGetFrameRate());
+		oscSender.sendMessage(oscMessage);
+	}
 		
+	// If we must be updated
+	
 	if(bUpdateModule) {
-		if(!module[0].isThreadRunning()) module[0].startThread(true, false);
-		//module[0].update();
-		texture.loadData(module[0].getPixels(), dispWidth, dispHeight, GL_RGB);
+		if(!module[0].isThreadRunning()) module[0].startThread(true, false);	// Start thread if it isn't running
+		if(module[o].getIsPlaying()) texture.loadData(module[0].getPixels(), dispWidth, dispHeight, GL_RGB);	// Load data from module into the texture
 	}
 }
 
@@ -256,7 +305,7 @@ void testApp::draw(){
 	
 	ofBackground(0, 0, 0);
 	
-	// DRAW CONTROL DISPLAY ------------------------------------*
+	// DRAW DISPLAY ------------------------------------*
 	
 	ofSetColor(255, 255, 255);
 	
