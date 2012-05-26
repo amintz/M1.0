@@ -57,6 +57,16 @@
 			sepNavWindowFrame = "{{61, 37}, {890, 741}}";
 		};
 	};
+	21C3F0B71473FFA9008DCDE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */;
+		name = "testApp.cpp: 411";
+		rLen = 0;
+		rLoc = 11336;
+		rType = 0;
+		vrLen = 1049;
+		vrLoc = 10619;
+	};
 	21E54DB01472D0E90012C30F /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 219B9E961443BE1B0078DC3D /* margCoordWarping007.cpp */;
@@ -76,16 +86,6 @@
 		rType = 0;
 		vrLen = 1066;
 		vrLoc = 0;
-	};
-	21E85B0C1473D5DB00851B20 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */;
-		name = "testApp.cpp: 132";
-		rLen = 0;
-		rLoc = 3794;
-		rType = 0;
-		vrLen = 1604;
-		vrLoc = 1818;
 	};
 	21E85B0D1473D5DB00851B20 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -175,13 +175,13 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 343134389;
-			PBXWorkspaceStateSaveDate = 343134389;
+			PBXPerProjectTemplateStateSaveDate = 343146385;
+			PBXWorkspaceStateSaveDate = 343146385;
 		};
 		perUserProjectItems = {
+			21C3F0B71473FFA9008DCDE9 /* PBXTextBookmark */ = 21C3F0B71473FFA9008DCDE9 /* PBXTextBookmark */;
 			21E54DB01472D0E90012C30F /* PBXTextBookmark */ = 21E54DB01472D0E90012C30F /* PBXTextBookmark */;
 			21E54DB11472D0E90012C30F /* PBXTextBookmark */ = 21E54DB11472D0E90012C30F /* PBXTextBookmark */;
-			21E85B0C1473D5DB00851B20 /* PBXTextBookmark */ = 21E85B0C1473D5DB00851B20 /* PBXTextBookmark */;
 			21E85B0D1473D5DB00851B20 /* PBXTextBookmark */ = 21E85B0D1473D5DB00851B20 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 21EB14AB1470AD9700F9E55A /* Source Control */;
@@ -196,9 +196,9 @@
 	};
 	E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {939, 5837}}";
+			sepNavIntBoundsRect = "{{0, 0}, {939, 5824}}";
 			sepNavSelRange = "{11336, 0}";
-			sepNavVisRange = "{10623, 1045}";
+			sepNavVisRange = "{10619, 1049}";
 		};
 	};
 	E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {

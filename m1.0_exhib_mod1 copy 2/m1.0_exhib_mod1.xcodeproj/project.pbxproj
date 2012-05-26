@@ -235,9 +235,6 @@
 		219B9F7F1443C9B80078DC3D /* margBlobInterpolator007.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = margBlobInterpolator007.h; path = ../m1.0_classes/margBlobInterpolator007.h; sourceTree = SOURCE_ROOT; };
 		219B9FC71443CDE40078DC3D /* margModule007.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = margModule007.cpp; path = ../m1.0_classes/margModule007.cpp; sourceTree = SOURCE_ROOT; };
 		219B9FC81443CDE40078DC3D /* margModule007.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = margModule007.h; path = ../m1.0_classes/margModule007.h; sourceTree = SOURCE_ROOT; };
-		21EB6BFF14743C60001CCEFB /* openFrameworks-Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info copy.plist"; sourceTree = "<group>"; };
-		21EB6C4B14743C81001CCEFB /* openFrameworks-Info copy 2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info copy 2.plist"; sourceTree = "<group>"; };
-		21EB6C9714743C89001CCEFB /* openFrameworks-Info copy 3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info copy 3.plist"; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -750,9 +747,6 @@
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
 				E4B69B5B0A3A1756003C02F2 /* loExhibitModDebug.app */,
-				21EB6BFF14743C60001CCEFB /* openFrameworks-Info copy.plist */,
-				21EB6C4B14743C81001CCEFB /* openFrameworks-Info copy 2.plist */,
-				21EB6C9714743C89001CCEFB /* openFrameworks-Info copy 3.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -802,7 +796,7 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "m1.0_exhib_mod" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "m1.0_exhib_mod1" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -925,7 +919,7 @@
 			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH)";
-				CONFIGURATION_BUILD_DIR = ../../PRODUCTS/M1.0_exhibit_mod/bin;
+				CONFIGURATION_BUILD_DIR = ../../PRODUCTS/M1.0_exhibit_mod1/bin;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				GCC_AUTO_VECTORIZATION = YES;
@@ -1162,7 +1156,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "m1.0_exhib_mod" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "m1.0_exhib_mod1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,

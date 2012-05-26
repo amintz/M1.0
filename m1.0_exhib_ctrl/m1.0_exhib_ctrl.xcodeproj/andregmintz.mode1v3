@@ -230,6 +230,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -274,7 +276,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>5</integer>
+									<integer>6</integer>
 									<integer>2</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -311,8 +313,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -330,7 +330,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>21E85B0A1473D5DA00851B20</string>
+										<string>21C3F0BD1473FFB0008DCDE9</string>
 										<key>history</key>
 										<array>
 											<string>21EB15F41470C2BF00F9E55A</string>
@@ -344,7 +344,7 @@
 											<string>21E85B021473D5DA00851B20</string>
 											<string>21E85B041473D5DA00851B20</string>
 											<string>21E85B061473D5DA00851B20</string>
-											<string>21E85B081473D5DA00851B20</string>
+											<string>21E85B0A1473D5DA00851B20</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -402,9 +402,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>21E85AC814739EAD00851B20</string>
+				<string>21C3F0BE1473FFB0008DCDE9</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>21E85AC914739EAD00851B20</string>
+				<string>21C3F0BF1473FFB0008DCDE9</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -542,11 +542,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>21E85AD514739EDD00851B20</string>
-		<string>21E85AD314739EAD00851B20</string>
-		<string>21E85AD414739EAD00851B20</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>21EB14B01470AE2C00F9E55A</string>
 		<string>/Users/andregmintz/Dev/openFrameworks/OF_0.070_SL/apps/M1.0/m1.0_exhib_ctrl/m1.0_exhib_ctrl.xcodeproj</string>
 	</array>
@@ -628,7 +623,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>21EB14B01470AE2C00F9E55A</string>
-				<string>21E85ACA14739EAD00851B20</string>
+				<string>21C3F0C01473FFB0008DCDE9</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

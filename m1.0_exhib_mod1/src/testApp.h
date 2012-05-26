@@ -18,6 +18,10 @@
 #define ASK_SHUTDOWN	7
 #define ASK_SND_STOP	8
 
+#define MOD_CHECKIN		0
+#define MOD_NEEDPLAY	1
+#define MOD_ISPLAYING	2
+#define MOD_FPS			3
 
 class testApp : public ofBaseApp{
 
@@ -35,72 +39,75 @@ class testApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-		void exit();
-	
-		bool checkEveryModNeedPlay();
-		bool checkNoModNeedPlay();
-		bool checkEveryModCheckedIn();
-		bool checkEveryModIsPlaying();
-	
-		void pushNewMessage(string message);
 	
 	// GENERAL -----------------------------------*
 	
 	int					screenWidth,
 						screenHeight;
 	
-	string				oscModHost,
-						oscSoundHost;
-	int					oscModPort,
-						oscSoundPort,
-						oscListenPort;
+	string				oscSendHost;
+	int					oscSendPort;
+	int					oscListenPort;
 	
-	ofxOscMessage		oscModMessage,
-						oscSoundMessage;
+	ofxOscMessage		oscMessage;
 	
 	string				filesPath;
 	
-	string*				msg;
+	int					modIdx;
+	
+	string*				ctrlMsg;
+	string*				myMsg;
 	
 	// OBJECTS -----------------------------------*
-
 	
-	ofxOscSender*		oscModSender;
-	ofxOscSender		oscSoundSender;
+	margModule*			module;
+	ofTexture			texture;
+	
+	ofxOscSender		oscSender;
 	ofxOscReceiver		oscReceiver;
-	ofxXmlSettings		XML;
 	
-	int					oscMaxMessages;
-	string				curMessage;
 	string*				messageStrings;
 	float*				timers;
 	
-	string*				lastMessages;
-	int					numLastMessages;
-	int					curMessageIdx;
+	int					oscMaxMessages;
+	
+	ofxXmlSettings		XML;
 	
 	
 	// SETUP UTILS -------------------------------*
 	
-	bool				bRunAll,
-						bQuitAll;
+	bool				bNeedToCheckIn,
+						bAwareNeedPlay,
+						bGotPlay,
+						bIsPlaying;
 	
-	bool				bDrawMessages;
+	bool				bUpdateModule;
 	
-	// MODULE VARS -------------------------------*
+	int					displayMode,
+						whichBlobs,
+						whichQuad;
 	
-	int					numMod;
+	bool				bDynInteractMode,
+						bDrawBlobs,
+						bAdjQuad,
+						bDrawUndistortBounds;
 	
-	bool				all_checkedin,
-						all_needPlay,
-						all_toldToPlay;
+	// BLOB TRACKING VARS ------------------------*
 	
-	bool*				mod_checkedin;
-	bool*				mod_needPlay;
-	bool*				mod_isPlaying;
-	float*				mod_ThreadFPS;
-	float*				mod_AppFPS;
+	float				maxAreaDiff,
+						maxDist,
+						maxUnfitness;
 	
+	float				blobDefScaleFactor,
+						blobCondScaleConst,
+						blobCondScaleMax;
+	
+	// TRAIL MAKING VARS -------------------------*
+	
+	float				exposureConst,
+						fadeConst;
+	
+	int					blurLevel;
 	
 	// VIDEO CAPTURING VARS ----------------------*
 	
@@ -112,16 +119,11 @@ class testApp : public ofBaseApp{
 	int					dispWidth,
 						dispHeight;
 	
-	int					drawX,
-						drawY,
-						drawWidth,
-						drawHeight;
+	// BLOB FINDING VARS -------------------------*
 	
-	// TASK MANAGEMENT AND MODES VARS -----------*
-						
-	bool				bRunThread,
-						bStopThread;
-	
+	int					minBlob,
+						maxBlob,
+						numBlob;
 	
 	// UTILS -----------------------------------------------*
 	

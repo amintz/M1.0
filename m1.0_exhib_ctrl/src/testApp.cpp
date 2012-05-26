@@ -99,9 +99,11 @@ void testApp::setup(){
 	oscModMessage.setAddress(msg[RCV_CHECKIN]);
 	
 	bRunAll = false;
+	bDrawMessages = false;
 	
 	// GUI SETUP -----------------------------------------------*
 	gui.addToggle("Run All", bRunAll);
+	gui.addToggle("Draw Messages", bDrawMessages);
 	for (int i = 0; i < numMod; i++) {
 		gui.addTitle("Module " + ofToString(i), 50);
 		gui.addSlider("Mod " + ofToString(i) + " Thread FPS", (float&)mod_ThreadFPS[i], 0, 60);
@@ -258,8 +260,10 @@ void testApp::draw(){
 	
 	gui.draw();
 	
-	for(int i = 0; i < numLastMessages; i++) {
-		ofDrawBitmapString(lastMessages[i], 400, 125 + (i * 20));
+	if(bDrawMessages) {
+		for(int i = 0; i < numLastMessages; i++) {
+			ofDrawBitmapString(lastMessages[i], 400, 125 + (i * 20));
+		}
 	}
 	
 }
